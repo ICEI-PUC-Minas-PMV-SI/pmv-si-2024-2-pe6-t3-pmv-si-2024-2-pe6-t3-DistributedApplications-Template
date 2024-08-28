@@ -149,13 +149,10 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 
 |ID|Serviço|Descição|
 |--|-------|--------|
-|01|Control de acesso|Capacidade de autenticar usuários cadastrados, provendo acesso ao sistema de forma segura.|
-|02|Gerenciamento de itens|Capacidade de cadastrar, editar e excluir itens da base de dados.|
-|03|Gerenciamento de fluxo de itens|Capacidade de acompanhar e gerenciar o fluxo de movimentação de itens cadastrados.|
-|04|Detalhamento de itens|Capacidade de exibir detalhes técnicos como descrição, quantidade e movimentação de itens específicos.|
-|05|Atualização de listagem de itens|Capacidade de atualizar em tempo real a listagem de itens após modificação no banco de dados.|
-|06|Notificação|Capacidade de notificar o usuário do sistema a respeito de criações, alterações ou exclusão de itens.|
-|07|Filtros de pesquisa|Capacidade de filtrar pesquisa de itens de acordo com ID, Nome, Data de cadastro e Data de atualização do item.|
+|01|Controle de usuários|Capacidade de cadastrar e autenticar usuários permitindo o acesso a página web, além de permitir a edição de informações do usuário cadastrado.|
+|02|Gerenciamento de medicamentos|Capacidade de manipular o cadastro, edição e exclusão de medicamentos (CRUD). Além de permitir pesquisas por meio de filtros, acessar mais informações sobre o medicamento como quandidade no estoque, data validade e descrições e atualização simultânea da listagem de medicamentos após modificações.|
+|03|Notificações|Capacidade de notificar o usuário a respeito de ações realizadas ao medicamento (Criação, edição e exclusão) por meio de pop-ups na página web ou por email, contendo mais detalhes a respeito da ação realizada ao medicamento, email este podendo ser enviado para o email do próprio usuário ou para outros emails personalizados.|
+|04|Relatórios|Capacidade de gerar relatórios com informações sobre o estoque da farmácia além de possuir alertas a respeito de produtos em falta, em baixa quantidade ou próximos da data de validade. Tais informações serão exibidas em uma página web contendo a opção de baixa-la em formato PDF.|
 
 # Arquitetura da Solução
 
