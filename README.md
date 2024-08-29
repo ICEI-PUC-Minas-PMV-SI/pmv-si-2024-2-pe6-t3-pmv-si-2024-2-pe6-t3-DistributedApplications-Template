@@ -6,20 +6,20 @@
 
 `SEMESTRE: 6º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+O projeto em desenvolvimento tem como objetivo criar um sistema web de gerenciamento de tarefas. Essa ferramenta permitirá que os usuários organizem e acompanhem suas atividades diárias on-line, facilitando a gestão de suas responsabilidades e o cumprimento de prazos. Para os gestores e equipes, o sistema oferecerá uma plataforma para centralizar e priorizar tarefas, otimizando o fluxo de trabalho e a colaboração entre os membros. Em resumo, o sistema busca melhorar a produtividade individual e coletiva, aumentar a transparência no andamento das tarefas e a eficiência na execução de projetos.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
+* Lucas Vinicius Oliveira Mendes
+* João Victor Dias Lopes
 * Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Bárbara Bruna D'Áustole Gelape
+*Ana Maria Alves Onerio
+
 
 ## Orientador
 
-* Nome completo do professor 1
+* Kléber Jacques Ferreira de Souza
 
 # Planejamento
 
