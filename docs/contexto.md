@@ -252,7 +252,7 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 - IDEs: Visual Studio, Visual Studio Code.
 - Ferramentas: Git (controle de versão), Swagger (documentação da API).
 
-| Passo | Ação | Detalhes |
+<!-- | Passo | Ação | Detalhes |
 |---|---|---|
 | 1 | Usuário interage com o sistema | Acessa o sistema via Navegador/Aplicativo. |
 | 2 | Requisição enviada para a API | O Navegador/Aplicativo envia a requisição para a API (ASP.NET Core). |
@@ -264,7 +264,33 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 | 8 | Retorno dos dados | O Microserviço retorna os dados para a fila (RabbitMQ). |
 | 9 | API processa os dados | A API consome a mensagem da fila com os dados. | 
 | 10 | Armazenamento em Cache | A API armazena os dados no Cache (Redis) para futuras requisições. |
-| 11 | Retorno para o Usuário | A API retorna os dados para o Navegador/Aplicativo, que os exibe para o Usuário. |
+| 11 | Retorno para o Usuário | A API retorna os dados para o Navegador/Aplicativo, que os exibe para o Usuário. | -->
+
+```mermaid
+graph TD
+    A([1. Usuário interage com o sistema]) --> B(2. Requisição enviada para API Gateway)
+    B --> C{3. Autenticação/Autorização}
+    C -- Válido --> D(4. API Gateway roteia para Microsserviço 'Produto')
+    C -- Inválido --> E([5. Retorno de erro para o Usuário])
+    D --> F{6. Verificação no Cache}
+    F -- Dados em Cache (Cache Hit) --> G(7. API recupera dados do Cache)
+    G --> H([8. API retorna dados para o Navegador/Aplicativo])
+    F -- Dados não encontrados (Cache Miss) --> I(9. Microsserviço consulta Banco de Dados)
+    I --> J(10. Microsserviço retorna dados)
+    J --> K(11. Armazenamento em Cache)
+    K --> L(12. API retorna dados para API Gateway)
+    L --> H
+    J --> N(13. Publica mensagem no RabbitMQ)
+    N --> O(14. Microsserviço 'Relatórios' processa mensagem)
+    O --> P(15. Microsserviço 'Relatórios' atualiza relatórios)
+    P --> H
+
+    style A fill:#5cb85c80,stroke:#4cae4c,stroke-width:2px,text-align:center,font-size:12px
+    style C fill:#f0ad4e80,stroke:#eea236,stroke-width:2px,text-align:center,font-size:12px
+    style E fill:#5cb85c80,stroke:#d9534f,stroke-width:2px,text-align:center,font-size:12px
+    style F fill:#f0ad4e80,stroke:#eea236,stroke-width:2px,text-align:center,font-size:12px
+    style H fill:#5cb85c80,stroke:#4cae4c,stroke-width:2px,text-align:center,font-size:12px
+```
 
 ## Hospedagem
 
