@@ -34,27 +34,19 @@ O objetivo geral destre trabalho é produzir uma aplicação mobile para auxilia
 
 Pode-se destacar com objetivos específicos a produção de uma aplicação de facil usabilidade que possa retornar métricas e informações uteis aos farmaceuticos sobre os recursos disponíveis e necessários à instuição.
 
-## Justificativa
+Justificativa para o Desenvolvimento de um Aplicativo de Estoque para Farmácias
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+A realização deste trabalho é impulsionada pela necessidade crescente de soluções específicas para a gestão de estoques no setor farmacêutico. Diferente de outros segmentos, as farmácias lidam com produtos que exigem um controle rigoroso, tanto em termos de armazenamento quanto no cumprimento de regulamentações. Medicamentos, por exemplo, muitas vezes precisam ser mantidos sob condições precisas de temperatura, e a rastreabilidade desses itens é essencial para garantir sua qualidade e segurança.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+Sistemas de controle de estoque que não são desenvolvidos pensando nas particularidades das farmácias podem deixar a desejar em aspectos críticos, como a manutenção adequada dos medicamentos e o cumprimento das normas de saúde. Isso pode resultar em perdas financeiras, além de comprometer a saúde dos pacientes devido ao uso de produtos mal armazenados ou expirados.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Portanto, o desenvolvimento de um aplicativo de gestão de estoques voltado especificamente para farmácias se justifica pela necessidade de uma solução que aborde esses desafios de forma integrada. Ao incluir funcionalidades como o monitoramento de temperatura e a gestão de receitas, o aplicativo proposto visa garantir que as farmácias possam operar de maneira segura, eficiente e conforme as exigências legais, respondendo de forma direta às necessidades do mercado.
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+O aplicativo de gestão de estoques é voltado principalmente para gestores e proprietários de farmácias, sejam estabelecimentos independentes ou grandes redes. Esses profissionais precisam garantir que suas operações sejam eficientes e que estejam em conformidade com as rigorosas regulamentações sanitárias, especialmente no que diz respeito ao armazenamento e controle de medicamentos.
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
-
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Além disso, o público-alvo inclui farmacêuticos que têm a responsabilidade de supervisionar tecnicamente a farmácia e garantir que todas as normas de saúde e segurança sejam seguidas. Eles necessitam de ferramentas que permitam um gerenciamento preciso e seguro dos estoques.
 
 # Especificações do Projeto
 
