@@ -4,7 +4,7 @@ O desperdício de medicamentos no Brasil representa um desafio significativo par
 
 O descarte inadequado de medicamentos está frequentemente relacionado à expiração das datas de validade e à falta de controle da cadeia de frio. Um exemplo desse problema foi publicado em matéria pelo veículo G1 de noticias, o caso ocorreu em Rondonópolis no ano de 2013, quando vacinas foram rejeitadas devido a falhas no transporte e no controle de temperatura. Essa situação evidencia a necessidade de adoção de melhores práticas e tecnologias, como dataloggers e caixas térmicas, para monitorar e registrar as condições adequadas de transporte e armazenamento. Segundo a pesquisa da Sensorweb de 2013, 6,7% dos hospitais privados no Brasil sofreram perdas significativas de insumos devido a desvios de temperatura, enquanto a Controladoria Geral da União (CGU) identificou, em 2008, que várias cidades incineraram medicamentos vencidos por armazenamento inadequado.
 
-Apesar dos desafios, algumas iniciativas têm mostrado potencial para reduzir o desperdício. Investimentos em sistemas de gestão mais eficientes, como o controle de estoque e monitoramento de temperaturas, não só minimizam perdas financeiras como também melhoram o atendimento aos pacientes. Além disso, o desperdício de medicamentos afeta diretamente as famílias de classe média, que enfrentam perdas estimadas em R$ 60,00 por ano com medicamentos vencidos.
+Apesar dos desafios, algumas iniciativas têm mostrado potencial para reduzir o desperdício. Investimentos em sistemas de gestão mais eficientes, como o controle de estoque e monitoramento de temperaturas, não só minimizam perdas financeiras como também melhoram o atendimento aos pacientes. Além disso, segundo matéria da revista o Globo (2010), o desperdício de medicamentos afeta diretamente as famílias de classe média, que enfrentam perdas estimadas em R$ 60,00 por ano com medicamentos vencidos.
 
 Investir em logística hospitalar eficiente e em processos bem estruturados oferece uma oportunidade para melhorar a sustentabilidade financeira das instituições, combater desperdícios e assegurar a segurança e eficácia no tratamento dos pacientes.
 
@@ -289,6 +289,8 @@ DESPERDÍCIO de medicamentos: como evitar a perda dos insumos. [S. l.], 10 ago. 
 LOGÍSTICA hospitalar: dizendo adeus ao desperdício em farmácia. [S. l.], 5 dez. 2023. Disponível em: https://sisnacmed.com.br/logistica-hospitalar-e-combate-ao-desperdicio/#:~:text=O%20Conselho%20Federal%20de%20Farm%C3%A1cia,%C3%A0%20demanda%20real%20do%20hospital. Acesso em: 22 ago. 2024.
 
 O CENÁRIO do desperdício de medicamentos no Brasil. [S. l.], 27 jun. 2014. Disponível em: https://sensorweb.com.br/desperdicio-medicamentos-brasil/#:~:text=Este%20n%C3%BAmero%20representa%20por%20volta,gest%C3%A3o%2C%20seja%20sistem%C3%A1tico%20ou%20n%C3%A3o. Acesso em: 22 ago. 2024.
+
+FALHAS na compra e no armazenamento levam a desperdício de R$ 1 bilhão com medicamentos. [S. l.], 24 abr. 2010. Disponível em: https://oglobo.globo.com/politica/falhas-na-compra-no-armazenamento-levam-desperdicio-de-1-bilhao-com-medicamentos-3018545. Acesso em: 22 ago. 2024.
 
 MP investiga descarte de medicamento fora da validade. [S. l.], 6 nov. 2013. Disponível em: https://exame.com/brasil/mp-investiga-descarte-de-medicamento-fora-da-validade/. Acesso em: 22 ago. 2024.
 
