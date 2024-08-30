@@ -44,7 +44,7 @@ Portanto, o desenvolvimento de um aplicativo de gestão de estoques voltado espe
 
 ## Público-Alvo
 
-O aplicativo de gestão de estoques é voltado principalmente para gestores e proprietários de farmácias, sejam estabelecimentos independentes ou grandes redes. Esses profissionais precisam garantir que suas operações sejam eficientes e que estejam em conformidade com as rigorosas regulamentações sanitárias, especialmente no que diz respeito ao armazenamento e controle de medicamentos.
+O aplicativo de gestão de estoques é voltado principalmente para profissionais que lidam com farmacos, sejam estabelecimentos independentes ou grandes redes. Esses profissionais precisam garantir que suas operações sejam eficientes e que estejam em conformidade com as rigorosas regulamentações sanitárias, especialmente no que diz respeito ao armazenamento e controle de medicamentos.
 
 Além disso, o público-alvo inclui farmacêuticos que têm a responsabilidade de supervisionar tecnicamente a farmácia e garantir que todas as normas de saúde e segurança sejam seguidas. Eles necessitam de ferramentas que permitam um gerenciamento preciso e seguro dos estoques.
 
