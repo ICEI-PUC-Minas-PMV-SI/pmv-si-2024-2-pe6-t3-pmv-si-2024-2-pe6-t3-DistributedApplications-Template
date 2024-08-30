@@ -1,38 +1,25 @@
 # Introdução
 
-O desperdício de medicamentos no Brasil é um desafio significativo que impacta tanto as finanças do setor de saúde quanto a qualidade do atendimento aos pacientes. Estima-se que o país perde cerca de R$ 1 bilhão anualmente devido a desperdícios, que representam aproximadamente 20% dos medicamentos comprados por governos e hospitais privados. Essa questão se reflete em práticas inadequadas de gestão e controle, como evidenciado pela incineração de 214 toneladas de medicamentos e insumos no Estado do Rio de Janeiro em 2013, devido à expiração dos produtos. Além disso, o cenário é agravado por problemas relacionados à compra de grandes estoques sem controle eficaz, armazenamento impróprio e falhas na distribuição.
+O desperdício de medicamentos no Brasil representa um desafio significativo para o setor de saúde, impactando tanto as finanças públicas quanto a qualidade do atendimento prestado aos pacientes. O Conselho Federal de Farmácia (CFF) estima que o país perde aproximadamente R$ 1 bilhão anualmente em razão desse desperdício, o que corresponde a cerca de 20% dos medicamentos adquiridos por governos e hospitais privados. Esse cenário é agravado por práticas inadequadas de gestão e controle, como, segundo a matéria publicada pela revista Exame (2013), a incineração de 214 toneladas de medicamentos e insumos no Estado do Rio de Janeiro em 2013 devido à expiração dos produtos. Problemas como a compra de grandes estoques sem controle adequado, armazenamento impróprio e falhas na distribuição contribuem para essa perda significativa.
 
-O descarte inadequado de medicamentos é um problema multifacetado, frequentemente associado à expiração das datas de validade e falhas na cadeia de frio. Em 2013, um exemplo notável ocorreu em Rondonópolis, onde vacinas foram rejeitadas por problemas de transporte e controle de temperatura. Esse incidente destaca a necessidade de melhores práticas e tecnologias, como o uso de dataloggers e caixas térmicas, para monitorar e registrar a temperatura durante o transporte e armazenamento de medicamentos.
-A pesquisa realizada em 2013 pela Sensorweb revelou que 6,7% dos hospitais privados sofreram perdas significativas de insumos devido a desvios de temperatura, enquanto a Controladoria Geral da União (CGU) identificou, em 2008, que várias cidades incineraram medicamentos vencidos devido a condições inadequadas de armazenamento. Esses dados ilustram como a falta de controle e monitoramento eficaz pode levar a perdas substanciais e impactar a eficiência do sistema de saúde.
+O descarte inadequado de medicamentos está frequentemente relacionado à expiração das datas de validade e à falta de controle da cadeia de frio. Um exemplo desse problema foi publicado em matéria pelo veículo G1 de noticias, o caso ocorreu em Rondonópolis no ano de 2013, quando vacinas foram rejeitadas devido a falhas no transporte e no controle de temperatura. Essa situação evidencia a necessidade de adoção de melhores práticas e tecnologias, como dataloggers e caixas térmicas, para monitorar e registrar as condições adequadas de transporte e armazenamento. Segundo a pesquisa da Sensorweb de 2013, 6,7% dos hospitais privados no Brasil sofreram perdas significativas de insumos devido a desvios de temperatura, enquanto a Controladoria Geral da União (CGU) identificou, em 2008, que várias cidades incineraram medicamentos vencidos por armazenamento inadequado.
 
-Apesar dos desafios, há iniciativas que demonstram o potencial para mitigar o desperdício. Hospitais e municípios têm investido em sistemas de gestão mais eficazes, que incluem controle de estoque e monitoramento de temperaturas. Esses investimentos não apenas ajudam a reduzir perdas financeiras, mas também melhoram o bem-estar dos pacientes. Além dos impactos diretos nas instituições de saúde e no governo, o desperdício de medicamentos também afeta as famílias de classe média, que enfrentam perdas estimadas em cerca de R$ 60,00 por ano com medicamentos vencidos.
-O desperdício de medicamentos, insumos e vacinas no Brasil é um problema muitas vezes invisível, devido à sua ocorrência gradual ao longo do tempo. A Associação Nacional de Hospitais Privados (Anahp) estima que 20% do custo da saúde está relacionado à perda desses materiais. Exemplos de desperdício incluem a incineração de 700 toneladas de medicamentos no Rio de Janeiro em 2016 e o desperdício de 25 mil doses de vacinas em 2018. Globalmente, estudos mostram desperdícios de até US$ 15 milhões em insumos não utilizados.
-
-Para enfrentar esses desafios, diversas práticas recomendadas têm sido identificadas. O mapeamento de fontes de desperdício é uma abordagem essencial para identificar as causas internas do problema. O Hospital Alemão Oswaldo Cruz, por exemplo, economizou R$ 3 milhões entre 2017 e 2018 ao implementar novas ferramentas de gestão de estoque. Além disso, a tecnologia desempenha um papel crucial na prevenção de perdas, com a utilização de soluções digitais para monitorar temperatura e umidade em tempo real. Sistemas automatizados para alertar sobre desvios de temperatura têm se mostrado eficazes na proteção de insumos.
-Outra prática recomendada é a implementação de sistemas de verificação de validade que alertam sobre a proximidade da data de validade dos insumos. A Universidade do Kansas, por exemplo, conseguiu reduzir o desperdício de medicamentos em 32,2% e aumentar a eficiência em 56% com a adoção dessas soluções. Fomentar uma cultura de zero tolerância ao desperdício é igualmente importante, promovendo uma cultura organizacional que priorize a redução de desperdícios e ajuste a política de compras para alinhar com a demanda real.
-
-A transparência e a capacitação dos colaboradores também são fundamentais para a redução do desperdício. Educar os funcionários sobre o impacto financeiro, a qualidade do atendimento e o meio ambiente é crucial para promover práticas sustentáveis e reduzir perdas.
-
-A logística hospitalar, fundamental para otimizar a aquisição, movimentação e armazenamento de medicamentos e insumos, desempenha um papel central na transformação do déficit em lucro. Embora frequentemente confundida com o Supply Chain Management (SCM), a logística hospitalar foca em processos internos, enquanto o SCM abrange uma visão mais ampla interorganizacional. A cadeia de suprimentos representa a segunda maior despesa dos hospitais e um importante fator de receita, tornando sua gestão eficiente crucial para a sustentabilidade financeira das instituições.
-O setor hospitalar enfrenta desafios adicionais, como o envelhecimento da população, defasagem na remuneração do SUS, alta dos custos dos medicamentos importados e uma crise econômico-política. Esses fatores têm contribuído para o fechamento de hospitais e dificuldades financeiras. Estudos indicam que hospitais enfrentam desperdícios de 20% a 30% em produtos e serviços, especialmente em estoques de medicamentos, gerando prejuízos significativos.
-
-Erros médicos, como erros de medicação, são uma preocupação adicional, com 64% dos erros considerados evitáveis. Esses erros aumentam o tempo de internação e os custos hospitalares, consumindo mais de 10% dos gastos hospitalares. A adoção de práticas eficientes, como a dispensação de medicamentos por dose unitária, pode transformar o déficit em lucro ao reduzir a incidência de erros, diminuir estoques periféricos e melhorar a segurança e eficiência da administração de medicamentos.
+Apesar dos desafios, algumas iniciativas têm mostrado potencial para reduzir o desperdício. Investimentos em sistemas de gestão mais eficientes, como o controle de estoque e monitoramento de temperaturas, não só minimizam perdas financeiras como também melhoram o atendimento aos pacientes. Além disso, o desperdício de medicamentos afeta diretamente as famílias de classe média, que enfrentam perdas estimadas em R$ 60,00 por ano com medicamentos vencidos.
 
 Investir em logística hospitalar eficiente e em processos bem estruturados oferece uma oportunidade para melhorar a sustentabilidade financeira das instituições, combater desperdícios e assegurar a segurança e eficácia no tratamento dos pacientes.
 
-
 ## Problema
-Parte das perdas de insumos farmaceuticos em setores hospitalares se deve à má gestão de estoques em suas farmácias.
+Parte das perdas de insumos farmacêuticos em setores hospitalares se deve à má gestão de estoques em suas farmácias.
 
-A falta de um recurso de qualidade que atenda as necessidades das instituições hospitalares é um fator crucial para explicar as perdas em insumos farmaceuticos nesta área.
+A falta de um recurso de qualidade que atenda as necessidades das instituições hospitalares é um fator crucial para explicar as perdas em insumos farmacêuticos nesta área.
 
-As perdas seriam mitigadas caso um melhor controle dos farmacos disponiveis e necessários à intituição fosse instaurado.
+As perdas seriam mitigadas caso um melhor controle dos fármacos disponíveis e necessários à intituição fosse instaurado.
 
 ## Objetivos
 
-O objetivo geral destre trabalho é produzir uma aplicação mobile para auxiliar os profissionais, envolvidos no ramo farmaceutico dentro de hospitais, na gestão de recursos disponíveis em estoque nestas instutuições e a consequente redução de perdas de farmacos devido a diversos fatores. 
+O objetivo geral destre trabalho é produzir uma aplicação distribuída para auxiliar os profissionais, envolvidos no ramo farmacêutico dentro de hospitais, na gestão de recursos disponíveis em estoque nestas instituições e a consequente redução de perdas de fármacos devido a diversos fatores. 
 
-Pode-se destacar com objetivos específicos a produção de uma aplicação de facil usabilidade que possa retornar métricas e informações uteis aos farmaceuticos sobre os recursos disponíveis e necessários à instuição.
+Pode-se destacar com objetivos específicos a produção de uma aplicação que possa retornar métricas e informações uteis aos farmaceuticos sobre os recursos disponíveis e necessários à instuição.
 
 ## Justificativa
 
@@ -294,3 +281,15 @@ Explique como a hospedagem e o lançamento da plataforma foi feita.
 > - [Programação colaborativa com Repl.it](https://repl.it/)
 > - [Getting Started with Heroku](https://devcenter.heroku.com/start)
 > - [Publicando Seu Site No Heroku](http://pythonclub.com.br/publicando-seu-hello-world-no-heroku.html)
+
+## Referências
+
+DESPERDÍCIO de medicamentos: como evitar a perda dos insumos. [S. l.], 10 ago. 2021. Disponível em: https://nexxto.com/desperdicio-de-medicamentos-como-evitar-a-perda-dos-insumos/#:~:text=O%20desperd%C3%ADcio%20de%20medicamentos%2C%20insumos,n%C3%A3o%20ocorre%20um%20bom%20cuidado. Acesso em: 22 ago. 2024.
+
+LOGÍSTICA hospitalar: dizendo adeus ao desperdício em farmácia. [S. l.], 5 dez. 2023. Disponível em: https://sisnacmed.com.br/logistica-hospitalar-e-combate-ao-desperdicio/#:~:text=O%20Conselho%20Federal%20de%20Farm%C3%A1cia,%C3%A0%20demanda%20real%20do%20hospital. Acesso em: 22 ago. 2024.
+
+O CENÁRIO do desperdício de medicamentos no Brasil. [S. l.], 27 jun. 2014. Disponível em: https://sensorweb.com.br/desperdicio-medicamentos-brasil/#:~:text=Este%20n%C3%BAmero%20representa%20por%20volta,gest%C3%A3o%2C%20seja%20sistem%C3%A1tico%20ou%20n%C3%A3o. Acesso em: 22 ago. 2024.
+
+MP investiga descarte de medicamento fora da validade. [S. l.], 6 nov. 2013. Disponível em: https://exame.com/brasil/mp-investiga-descarte-de-medicamento-fora-da-validade/. Acesso em: 22 ago. 2024.
+
+TRANSPORTE inadequado em MT pode ter estragado mais de 4 mil vacinas. [S. l.], 9 jul. 2013. Disponível em: https://g1.globo.com/mato-grosso/noticia/2013/07/transporte-inadequado-em-mt-pode-ter-estragado-mais-de-4-mil-vacinas.html. Acesso em: 22 ago. 2024.
