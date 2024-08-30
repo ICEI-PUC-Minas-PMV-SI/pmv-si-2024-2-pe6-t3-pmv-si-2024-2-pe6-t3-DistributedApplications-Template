@@ -36,11 +36,11 @@ Pode-se destacar com objetivos específicos a produção de uma aplicação de f
 
 ## Justificativa
 
-A realização deste trabalho é impulsionada pela necessidade crescente de soluções específicas para a gestão de estoques no setor farmacêutico. Diferente de outros segmentos, as farmácias lidam com produtos que exigem um controle rigoroso, tanto em termos de armazenamento quanto no cumprimento de regulamentações. Medicamentos, por exemplo, muitas vezes precisam ser mantidos sob condições precisas de temperatura, e a rastreabilidade desses itens é essencial para garantir sua qualidade e segurança.
+A realização deste trabalho é impulsionada pela necessidade crescente de soluções específicas para a gestão de estoques no setor farmacêutico. Diferente de outros segmentos, esse setor lida com produtos que exigem um controle rigoroso, tanto em termos de armazenamento quanto no cumprimento de regulamentações. Medicamentos, por exemplo, muitas vezes precisam ser mantidos sob condições precisas de temperatura, e a rastreabilidade desses itens é essencial para garantir sua qualidade e segurança.
 
-Sistemas de controle de estoque que não são desenvolvidos pensando nas particularidades das farmácias podem deixar a desejar em aspectos críticos, como a manutenção adequada dos medicamentos e o cumprimento das normas de saúde. Isso pode resultar em perdas financeiras, além de comprometer a saúde dos pacientes devido ao uso de produtos mal armazenados ou expirados.
+Sistemas de controle de estoque que não são desenvolvidos pensando nas particularidades da área farmaceutica podem deixar a desejar em aspectos críticos, como a manutenção adequada dos medicamentos e o cumprimento das normas de saúde. Isso pode resultar em perdas financeiras, além de comprometer a saúde dos pacientes devido ao uso de produtos mal armazenados ou expirados.
 
-Portanto, o desenvolvimento de um aplicativo de gestão de estoques voltado especificamente para farmácias se justifica pela necessidade de uma solução que aborde esses desafios de forma integrada. Ao incluir funcionalidades como o monitoramento de temperatura e a gestão de receitas, o aplicativo proposto visa garantir que as farmácias possam operar de maneira segura, eficiente e conforme as exigências legais, respondendo de forma direta às necessidades do mercado.
+Portanto, o desenvolvimento de um aplicativo de gestão de estoques voltado especificamente para a área dos farmacos se justifica pela necessidade de uma solução que aborde esses desafios de forma integrada. Ao incluir funcionalidades como o monitoramento de temperatura e a gestão de receitas, o aplicativo proposto visa garantir que os profissionais possam operar de maneira segura, eficiente e conforme as exigências legais, respondendo de forma direta às necessidades do mercado.
 
 ## Público-Alvo
 
