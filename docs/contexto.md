@@ -34,7 +34,7 @@ O objetivo geral destre trabalho é produzir uma aplicação mobile para auxilia
 
 Pode-se destacar com objetivos específicos a produção de uma aplicação de facil usabilidade que possa retornar métricas e informações uteis aos farmaceuticos sobre os recursos disponíveis e necessários à instuição.
 
-Justificativa para o Desenvolvimento de um Aplicativo de Estoque para Farmácias
+## Justificativa
 
 A realização deste trabalho é impulsionada pela necessidade crescente de soluções específicas para a gestão de estoques no setor farmacêutico. Diferente de outros segmentos, as farmácias lidam com produtos que exigem um controle rigoroso, tanto em termos de armazenamento quanto no cumprimento de regulamentações. Medicamentos, por exemplo, muitas vezes precisam ser mantidos sob condições precisas de temperatura, e a rastreabilidade desses itens é essencial para garantir sua qualidade e segurança.
 
