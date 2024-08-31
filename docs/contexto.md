@@ -126,7 +126,6 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 
 # Arquitetura da Solução
 
-
 ## Definição dos Componentes
 
 - **Interface Web**: Onde o usuário interage com o sistema.
@@ -135,6 +134,9 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 - **Banco de Dados (SQL Server)**: Armazena os dados dos medicamentos.
 - **RabbitMQ**: Sistema para comunicação assíncrona entre microsserviços.
 - **Microsserviço "Relatórios"**: Atualiza e gera relatórios de estoque.
+
+![Arquitetura da Solução](./img/img_arquitetura_solucao.png)
+<!-- ![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d) -->
 
 ## Fluxo de Interação
 
@@ -208,8 +210,6 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 - O microsserviço "Produto" retorna uma resposta HTTP 200 (OK) para a API Gateway.
 - A API Gateway repassa a resposta para a interface web.
 - A interface web exibe uma mensagem de sucesso para o usuário.
-
-<!-- ![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d) -->
 
 ## Tecnologias Utilizadas
 
