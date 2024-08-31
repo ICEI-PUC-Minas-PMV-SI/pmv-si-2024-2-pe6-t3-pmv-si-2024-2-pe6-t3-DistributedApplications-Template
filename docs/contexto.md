@@ -264,7 +264,7 @@ graph TD
 
 ## Hospedagem
 
-Explique como a hospedagem e o lançamento da plataforma foi feita.
+A hospedagem e o lançamento da plataforma será feito utilizando Vercel.
 
 > **Links Úteis**:
 >
