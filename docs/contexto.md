@@ -55,21 +55,12 @@ Essa classificação foi aplicada para garantir que os aspectos mais críticos d
 
 | ID    | Descrição do Requisito                                                                                                       | Prioridade |
 |-------|------------------------------------------------------------------------------------------------------------------------------|------------|
-| **RF01** | **Criar Novo Medicamento:** O usuário deve poder cadastrar novos medicamentos no sistema, inserindo dados como nome, princípio ativo, fabricante, data de validade, quantidade em estoque e preço. | **Alta**   |
-| **RF02** | **Ler Medicamento:** O usuário deve poder consultar os dados de um medicamento específico, utilizando filtros como nome, princípio ativo ou código de barras. | **Alta**   |
-| **RF03** | **Atualizar Medicamento:** O usuário deve poder atualizar os dados de um medicamento já cadastrado, como quantidade em estoque, preço e data de validade. | **Alta**   |
-| **RF04** | **Excluir Medicamento:** O usuário deve poder remover um medicamento do sistema, caso ele não esteja mais disponível ou não seja mais vendido. | **Alta**  |
-| **RF05** | **Interface Web:** O sistema deve ter uma interface web para acesso e gestão dos medicamentos. | **Alta**   |
-| **RF06** | **Aplicativo Mobile:** O sistema deve contar com um aplicativo mobile para acesso e gestão dos medicamentos. | **Alta**   |
-| **RF07** | **Controle de Acesso:** O sistema deve permitir que somente usuários autenticados possam acessar e gerenciar os medicamentos, com diferentes níveis de acesso (administrador, farmacêutico, etc.). | **Alta**   |
-| **RF08** | **Histórico de Movimentações:** O sistema deve registrar um histórico de todas as operações realizadas, como criação, atualização e exclusão de medicamentos. | **Baixa**  |
-| **RF09** | **Alerta de Validade:** O sistema deve notificar o usuário sobre medicamentos que estão próximos da data de validade. | **Média**  |
-| **RF10** | **Relatórios:** O sistema deve gerar relatórios de estoque, incluindo medicamentos em falta, com baixa quantidade ou próximos da validade. | **Baixa**  |
-| **RF11** | **Tela de Login/Cadastro:** O sistema deve exibir uma tela para login e cadastro de usuários, permitindo o acesso ao sistema de controle de estoque de medicamentos. | **Alta**   |
-| **RF12** | **Seleção de Opção de Login/Cadastro:** O sistema deve exibir uma opção para o usuário selecionar entre login ou cadastro na plataforma. | **Alta**   |
-| **RF13** | **Cadastro de Usuário:** O sistema deve permitir que o usuário final (farmacêuticos, administradores, etc.) se cadastre com dados como email, senha, telefone, CPF e número do registro profissional (CRF). | **Alta**   |
-| **RF14** | **Login com Credenciais Existentes:** O sistema deve permitir que o usuário (funcionário ou administrador) entre com o seu email, senha. | **Alta**   |
-| **RF15** | **Recuperação de Senha:** O sistema deve permitir a recuperação de senha para os usuários cadastrados, enviando um link de redefinição para o email registrado. | **Média**  |
+| **RF01** | **Gestão de Insumos:** O sistema deve oferecer funcionalidades de cadastro de insumos, busca e filtragem para que os usuários possam encontrar rapidamente informações sobre insumos específicos, facilitando a gestão e a localização de produtos no estoque. | **Alta**  |
+| **RF02** | **Notificação de Validade:** O sistema deve enviar alertas e notificações sobre insumos próximos da data de validade ou vencidos, para que ações corretivas possam ser tomadas antes que os produtos se tornem inutilizáveis. | **Alta**  |
+| **RF03** | **Controle de Estoque:** O sistema deve permitir o monitoramento e atualização da quantidade de insumos em estoque, com a capacidade de registrar entradas e saídas de produtos de forma precisa e em tempo real. | **Alta**  |
+| **RF04** | **Controle de Acesso:** O sistema deve permitir que somente usuários autenticados possam acessar e gerenciar os medicamentos, com diferentes níveis de acesso (administrador, farmacêutico, etc.). | **Alta**   |
+| **RF05** | **Histórico de Movimentações:** O sistema deve registrar um histórico de todas as operações realizadas, como criação, atualização e exclusão de medicamentos. | **Baixa**  |
+| **RF06** | **Geração de Relatórios:** O sistema deve gerar relatórios de estoque, incluindo medicamentos em falta, com baixa quantidade ou próximos da validade. | **Média**  |
 
 
 
