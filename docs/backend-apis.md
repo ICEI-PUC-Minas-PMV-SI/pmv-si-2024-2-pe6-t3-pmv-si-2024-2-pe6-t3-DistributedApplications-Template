@@ -50,14 +50,52 @@ Este projeto visa desenvolver um sistema web para gerenciar medicamentos, utiliz
 
 ### Diagrama de Classes
 
-```plaintext
-+-------------------+       +------------------------+      +----------------------+
-|   Medicamento     |       |  MedicamentosContext   |      |     Relatorio        |
-+-------------------+       +------------------------+      +----------------------+
-| - Id: int         |       | - Medicamentos         |      | - DataGeracao: Date  |
-| - Nome: string    | ----> |   : DbSet<Medicamento> | ---- | - Medicamentos       | 
-| - Quantidade: int |       +------------------------+      |   : List<Medicamento>|
-+-------------------+                                       +----------------------+
+```mermaid
+classDiagram
+    class Produto {
+        int Id
+        string Nome
+        string Descricao
+    }
+
+    class MedicamentosContext {
+        DbSet~Produto~ Produtos
+        DbSet~Lote~ Lotes
+        DbSet~Transacao~ Transacoes
+    }
+
+    class Lote {
+        int Id
+        int ProdutoId
+        string Lote
+        Date Validade
+        int Quantidade
+    }
+
+    class Transacao {
+        int Id
+        int LoteId
+        Enum Tipo
+        int Quantidade
+        Timestamp DataTransacao
+    }
+
+    class Relatorio {
+        Date DataGeracao
+        List~ProdutoRelatorio~ Produtos
+    }
+
+    class ProdutoRelatorio {
+        string Nome
+        int QuantidadeTotal
+    }
+
+    MedicamentosContext --> Produto
+    MedicamentosContext --> Lote
+    MedicamentosContext --> Transacao
+    Lote --> Produto
+    Transacao --> Lote
+    Relatorio --> ProdutoRelatorio
 ```
 
 ### Estrutura de Dados (Banco de Dados - MedicamentosDB)
