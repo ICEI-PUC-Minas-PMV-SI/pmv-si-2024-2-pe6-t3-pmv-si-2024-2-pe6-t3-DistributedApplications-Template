@@ -16,5 +16,3 @@ rmdir /s /q "GestaoMedicamentos.Relatorios\obj"
 rmdir /s /q "GestaoMedicamentos.Web\bin"
 rmdir /s /q "GestaoMedicamentos.Web\obj"
 
-echo Pastas deletadas com sucesso!
-pause
