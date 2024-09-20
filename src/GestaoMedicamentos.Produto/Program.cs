@@ -1,6 +1,7 @@
 using GestaoMedicamentos.Produto.Data;
 using GestaoMedicamentos.Produto.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +12,21 @@ builder.Services.AddScoped<RabbitMqService>(sp => new RabbitMqService("amqp://gu
 
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "GestaoMedicamentos.Produto API", Version = "v1" });
+});
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "GestaoMedicamentos.Produto API V1");
+    });
+}
 
 if (!app.Environment.IsDevelopment())
 {

@@ -139,11 +139,11 @@ Existem muitas tecnologias diferentes que podem ser usadas para desenvolver APIs
 
 | Método HTTP | Endpoint | Descrição |
 |-------------|----------|-----------|
-| POST | /api/medicamentos | Criar um novo medicamento |
-| GET | /api/medicamentos/{id} | Obter detalhes de um medicamento pelo ID |
-| PUT | /api/medicamentos/{id} | Atualizar completamente um medicamento pelo ID |
-| PATCH | /api/medicamentos/{id} | Atualizar parcialmente um medicamento pelo ID |
-| DELETE | /api/medicamentos/{id} | Excluir um medicamento pelo ID |
+| POST | /api/Produtos | Criar um novo medicamento |
+| GET | /api/Produtos/ | Obter detalhes de todos os medicamentos |
+| GET | /api/Produtos/{id} | Obter detalhes de um medicamento pelo ID |
+| PUT | /api/Produtos/{id} | Atualizar completamente um medicamento pelo ID |
+| DELETE | /api/Produtos/{id} | Excluir um medicamento pelo ID |
 
 ### Endpoint 1
 - Método: GET

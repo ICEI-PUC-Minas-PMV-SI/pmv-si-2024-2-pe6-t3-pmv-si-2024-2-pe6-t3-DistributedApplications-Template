@@ -81,13 +81,15 @@ namespace GestaoMedicamentos.Produto.Controllers
             _context.Produtos.Add(produto);
             await _context.SaveChangesAsync();
 
-            using var channel = _rabbitMqService.GetChannel();
-            channel.QueueDeclare(queue: "fila_produtos", durable: true, exclusive: false, autoDelete: false, arguments: null);
+            using (var channel = _rabbitMqService.GetChannel())
+            {
+                channel.QueueDeclare(queue: "fila_produtos", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
-            string mensagem = JsonConvert.SerializeObject(produto);
-            var body = Encoding.UTF8.GetBytes(mensagem);
+                string mensagem = JsonConvert.SerializeObject(produto);
+                var body = Encoding.UTF8.GetBytes(mensagem);
 
-            channel.BasicPublish(exchange: "", routingKey: "fila_produtos", basicProperties: null, body: body);
+                channel.BasicPublish(exchange: "", routingKey: "fila_produtos", basicProperties: null, body: body);
+            }
 
             return CreatedAtAction("GetProduto", new { id = produto.Id }, produto);
         }
