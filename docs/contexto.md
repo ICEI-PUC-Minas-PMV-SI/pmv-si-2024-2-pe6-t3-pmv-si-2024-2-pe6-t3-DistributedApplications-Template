@@ -17,7 +17,7 @@ As perdas seriam mitigadas caso um melhor controle dos fármacos disponíveis e 
 
 ## Objetivos
 
-O objetivo geral destre trabalho é produzir uma aplicação distribuída para auxiliar os profissionais, envolvidos no ramo farmacêutico dentro de hospitais, na gestão de recursos disponíveis em estoque nestas instituições e a consequente redução de perdas de fármacos devido a diversos fatores. 
+O objetivo geral destre trabalho é produzir uma aplicação distribuída para auxiliar os profissionais, envolvidos no ramo farmacêutico dentro de hospitais, na gestão de recursos disponíveis em estoque nestas instituições e a consequente redução de perdas de fármacos devido a diversos fatores.
 
 Pode-se destacar com objetivos específicos a produção de uma aplicação que possa retornar métricas e informações uteis aos farmaceuticos sobre os recursos disponíveis e necessários à instuição.
 
@@ -62,11 +62,7 @@ Essa classificação foi aplicada para garantir que os aspectos mais críticos d
 | **RF05** | **Histórico de Movimentações:** O sistema deve registrar um histórico de todas as operações realizadas, como criação, atualização e exclusão de medicamentos. | **Baixa**  |
 | **RF06** | **Geração de Relatórios:** O sistema deve gerar relatórios de estoque, incluindo medicamentos em falta, com baixa quantidade ou próximos da validade. | **Média**  |
 
-
-
 ### Requisitos não Funcionais
-
-
 
 | ID    | Descrição do Requisito                                                                                                                                                     | Prioridade |
 |-------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
@@ -77,9 +73,6 @@ Essa classificação foi aplicada para garantir que os aspectos mais críticos d
 | **RNF05** | **Manutenibilidade:** O sistema deve ser projetado para facilitar a manutenção e a atualização, com código limpo e documentação adequada. | **Alta**      |
 | **RNF06** | **Backup:** O sistema deve realizar backups automáticos dos dados ao menos uma vez por dia, garantindo a recuperação em caso de falha. | **Alta**       |
 | **RNF07** | **Tempo de Recuperação:** Em caso de falha, o sistema deve ser capaz de restaurar o serviço em até 1 hora. | **Alta**      |
-
-
-
 
 Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
@@ -106,7 +99,6 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 |02| Deverá ser desenvolvido uma aplicação web       |
 |03| Deverá ser desenvolvida uma aplicação mobile       |
 
-
 Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
 
 > **Links Úteis**:
@@ -127,96 +119,22 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 ## Definição dos Componentes
 
 - **Interface Web**: Onde o usuário interage com o sistema.
-- **API Gateway**: Ponto de entrada para todas as requisições, responsável por autenticação, autorização e roteamento.
-- **Microsserviço "Produto"**: Gerencia as operações relacionadas aos medicamentos.
+- **API**: Ponto de entrada para todas as requisições, responsável por autenticação, autorização e roteamento.
 - **Banco de Dados (SQL Server)**: Armazena os dados dos medicamentos.
-- **RabbitMQ**: Sistema para comunicação assíncrona entre microsserviços.
-- **Microsserviço "Relatórios"**: Atualiza e gera relatórios de estoque.
 
 ![Arquitetura da Solução](./img/img_arquitetura_solucao.png)
 <!-- ![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d) -->
 
 ## Fluxo de Interação
 
-### Criar um Novo Medicamento
-
-- O usuário (Admin) insere os dados de um novo medicamento na interface web.
-- A interface web envia uma requisição HTTP POST para a API Gateway com os dados do novo medicamento.
-- A API Gateway valida a autenticação do usuário e verifica as permissões.
-- A API Gateway roteia a requisição para o microsserviço “Produto”.
-- O microsserviço “Produto” recebe a requisição, valida os dados e insere o novo medicamento no banco de dados (SQL Server).
-- Após a inserção, o microsserviço “Produto” envia uma mensagem para o RabbitMQ informando a criação do novo medicamento.
-- O microsserviço “Relatórios” recebe a mensagem e atualiza os relatórios de estoque.
-- O microsserviço “Produto” retorna uma resposta HTTP 201 (Created) para a API Gateway.
-- A API Gateway repassa a resposta para a interface web.
-- A interface web exibe uma mensagem de sucesso para o usuário.
-
-### Ler um Medicamento
-
-- O usuário (Admin) solicita a visualização dos dados de um medicamento na interface web.
-- A interface web envia uma requisição HTTP GET para a API Gateway.
-- A API Gateway valida a autenticação do usuário e verifica as permissões.
-- A API Gateway roteia a requisição para o microsserviço “Produto”.
-- O microsserviço “Produto” consulta o banco de dados (SQL Server) e retorna os dados do medicamento.
-- O microsserviço “Produto” retorna uma resposta HTTP 200 (OK) com os dados do medicamento para a API Gateway.
-- A API Gateway repassa a resposta para a interface web.
-- A interface web exibe os dados do medicamento para o usuário.
-
-### Atualizar um Medicamento
-
-- O usuário (Admin) edita os dados de um medicamento na interface web.
-- A interface web envia uma requisição HTTP PUT para a API Gateway com os dados atualizados.
-- A API Gateway valida a autenticação do usuário e verifica as permissões.
-- A API Gateway roteia a requisição para o microsserviço “Produto”.
-- O microsserviço “Produto” recebe a requisição, valida os dados e atualiza o medicamento no banco de dados (SQL Server).
-- Após a atualização, o microsserviço “Produto” envia uma mensagem para o RabbitMQ informando a atualização do medicamento.
-- O microsserviço “Relatórios” recebe a mensagem e atualiza os relatórios de estoque.
-- O microsserviço “Produto” retorna uma resposta HTTP 200 (OK) para a API Gateway.
-- A API Gateway repassa a resposta para a interface web.
-- A interface web exibe uma mensagem de sucesso para o usuário.
-
-### Excluir um Medicamento
-
-- O usuário (Admin) solicita a exclusão de um medicamento na interface web.
-- A interface web envia uma requisição HTTP DELETE para a API Gateway.
-- A API Gateway valida a autenticação do usuário e verifica as permissões.
-- A API Gateway roteia a requisição para o microsserviço “Produto”.
-- O microsserviço “Produto” recebe a requisição e remove o medicamento do banco de dados (SQL Server).
-- Após a exclusão, o microsserviço “Produto” envia uma mensagem para o RabbitMQ informando a exclusão do medicamento.
-- O microsserviço “Relatórios” recebe a mensagem e atualiza os relatórios de estoque.
-- O microsserviço “Produto” retorna uma resposta HTTP 200 (OK) para a API Gateway.
-- A API Gateway repassa a resposta para a interface web.
-- A interface web exibe uma mensagem de sucesso para o usuário.
-
-### Atualização do Banco de Dados
-
-- O microsserviço "Produto" recebe a requisição.
-- O microsserviço "Produto" valida os dados.
-- O microsserviço "Produto" atualiza o medicamento no banco de dados (SQL Server).
-
-### Notificação de Atualização
-
-- Após a atualização, o microsserviço "Produto" envia uma mensagem para o RabbitMQ informando a atualização.
-
-### Atualização de Relatórios
-
-- O microsserviço "Relatórios", subscrito na fila do RabbitMQ, recebe a mensagem.
-- O microsserviço "Relatórios" atualiza os relatórios de estoque em background.
-
-### Confirmação da Operação
-
-- O microsserviço "Produto" retorna uma resposta HTTP 200 (OK) para a API Gateway.
-- A API Gateway repassa a resposta para a interface web.
-- A interface web exibe uma mensagem de sucesso para o usuário.
+**Falta fazer**
 
 ## Tecnologias Utilizadas
 
 - Linguagem de Programação: C# (Backend) / HTML, CSS, JS (Frontend).
-- Framework Backend: ASP.NET Core (para criação de APIs RESTful).
+- Framework Backend: ASP.NET Core (para criação de APIs).
 - Framework Frontend: React (para interface web responsiva) / React Native (para aplicativo móvel).
 - Banco de Dados: SQL Server (confiabilidade e robustez).
-- Cache: Redis (armazenamento em memória para alta performance).
-- Message Broker: RabbitMQ (comunicação assíncrona e escalabilidade).
 - IDEs: Visual Studio, Visual Studio Code.
 - Ferramentas: Git (controle de versão), Swagger (documentação da API).
 
@@ -230,35 +148,9 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 | 6 | Microserviço processa a mensagem | O Microserviço (C#) consome a mensagem da fila. |
 | 7 | Consulta ao Banco de Dados | O Microserviço consulta o Banco de Dados (SQL Server) pelos dados. |
 | 8 | Retorno dos dados | O Microserviço retorna os dados para a fila (RabbitMQ). |
-| 9 | API processa os dados | A API consome a mensagem da fila com os dados. | 
+| 9 | API processa os dados | A API consome a mensagem da fila com os dados. |
 | 10 | Armazenamento em Cache | A API armazena os dados no Cache (Redis) para futuras requisições. |
 | 11 | Retorno para o Usuário | A API retorna os dados para o Navegador/Aplicativo, que os exibe para o Usuário. | -->
-
-```mermaid
-graph TD
-    A([1. Usuário interage com o sistema]) --> B(2. Requisição enviada para API Gateway)
-    B --> C{3. Autenticação/Autorização}
-    C -- Válido --> D(4. API Gateway roteia para Microsserviço 'Produto')
-    C -- Inválido --> E([5. Retorno de erro para o Usuário])
-    D --> F{6. Verificação no Cache}
-    F -- Dados em Cache (Cache Hit) --> G(7. API recupera dados do Cache)
-    G --> H([8. API retorna dados para o Navegador/Aplicativo])
-    F -- Dados não encontrados (Cache Miss) --> I(9. Microsserviço consulta Banco de Dados)
-    I --> J(10. Microsserviço retorna dados)
-    J --> K(11. Armazenamento em Cache)
-    K --> L(12. API retorna dados para API Gateway)
-    L --> H
-    J --> N(13. Publica mensagem no RabbitMQ)
-    N --> O(14. Microsserviço 'Relatórios' processa mensagem)
-    O --> P(15. Microsserviço 'Relatórios' atualiza relatórios)
-    P --> H
-
-    style A fill:#5cb85c80,stroke:#4cae4c,stroke-width:2px,text-align:center,font-size:12px
-    style C fill:#f0ad4e80,stroke:#eea236,stroke-width:2px,text-align:center,font-size:12px
-    style E fill:#5cb85c80,stroke:#d9534f,stroke-width:2px,text-align:center,font-size:12px
-    style F fill:#f0ad4e80,stroke:#eea236,stroke-width:2px,text-align:center,font-size:12px
-    style H fill:#5cb85c80,stroke:#4cae4c,stroke-width:2px,text-align:center,font-size:12px
-```
 
 ## Hospedagem
 

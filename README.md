@@ -39,16 +39,15 @@ Instalação:
 2. .NET 8 SDK
 3. SQL Server
 4. SQL Server Management Studio
-5. RabbitMQ
 
 Utilização:
 
-1. Abrir a solução no Visual Studio do arquivo `\src\GestaoMedicamentos\GestaoMedicamentos.sln`
-2. Executar as migrações para o banco de dados:
-    - `dotnet ef migrations add InitialCreate -c MedicamentosContext`
-    - `dotnet ef database update -c MedicamentosContext`
-2. Para testar a API (Swagger) acesse `https://localhost:7005/swagger`
-3. Para testar o RabbitMQ acesse `https:localhost:15672` -> Autenticação `guest / guest`
+1. Abrir a solução no Visual Studio 2022 do arquivo `\src\Estoque.Farmacia.API\Estoque.Farmacia.API.sln`.
+2. Configurar no arquivo `appsettings.json` o nome do servidor local do SQL Server.
+3. Executar as migrações para o banco de dados:
+    - `Add-Migration InitialCreate`
+    - `Update-Database`
+4. Por padrão o Swagger será inicializado na execução da solução para utilizar a API, também é possível o acesso em `https://localhost:7005/swagger`.
 
 # Código
 
