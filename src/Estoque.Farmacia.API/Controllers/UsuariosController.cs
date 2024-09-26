@@ -12,8 +12,7 @@ namespace Estoque.Farmacia.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // Depois de criar o primeiro usuario, descomentar a linha abaixo
-    [Authorize]
+    //[Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly AppDbContext _context;
