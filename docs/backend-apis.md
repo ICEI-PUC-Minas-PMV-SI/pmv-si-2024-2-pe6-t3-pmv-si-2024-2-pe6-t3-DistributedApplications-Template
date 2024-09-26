@@ -1,10 +1,6 @@
 # APIs e Web Services
 
-O planejamento de uma aplicação de APIS Web é uma etapa fundamental para o sucesso do projeto. Ao planejar adequadamente, você pode evitar muitos problemas e garantir que a sua API seja segura, escalável e eficiente.
-
-Aqui estão algumas etapas importantes que devem ser consideradas no planejamento de uma aplicação de APIS Web.
-
-[Inclua uma breve descrição do projeto.]
+A API do Controle de Estoque de Medicamentos permite gerenciar e monitorar o inventário de medicamentos de forma eficiente. Com funcionalidades para cadastrar, atualizar, remover e consultar medicamentos, a API facilita o controle de entrada e saída de produtos, além de manter informações detalhadas sobre quantidade disponível, data de validade e lotes.
 
 ## Objetivos da API
 
@@ -110,11 +106,28 @@ A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separ
 
 ## Requisitos Funcionais
 
-[Liste os principais requisitos funcionais da aplicação.]
+| Id  | Descrição do Requisito                                                         | Prioridade |
+| --- | ------------------------------------------------------------------------------ | ---------- |
+| **RF01** | Gerenciamento de Medicamentos (Cadastrar, Atualizar, Consultar e Remover) | Alta       |
+| **RF02** | Gerenciamento de Entradas no Estoque (Registrar, Atualizar, Consultar)   | Alta       |
+| **RF03** | Gerenciamento de Saídas do Estoque (Registrar, Atualizar, Consultar)     | Alta       |
+| **RF04** | Gerenciamento de Lotes (Cadastrar, Atualizar, Consultar)                 | Alta      |
+| **RF05** | Gerenciamento de Fornecedores (Cadastrar, Atualizar, Consultar e Desativar) | Alta   |
+| **RF06** | Autenticação de Usuários                                                       | Alta       |
 
 ## Requisitos Não Funcionais
 
-[Liste os principais requisitos não funcionais da aplicação, como desempenho, segurança, escalabilidade, etc.]
+| Id   | Descrição do Requisito                                                          | Prioridade |
+| ---- | ------------------------------------------------------------------------------- | ---------- |
+| **RNF01** | A API deve ser desenvolvida utilizando o framework .NET com linguagem C#         | Alta       |
+| **RNF02** | O banco de dados deve ser implementado usando SQL Server                        | Alta       |
+| **RNF03** | A API deve seguir os princípios RESTful para padronização de rotas e operações  | Alta       |
+| **RNF04** | A API deve suportar autenticação baseada em JWT                         | Alta       |
+| **RNF05** | O tempo de resposta da API deve ser inferior a 500 ms    | Média      |
+| **RNF06** | A API deve ser documentada utilizando o Swagger    | Alta       |
+| **RNF07** | O sistema deve ser compatível com versões recentes dos navegadores (Chrome, Firefox, Edge) | Baixa |
+| **RNF08** | A segurança deve ser garantida por meio de criptografia de dados de acesso      | Alta       |
+| **RNF09** | A API deve fornecer tratamento de erros intuitivos para identificação do usuário      | Alta       |
 
 ## Tecnologias Utilizadas
 
@@ -219,17 +232,36 @@ A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separ
 
 ## Considerações de Segurança
 
-[Discuta as considerações de segurança relevantes para a aplicação distribuída, como autenticação, autorização, proteção contra ataques, etc.]
+Para utilizar a API o usuário deve se cadastrar pelo endpoint `/api/Usuarios` e se autenticar pelo endpoint `/api/Usuarios/Autenticar`, que por sua vez irá gerar um token JWT para ser utilizado na autenticação das requisições da API.
+Usuários que não possuirem um token de acesso não serão autorizados a fazer requisições no sistema.
 
 ## Implantação
 
-[Instruções para implantar a aplicação distribuída em um ambiente de produção.]
+### Preparando ambiente
 
-1. Defina os requisitos de hardware e software necessários para implantar a aplicação em um ambiente de produção.
-2. Escolha uma plataforma de hospedagem adequada, como um provedor de nuvem ou um servidor dedicado.
-3. Configure o ambiente de implantação, incluindo a instalação de dependências e configuração de variáveis de ambiente.
-4. Faça o deploy da aplicação no ambiente escolhido, seguindo as instruções específicas da plataforma de hospedagem.
-5. Realize testes para garantir que a aplicação esteja funcionando corretamente no ambiente de produção.
+1. Instalar .NET8.0 (https://dotnet.microsoft.com/en-us/download/dotnet/8.0);
+2. Instalar SQL Server 2022 (https://www.microsoft.com/en-us/sql-server/sql-server-downloads);
+3. instalar Visual Studio (https://visualstudio.microsoft.com/downloads/);
+4. Instalar Git (https://git-scm.com/downloads);
+5. Criar Database Engine com SQL Server (https://learn.microsoft.com/en-us/sql/relational-databases/database-engine-tutorials?view=sql-server-ver16).
+
+### Rodando ambiente
+
+1. Clonar repositório do projeto em ambiente local;
+```bash
+git clone https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia.git
+```
+2. Abrir solução `src\Estoque.Farmacia.API\Estoque.Farmacia.API.sln`no Visual Studio;
+3. Configurar conexão com o banco no `appsettings.json`. Substituir parâmetro "Server" em "DefaultConnection" para o servidor do SQL Server criado anteriormente;
+4. Executar migrações para o banco de dados, abrir Console de Gerenciamento de Pacotes (Ferramenteas > Gerenciador de Pacotes NuGet > Console de Gerenciamento de Pacotes) e rodar os comandos:
+```bash
+Add-Migration InitialCreate
+```
+```bash
+Update-Database
+```
+5. Rodar o projeto pelo botão iniciar no Visual Studio (Ctrl+F5);
+6. Acessar Swagger do projeto em: `https://localhost:7005/swagger`.
 
 ## Testes
 
