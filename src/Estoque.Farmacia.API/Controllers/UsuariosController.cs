@@ -13,7 +13,7 @@ namespace Estoque.Farmacia.API.Controllers
     [ApiController]
     [Route("api/[controller]")]
     // Depois de criar o primeiro usuario, descomentar a linha abaixo
-    //[Authorize]
+    [Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -68,7 +68,7 @@ namespace Estoque.Farmacia.API.Controllers
         }
 
         // GET: api/Usuarios/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "ObterUsuario")]
         public async Task<ActionResult<Usuario>> ObterUsuario(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
