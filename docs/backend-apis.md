@@ -236,13 +236,31 @@ A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separ
 
 ## Implantação
 
-[Instruções para implantar a aplicação distribuída em um ambiente de produção.]
+### Preparando ambiente
 
-1. Defina os requisitos de hardware e software necessários para implantar a aplicação em um ambiente de produção.
-2. Escolha uma plataforma de hospedagem adequada, como um provedor de nuvem ou um servidor dedicado.
-3. Configure o ambiente de implantação, incluindo a instalação de dependências e configuração de variáveis de ambiente.
-4. Faça o deploy da aplicação no ambiente escolhido, seguindo as instruções específicas da plataforma de hospedagem.
-5. Realize testes para garantir que a aplicação esteja funcionando corretamente no ambiente de produção.
+1. Instalar .NET8.0 (https://dotnet.microsoft.com/en-us/download/dotnet/8.0);
+2. Instalar SQL Server 2022 (https://www.microsoft.com/en-us/sql-server/sql-server-downloads);
+3. instalar Visual Studio (https://visualstudio.microsoft.com/downloads/);
+4. Instalar Git (https://git-scm.com/downloads);
+5. Criar Database Engine com SQL Server (https://learn.microsoft.com/en-us/sql/relational-databases/database-engine-tutorials?view=sql-server-ver16).
+
+### Rodando ambiente
+
+1. Clonar repositório do projeto em ambiente local;
+```bash
+git clone https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia.git
+```
+2. Abrir solução `src\Estoque.Farmacia.API\Estoque.Farmacia.API.sln`no Visual Studio;
+3. Configurar conexão com o banco no `appsettings.json`. Substituir parâmetro "Server" em "DefaultConnection" para o servidor do SQL Server criado anteriormente;
+4. Executar migrações para o banco de dados, abrir Console de Gerenciamento de Pacotes (Ferramenteas > Gerenciador de Pacotes NuGet > Console de Gerenciamento de Pacotes) e rodar os comandos:
+```bash
+Add-Migration InitialCreate
+```
+```bash
+Update-Database
+```
+5. Rodar o projeto pelo botão iniciar no Visual Studio (Ctrl+F5);
+6. Acessar Swagger do projeto em: `https://localhost:7005/swagger`.
 
 ## Testes
 
