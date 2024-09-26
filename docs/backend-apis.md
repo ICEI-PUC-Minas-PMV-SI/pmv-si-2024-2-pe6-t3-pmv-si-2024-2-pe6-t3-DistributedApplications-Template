@@ -232,7 +232,8 @@ A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separ
 
 ## Considerações de Segurança
 
-[Discuta as considerações de segurança relevantes para a aplicação distribuída, como autenticação, autorização, proteção contra ataques, etc.]
+Para utilizar a API o usuário deve se cadastrar pelo endpoint `/api/Usuarios` e se autenticar pelo endpoint `/api/Usuarios/Autenticar`, que por sua vez irá gerar um token JWT para ser utilizado na autenticação das requisições da API.
+Usuários que não possuirem um token de acesso não serão autorizados a fazer requisições no sistema.
 
 ## Implantação
 
