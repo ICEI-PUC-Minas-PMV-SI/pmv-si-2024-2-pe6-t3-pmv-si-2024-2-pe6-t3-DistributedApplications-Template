@@ -12,7 +12,7 @@ namespace Estoque.Farmacia.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -52,7 +52,7 @@ namespace Estoque.Farmacia.API.Controllers
             _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("ObterPorId", new { id = usuario.Id }, usuario);
+            return CreatedAtRoute("ObterUsuario", new { id = usuario.Id }, usuario);
         }
 
         // GET: api/Usuarios
