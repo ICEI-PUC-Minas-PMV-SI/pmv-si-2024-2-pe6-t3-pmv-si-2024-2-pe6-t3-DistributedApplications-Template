@@ -1,10 +1,6 @@
 # APIs e Web Services
 
-O planejamento de uma aplicação de APIS Web é uma etapa fundamental para o sucesso do projeto. Ao planejar adequadamente, você pode evitar muitos problemas e garantir que a sua API seja segura, escalável e eficiente.
-
-Aqui estão algumas etapas importantes que devem ser consideradas no planejamento de uma aplicação de APIS Web.
-
-[Inclua uma breve descrição do projeto.]
+A API do Controle de Estoque de Medicamentos permite gerenciar e monitorar o inventário de medicamentos de forma eficiente. Com funcionalidades para cadastrar, atualizar, remover e consultar medicamentos, a API facilita o controle de entrada e saída de produtos, além de manter informações detalhadas sobre quantidade disponível, data de validade e lotes.
 
 ## Objetivos da API
 
@@ -110,11 +106,28 @@ A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separ
 
 ## Requisitos Funcionais
 
-[Liste os principais requisitos funcionais da aplicação.]
+| Id  | Descrição do Requisito                                                         | Prioridade |
+| --- | ------------------------------------------------------------------------------ | ---------- |
+| **RF01** | Gerenciamento de Medicamentos (Cadastrar, Atualizar, Consultar e Remover) | Alta       |
+| **RF02** | Gerenciamento de Entradas no Estoque (Registrar, Atualizar, Consultar)   | Alta       |
+| **RF03** | Gerenciamento de Saídas do Estoque (Registrar, Atualizar, Consultar)     | Alta       |
+| **RF04** | Gerenciamento de Lotes (Cadastrar, Atualizar, Consultar)                 | Alta      |
+| **RF05** | Gerenciamento de Fornecedores (Cadastrar, Atualizar, Consultar e Desativar) | Alta   |
+| **RF06** | Autenticação de Usuários                                                       | Alta       |
 
 ## Requisitos Não Funcionais
 
-[Liste os principais requisitos não funcionais da aplicação, como desempenho, segurança, escalabilidade, etc.]
+| Id   | Descrição do Requisito                                                          | Prioridade |
+| ---- | ------------------------------------------------------------------------------- | ---------- |
+| **RNF01** | A API deve ser desenvolvida utilizando o framework .NET com linguagem C#         | Alta       |
+| **RNF02** | O banco de dados deve ser implementado usando SQL Server                        | Alta       |
+| **RNF03** | A API deve seguir os princípios RESTful para padronização de rotas e operações  | Alta       |
+| **RNF04** | A API deve suportar autenticação baseada em JWT                         | Alta       |
+| **RNF05** | O tempo de resposta da API deve ser inferior a 500 ms    | Média      |
+| **RNF06** | A API deve ser documentada utilizando o Swagger    | Alta       |
+| **RNF07** | O sistema deve ser compatível com versões recentes dos navegadores (Chrome, Firefox, Edge) | Baixa |
+| **RNF08** | A segurança deve ser garantida por meio de criptografia de dados de acesso      | Alta       |
+| **RNF09** | A API deve fornecer tratamento de erros intuitivos para identificação do usuário      | Alta       |
 
 ## Tecnologias Utilizadas
 
