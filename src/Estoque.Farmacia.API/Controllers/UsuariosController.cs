@@ -25,6 +25,7 @@ namespace Estoque.Farmacia.API.Controllers
         }
 
         // POST: api/Usuarios/Autenticar
+        [AllowAnonymous]
         [HttpPost("Autenticar")]
         public async Task<ActionResult<string>> Autenticar(Usuario usuario)
         {
