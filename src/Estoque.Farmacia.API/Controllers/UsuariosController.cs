@@ -12,7 +12,7 @@ namespace Estoque.Farmacia.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     public class UsuariosController : ControllerBase
     {
         private readonly AppDbContext _context;
