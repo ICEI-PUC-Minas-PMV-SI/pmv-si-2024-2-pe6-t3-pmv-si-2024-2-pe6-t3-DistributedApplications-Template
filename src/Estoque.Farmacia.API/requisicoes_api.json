@@ -1,0 +1,80 @@
+{
+  "descricao": "Exemplos de JSON para as requisições da API de Estoque de Farmácia",
+  "observacoes": "A ordem de execução das requisições é importante para garantir a consistência dos dados.",
+  "requisicoes": [
+    {
+      "nome": "Autenticar Usuário",
+      "endpoint": "/api/Usuarios/Autenticar",
+      "metodo": "POST",
+      "json": {
+        "nomeUsuario": "admin",
+        "senha": "UmaSenhaForteComPeloMenos16Caracteres"
+      },
+      "observacoes": "Essa requisição deve ser feita primeiro para obter o token JWT de autenticação."
+    },
+    {
+      "nome": "Criar Fornecedor",
+      "endpoint": "/api/Fornecedores",
+      "metodo": "POST",
+      "json": {
+        "NomeFantasia": "Fornecedor A",
+        "CNPJ": "12.345.678/0001-90",
+        "Telefone": "(11) 1234-5678",
+        "Email": "fornecedor.a@email.com"
+      }
+    },
+    {
+      "nome": "Criar Medicamento",
+      "endpoint": "/api/Medicamentos",
+      "metodo": "POST",
+      "json": {
+        "NomeComercial": "Paracetamol",
+        "PrecoCusto": 5.00,
+        "PrecoVenda": 10.00,
+        "FornecedorId": 1
+      },
+      "observacoes": "Certifique-se de que o 'FornecedorId' corresponde a um fornecedor existente."
+    },
+    {
+      "nome": "Criar Lote",
+      "endpoint": "/api/Lotes",
+      "metodo": "POST",
+      "json": {
+        "Quantidade": 100,
+        "DataFabricacao": "2024-09-01",
+        "DataValidade": "2025-09-01",
+        "MedicamentoId": 1
+      },
+      "observacoes": "Certifique-se de que o 'MedicamentoId' corresponde a um medicamento existente."
+    },
+    {
+      "nome": "Criar Entrada",
+      "endpoint": "/api/Entradas",
+      "metodo": "POST",
+      "json": {
+        "DataEntrada": "2024-09-28",
+        "QuantidadeRecebida": 50,
+        "LoteId": 1
+      },
+      "observacoes": "Certifique-se de que o 'LoteId' corresponde a um lote existente."
+    },
+    {
+      "nome": "Criar Saida",
+      "endpoint": "/api/Saidas",
+      "metodo": "POST",
+      "json": {
+        "DataSaida": "2024-10-05",
+        "QuantidadeSaida": 20,
+        "LoteId": 1
+      },
+      "observacoes": "Certifique-se de que o 'LoteId' corresponde a um lote existente."
+    },
+    {
+      "nome": "Obter Estoque do Medicamento",
+      "endpoint": "/api/Medicamentos/{id}/estoque",
+      "metodo": "GET",
+      "json": null,
+      "observacoes": "Substitua '{id}' pelo ID do medicamento desejado. Essa requisição pode ser feita a qualquer momento após a criação de Entradas e Saidas."
+    }
+  ]
+}
