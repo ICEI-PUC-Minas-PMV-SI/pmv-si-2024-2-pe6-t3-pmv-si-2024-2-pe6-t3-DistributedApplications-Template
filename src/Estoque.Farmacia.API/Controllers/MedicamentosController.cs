@@ -21,30 +21,65 @@ namespace Estoque.Farmacia.API.Controllers
 
         // GET: api/Medicamentos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Medicamento>>> ObterTodos()
+        public async Task<ActionResult<IEnumerable<object>>> ObterTodos()
         {
-            return await _context.Medicamentos.Include(m => m.Fornecedor).ToListAsync();
+            var medicamentos = await _context.Medicamentos
+                .Join(_context.Fornecedores,
+                      m => m.FornecedorId,
+                      f => f.Id,
+                      (m, f) => new { Medicamento = m, Fornecedor = f })
+                .ToListAsync();
+
+            return Ok(medicamentos);
         }
 
         // GET: api/Medicamentos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Medicamento>> ObterPorId(int id)
+        public async Task<ActionResult<object?>> ObterPorId(int id)
         {
             var medicamento = await _context.Medicamentos
-                .Include(m => m.Fornecedor)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Where(m => m.Id == id)
+                .Join(_context.Fornecedores,
+                      m => m.FornecedorId,
+                      f => f.Id,
+                      (m, f) => new { Medicamento = m, Fornecedor = f })
+                .FirstOrDefaultAsync();
 
             if (medicamento == null)
             {
                 return NotFound();
             }
 
-            return medicamento;
+            return Ok(medicamento);
+        }
+
+        [HttpGet("{id}/estoque")]
+        public async Task<ActionResult<int>> ObterEstoqueMedicamento(int id)
+        {
+            var totalEntradas = await _context.Entradas
+                .Join(_context.Lotes,
+                      e => e.LoteId,
+                      l => l.Id,
+                      (e, l) => new { Entrada = e, Lote = l })
+                .Where(el => el.Lote.MedicamentoId == id)
+                .SumAsync(el => el.Entrada.QuantidadeRecebida);
+
+            var totalSaidas = await _context.Saidas
+                .Join(_context.Lotes,
+                      s => s.LoteId,
+                      l => l.Id,
+                      (s, l) => new { Saida = s, Lote = l })
+                .Where(sl => sl.Lote.MedicamentoId == id)
+                .SumAsync(sl => sl.Saida.QuantidadeSaida);
+
+            var estoqueAtual = totalEntradas - totalSaidas;
+
+            return Ok(estoqueAtual);
         }
 
         // POST: api/Medicamentos
         [HttpPost]
-        public async Task<ActionResult<Medicamento>> Criar(Medicamento medicamento)
+        public async Task<ActionResult<Medicamento>> Criar([Bind("NomeComercial, PrecoCusto, PrecoVenda, FornecedorId")] Medicamento medicamento)
         {
             _context.Medicamentos.Add(medicamento);
             await _context.SaveChangesAsync();
