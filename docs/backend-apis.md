@@ -18,9 +18,9 @@ A API do Controle de Estoque de Medicamentos permite gerenciar e monitorar o inv
 
 <!-- [Descrição da arquitetura das APIs, incluindo os componentes e suas interações.] -->
 
-A API de Estoque de Farmácia segue a arquitetura em camadas, promovendo a separação de responsabilidades e a organização do código. Abaixo, a descrição dos componentes e suas interações:
+A API de Estoque de Farmácia segue a arquitetura monilitica, promovendo a integração e a organização do código em um unico processo. Abaixo, a descrição dos componentes e suas interações:
 
-**Camadas**
+**Módulos**
 
 - Controladores (Controllers): Recebem as requisições HTTP, interagem com a camada de serviço para processar a lógica de negócio e retornam as respostas HTTP. São responsáveis por definir as rotas, validar os dados de entrada e formatar os dados de saída.
 - Serviços (Services): Implementam a lógica de negócio da aplicação, como regras de validação, cálculos, manipulação de dados e interação com o repositório. Isolam a lógica de negócio dos controladores, tornando o código mais reutilizável e testável.
