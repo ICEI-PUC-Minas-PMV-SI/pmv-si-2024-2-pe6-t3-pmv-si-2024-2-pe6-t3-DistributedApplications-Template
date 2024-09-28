@@ -112,7 +112,7 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 |01|Controle de usuários|Capacidade de cadastrar e autenticar usuários permitindo o acesso a página web, além de permitir a edição de informações do usuário cadastrado.|
 |02|Gerenciamento de medicamentos|Capacidade de manipular o cadastro, edição e exclusão de medicamentos (CRUD). Além de permitir pesquisas por meio de filtros, acessar mais informações sobre o medicamento como quandidade no estoque, data validade e descrições e atualização simultânea da listagem de medicamentos após modificações.|
 |03|Notificações|Capacidade de notificar o usuário a respeito de ações realizadas ao medicamento (Criação, edição e exclusão) por meio de pop-ups na página web ou por email, contendo mais detalhes a respeito da ação realizada ao medicamento, email este podendo ser enviado para o email do próprio usuário ou para outros emails personalizados.|
-|04|Relatórios|Capacidade de gerar relatórios com informações sobre o estoque da farmácia além de possuir alertas a respeito de produtos em falta, em baixa quantidade ou próximos da data de validade. Tais informações serão exibidas em uma página web contendo a opção de baixa-la em formato PDF.|
+|04|Relatórios|Capacidade de gerar relatórios com informações sobre o estoque da farmácia além de possuir alertas a respeito de produtos em falta, em baixa quantidade ou próximos da data de validade. Tais informações serão exibidas em uma página web.|
 
 # Arquitetura da Solução
 
@@ -124,10 +124,6 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 
 ![Arquitetura da Solução](./img/img_arquitetura_solucao.png)
 <!-- ![arq](https://github.com/user-attachments/assets/b9402e05-8445-47c3-9d47-f11696e38a3d) -->
-
-## Fluxo de Interação
-
-**Falta fazer**
 
 ## Tecnologias Utilizadas
 
@@ -153,8 +149,10 @@ Enumere as restrições à sua solução. Lembre-se de que as restrições geral
 | 11 | Retorno para o Usuário | A API retorna os dados para o Navegador/Aplicativo, que os exibe para o Usuário. | -->
 
 ## Hospedagem
-
-A hospedagem e o lançamento da plataforma será feito utilizando Vercel.
+**Front-End**
+A hospedagem e o lançamento da plataforma web será feito utilizando Vercel.
+**Back-End**
+A hospedagem e o lançamento da plataforma de apis e banco de dados será feito utilizando AWS.
 
 > **Links Úteis**:
 >
