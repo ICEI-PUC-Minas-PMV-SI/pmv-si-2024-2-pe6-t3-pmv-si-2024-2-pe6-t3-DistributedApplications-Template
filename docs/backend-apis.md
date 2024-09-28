@@ -37,6 +37,9 @@ A API de Estoque de Farmácia segue a arquitetura monilitica, promovendo a integ
 
 <!-- [Descreva a modelagem da aplicação, incluindo a estrutura de dados, diagramas de classes ou entidades, e outras representações visuais relevantes.] -->
 
+![1](https://github.com/user-attachments/assets/eb627fc0-37f0-4a50-9f67-9b422b033376)
+
+
 **Fornecedor:**
 
 | Atributo     | Descrição                          | Tipo de Dado | Chave Primária |
