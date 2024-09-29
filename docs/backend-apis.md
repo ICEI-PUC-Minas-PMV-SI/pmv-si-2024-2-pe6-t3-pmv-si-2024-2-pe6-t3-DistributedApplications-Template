@@ -348,7 +348,7 @@ Update-Database
 <p>Nos testes de funcionalidade de autenticação de usuário, foi necessário fornecer o nome de usuário e a senha.</p>
   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/POST.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 26- Método Post</h6>
-   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/AUTENT.png?raw=true" margin="auto" display="block"  >
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/AUTENT1.jpg?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 27- Autenticação</h6>
    <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/GET1.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 28- Método Get</h6>
