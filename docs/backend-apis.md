@@ -268,13 +268,99 @@ Update-Database
 
 ## Testes
 
-[Descreva a estratégia de teste, incluindo os tipos de teste a serem realizados (unitários, integração, carga, etc.) e as ferramentas a serem utilizadas.]
+<p>Foram realizados testes de funcionalidade abrangentes para garantir que todos os requisitos funcionais fossem atendidos.</p>
 
-1. Crie casos de teste para cobrir todos os requisitos funcionais e não funcionais da aplicação.
-2. Implemente testes unitários para testar unidades individuais de código, como funções e classes.
-3. Realize testes de integração para verificar a interação correta entre os componentes da aplicação.
-4. Execute testes de carga para avaliar o desempenho da aplicação sob carga significativa.
-5. Utilize ferramentas de teste adequadas, como frameworks de teste e ferramentas de automação de teste, para agilizar o processo de teste.
+**Fornecedores**
+<p>Nos testes de funcionalidade para o gerenciamento de fornecedores, foi necessário fornecer o nome fantasia, CNPJ, telefone e e-mail.</p>
+ 
+<img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Fornecedores/POST.png?raw=true" margin="auto" display="block" >
+<h6 align="center"> Figura 1- Método Post </h6>
+ <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Fornecedores/GET1.png?raw=true" margin="auto" display="block">
+<h6 align="center"> Figura 2- Método Get</h6>
+ <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Fornecedores/GETID.png?raw=true" margin="auto" display="block">
+<h6 align="center"> Figura 3- Get by Id</h6>
+ <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Fornecedores/PUT.png?raw=true" margin="auto" display="block"  >
+<h6 align="center"> Figura 4- Método Put</h6>
+ <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Fornecedores/DELETE.png?raw=true" margin="auto" display="block"  >
+<h6 align="center"> Figura 5- Método Delete</h6>
+
+**Medicamento**
+
+<p>Nos testes de funcionalidade do gerenciamento de medicamentos, foi necessário fornecer o nome do medicamento, o preço de custo, o preço de venda e o fornecedorId.</p>
+
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Medicamento/POST.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 6- Método Post</h6>
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Medicamento/GET1.png?raw=true" margin="auto" display="block"  > 
+<h6 align="center">Figura 7- Método Get</h6>
+
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Medicamento/GETID.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 8- Método Get by Id</h6>
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Medicamento/PUT.png?raw=true" margin="auto" display="block"  >
+ 
+<h6 align="center">Figura 9- Método Put</h6>
+
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Medicamento/DELETE.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 10- Método Delete</h6>
+
+**Lote**
+<p>Nos testes de funcionalidade do gerenciamento de lotes, foi necessário fornecer a quantidade, a data de validade, a data de fabricação e o medicamentoId.</p>
+
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Lote/POST.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 11- Método Post</h6>
+
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Lote/GET1.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 12- Método Get</h6>
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Lote/GETID.png?raw=true" margin="auto" display="block"  >
+ 
+<h6 align="center">Figura 13- Get by Id</h6>
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Lote/PUT.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 14- Método Put</h6>
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/Lote/DELETE.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 15- Método Delete</h6>
+  
+**Entrada de Estoque**
+<p>Nos testes de funcionalidade do gerenciamento de entrada de estoque, foi necessário fornecer a quantidade, a data de entrada e o loteId.</p>
+    <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/ENTRADA/POST.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 16- Método Post</h6>
+    <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/ENTRADA/GET1.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 17- Método Get</h6>
+    <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/ENTRADA/GETID.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 18- Método Get by Id</h6>
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/ENTRADA/PUT.png?raw=true" margin="auto" display="block"  > 
+<h6 align="center">Figura 19- Método Put</h6>
+    <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/ENTRADA/DELETE.png?raw=true" margin="auto" display="block"  >
+<h6 align="center">Figura 20- Método Delete</h6>
+
+**Saída de Estoque**
+<p>Nos testes de funcionalidade do gerenciamento de saída de estoque, foi necessário fornecer a quantidade, a data de saída e o loteId.</p>
+ 
+<h6 align="center">Figura 21- Método Post</h6>
+ 
+<h6 align="center">Figura 22- Método Get</h6>
+ 
+<h6 align="center">Figura 23- Método Get by Id</h6>
+ 
+<h6 align="center">Figura 24- Método Put</h6>
+ 
+<h6 align="center">Figura 25- Método Delete</h6>
+
+**Usuários**
+<p>Nos testes de funcionalidade de autenticação de usuário, foi necessário fornecer o nome de usuário e a senha.</p>
+ 
+<h6 align="center">Figura 26- Método Post</h6>
+ 
+<h6 align="center">Figura 27- Autenticação</h6>
+ 
+<h6 align="center">Figura 28- Método Get</h6>
+ 
+<h6 align="center">Figura 29- Método Get by Id</h6>
+ 
+<h6 align="center">Figura 30- Método Put</h6>
+
+ 
+<h6 align="center">Figura 31- Método Delete</h6>
+
+Após a execução dos testes de funcionalidade, foi verificado que todos os cenários, incluindo o gerenciamento de fornecedores, medicamentos, lotes, entradas e saídas de estoque, bem como a autenticação de usuários, foram concluídos com sucesso. Todos os requisitos funcionais foram atendidos conforme esperado, sem a ocorrência de erros ou falhas nos testes
 
 # Referências
 
