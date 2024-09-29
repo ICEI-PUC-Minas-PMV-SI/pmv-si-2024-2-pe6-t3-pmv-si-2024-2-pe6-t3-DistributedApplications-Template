@@ -333,30 +333,30 @@ Update-Database
 
 **Saída de Estoque**
 <p>Nos testes de funcionalidade do gerenciamento de saída de estoque, foi necessário fornecer a quantidade, a data de saída e o loteId.</p>
- 
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/SA%C3%8DDA/POST.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 21- Método Post</h6>
- 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/SA%C3%8DDA/GET1.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 22- Método Get</h6>
- 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/SA%C3%8DDA/GETID.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 23- Método Get by Id</h6>
- 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/SA%C3%8DDA/PUT.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 24- Método Put</h6>
- 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/SA%C3%8DDA/DELETE.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 25- Método Delete</h6>
 
 **Usuários**
 <p>Nos testes de funcionalidade de autenticação de usuário, foi necessário fornecer o nome de usuário e a senha.</p>
- 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/POST.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 26- Método Post</h6>
- 
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/AUTENTICAÇÃO.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 27- Autenticação</h6>
- 
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/GET1.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 28- Método Get</h6>
- 
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/GETID.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 29- Método Get by Id</h6>
- 
+   <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/PUT.png?raw=true" margin="auto" display="block"  >
 <h6 align="center">Figura 30- Método Put</h6>
-
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Screenshots/USUARIO/DELETE.png?raw=true" margin="auto" display="block"  >
  
 <h6 align="center">Figura 31- Método Delete</h6>
 
