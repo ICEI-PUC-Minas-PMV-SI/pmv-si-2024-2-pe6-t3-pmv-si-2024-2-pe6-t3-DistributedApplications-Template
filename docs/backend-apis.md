@@ -128,9 +128,8 @@ A API de Estoque de Farmácia segue a arquitetura monilitica, promovendo a integ
 | **RNF04** | A API deve suportar autenticação baseada em JWT                         | Alta       |
 | **RNF05** | O tempo de resposta da API deve ser inferior a 500 ms    | Média      |
 | **RNF06** | A API deve ser documentada utilizando o Swagger    | Alta       |
-| **RNF07** | O sistema deve ser compatível com versões recentes dos navegadores (Chrome, Firefox, Edge) | Baixa |
-| **RNF08** | A segurança deve ser garantida por meio de criptografia de dados de acesso      | Alta       |
-| **RNF09** | A API deve fornecer tratamento de erros intuitivos para identificação do usuário      | Alta       |
+| **RNF07** | A segurança deve ser garantida por meio de criptografia de dados de acesso      | Alta       |
+| **RNF08** | A API deve fornecer tratamento de erros intuitivos para identificação do usuário      | Alta       |
 
 ## Tecnologias Utilizadas
 
