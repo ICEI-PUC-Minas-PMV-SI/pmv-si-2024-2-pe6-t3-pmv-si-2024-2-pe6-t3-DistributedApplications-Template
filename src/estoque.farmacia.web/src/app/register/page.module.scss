@@ -1,0 +1,69 @@
+@import '/src/assets/styles/variables';
+
+.register__container {
+  height: 100dvh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+
+  .register__logo_container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $background_purple;
+
+    img {
+      height: 25%;
+      width: auto;
+      object-fit: contain;
+    }
+  }
+
+  .register__form_container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 15px;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 500;
+        color: $purple;
+      }
+
+      .register__input {
+        width: 100%;
+
+        svg {
+          height: auto;
+          width: 1.5rem;
+        }
+      }
+
+      .register__submit_button {
+        width: 100%;
+        border: none;
+        border-radius: 7px;
+        background-color: $purple;
+        color: $white;
+        padding: 0.5rem 0;
+        transition: 0.25s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}
