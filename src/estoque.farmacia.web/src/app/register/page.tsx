@@ -13,7 +13,11 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faEye,
+  faEyeSlash,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function Register() {
   const [userName, setUserName] = useState<string>('');
@@ -38,25 +42,29 @@ export default function Register() {
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const handleShowNotification = () => {
     setShowNotification(true);
-  }
+  };
   const handleHideNotification = () => {
     setShowNotification(false);
-  }
+  };
 
   const [hasError, setHasError] = useState<boolean>(false);
   const handleHasError = () => {
     setHasError(true);
-  }
+  };
   const handleHasNotError = () => {
     setHasError(false);
-  }
+  };
 
   const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
-      if (userName === null || userName === '' ||
-         userPassword === null || userPassword === '') {
+      if (
+        userName === null ||
+        userName === '' ||
+        userPassword === null ||
+        userPassword === ''
+      ) {
         throw new Error('User must contain name and password');
       } else {
         const useData = {
@@ -93,6 +101,10 @@ export default function Register() {
       </div>
       <div className={styles.register__form_container}>
         <form onSubmit={handleFormSubmit}>
+          <button className={styles.register__go_back_button}>
+            <FontAwesomeIcon icon={faChevronLeft} />
+            Voltar
+          </button>
           <h2>Criar Conta</h2>
           <FormControl className={styles.register__input} variant='filled'>
             <InputLabel htmlFor='filled-adornment-password'>
@@ -132,13 +144,19 @@ export default function Register() {
           <button className={styles.register__submit_button} role='submit'>
             CRIAR
           </button>
-          <Snackbar open={showNotification} autoHideDuration={5000} onClose={handleHideNotification}>
+          <Snackbar
+            open={showNotification}
+            autoHideDuration={5000}
+            onClose={handleHideNotification}
+          >
             <Alert
               onClose={handleHideNotification}
               severity={hasError ? 'error' : 'success'}
               variant='filled'
             >
-              {hasError ? 'Erro! Não foi possível criar o usuário' : 'Sucesso! Usuário criado'}
+              {hasError
+                ? 'Erro! Não foi possível criar o usuário'
+                : 'Sucesso! Usuário criado'}
             </Alert>
           </Snackbar>
         </form>
