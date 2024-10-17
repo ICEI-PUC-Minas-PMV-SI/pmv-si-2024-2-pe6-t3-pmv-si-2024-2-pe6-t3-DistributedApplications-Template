@@ -49,16 +49,16 @@
         border-radius: 10px;
         background: $purple;
         color: $white;
-        padding: .5rem;
-        transition: .25s ease-in-out;
+        padding: 0.5rem;
+        transition: 0.25s ease-in-out;
         cursor: pointer;
 
         &:hover {
-          opacity: .5;
+          opacity: 0.5;
         }
 
         svg {
-          padding-right: .5rem;
+          padding-right: 0.5rem;
         }
       }
 

@@ -1,0 +1,151 @@
+@import '/src/assets/styles/variables';
+@import '/src/assets/styles/breakpoints';
+
+.register_medicine__container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: $white;
+
+  .register_medicine__header {
+    height: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: $purple;
+    }
+
+    button {
+      border: 2px solid $purple;
+      border-radius: 7px;
+      background: transparent;
+
+      svg {
+        font-size: 1.5rem;
+        color: $purple;
+        padding: .25rem;
+      }
+    }
+  }
+
+  .register_medicine__content {
+    height: calc(100dvh - 5rem);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    padding: 1.5rem;
+
+    .register_medicine__medicine_preview {
+      width: 50%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: none;
+      border-radius: 15px;
+      background-color: $light_grey;
+
+      .register_medicine__image_picker_container {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          height: auto;
+          width: 100%;
+          box-sizing: border-box;
+          border-radius: 7px;
+          object-fit: contain;
+          padding: 0 1rem;
+        }
+
+        button {
+          margin-top: 1rem;
+        }
+      }
+
+      .register_medicine__medicine_preview_info {
+        width: 50%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+
+        .register_medicine__medicine_preview_info_container {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: .5rem 0;
+
+          p {
+            font-size: 1rem;
+            text-align: center;
+            color: $dark_grey;
+
+            &:nth-child(1) {
+              font-size: 1.25rem;
+              font-weight: 700;
+              padding-bottom: .5rem;
+            }
+
+            &:nth-child(2) {
+              width: 100%;
+              box-sizing: border-box;
+              border-radius: 10px;
+              background-color: $purple;
+              color: $white;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              padding: .5rem;
+            }
+
+            &.no_value {
+              width: 100%;
+              border-radius: 10px;
+              background-color: $dark_grey;
+              color: $white;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              padding: .5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .register_medicine__medicine_form {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: stretch;
+      border: none;
+      border-radius: 15px;
+      background-color: $light_grey;
+      padding: 1rem;
+
+      .register_medicine__medicine_form_submit_button {
+        align-self: center;
+        border: none;
+        border-radius: 10px;
+        background-color: $purple;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $white;
+        padding: 1rem 1.5rem;
+      }
+    }
+  }
+}
