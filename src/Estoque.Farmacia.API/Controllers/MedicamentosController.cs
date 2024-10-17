@@ -79,21 +79,40 @@ namespace Estoque.Farmacia.API.Controllers
 
         // POST: api/Medicamentos
         [HttpPost]
-        public async Task<ActionResult<Medicamento>> Criar([Bind("NomeComercial, PrecoCusto, PrecoVenda, FornecedorId")] Medicamento medicamento)
+        public async Task<ActionResult<Medicamento>> Criar([FromForm] Medicamento medicamento, IFormFile imagem)
         {
+            if (imagem != null && imagem.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await imagem.CopyToAsync(memoryStream);
+                    medicamento.Imagem = memoryStream.ToArray();
+                }
+            }
+
             _context.Medicamentos.Add(medicamento);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("ObterPorId", new { id = medicamento.Id }, medicamento);
         }
 
+
         // PUT: api/Medicamentos/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Atualizar(int id, Medicamento medicamento)
+        public async Task<IActionResult> Atualizar(int id, [FromForm] Medicamento medicamento, IFormFile imagem)
         {
             if (id != medicamento.Id)
             {
                 return BadRequest();
+            }
+
+            if (imagem != null && imagem.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await imagem.CopyToAsync(memoryStream);
+                    medicamento.Imagem = memoryStream.ToArray();
+                }
             }
 
             _context.Entry(medicamento).State = EntityState.Modified;
@@ -116,6 +135,7 @@ namespace Estoque.Farmacia.API.Controllers
 
             return NoContent();
         }
+
 
         // DELETE: api/Medicamentos/5
         [HttpDelete("{id}")]
