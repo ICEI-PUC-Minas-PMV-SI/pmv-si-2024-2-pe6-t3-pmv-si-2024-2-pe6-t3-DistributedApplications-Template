@@ -6,5 +6,5 @@ export interface IMedicine {
   batchId: string;
   manufacturerId: string;
   validity: Dayjs | null;
-  image: string;
+  image: string | null;
 }
