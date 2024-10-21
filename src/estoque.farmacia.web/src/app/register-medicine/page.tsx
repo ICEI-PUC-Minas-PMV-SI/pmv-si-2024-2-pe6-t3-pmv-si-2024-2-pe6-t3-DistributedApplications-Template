@@ -8,11 +8,20 @@ import {
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
-import { TextField, MenuItem, Button, styled } from '@mui/material';
+import {
+  TextField,
+  MenuItem,
+  Button,
+  styled,
+  Alert,
+  Snackbar,
+} from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Image from 'next/image';
+import { IMedicine } from '@/utils/interfaces/IMedicine';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function RegisterMedicine() {
   const [nameInput, setNameInput] = useState<string>('');
@@ -70,6 +79,45 @@ export default function RegisterMedicine() {
     whiteSpace: 'nowrap',
     width: 1,
   });
+
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+
+  const submitNewMedicine = (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (
+      nameInput &&
+      batchInput &&
+      manufacturerInput &&
+      validityInput &&
+      validityInput
+    ) {
+      const newMedicineData: IMedicine = {
+        id: uuidv4(),
+        name: nameInput,
+        batchId: batchInput,
+        manufacturerId: manufacturerInput,
+        validity: validityInput,
+        image: imageInput,
+      };
+      console.log(newMedicineData);
+
+      clearForm();
+    } else {
+      setHasError(true);
+    }
+
+    setShowNotification(true);
+  };
+
+  const clearForm = () => {
+    setNameInput('');
+    setBatchInput('');
+    setManufacturerInput('');
+    setValidityInput(null);
+    setImageInput(null);
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -165,7 +213,10 @@ export default function RegisterMedicine() {
               </div>
             </div>
           </div>
-          <form className={styles.register_medicine__medicine_form}>
+          <form
+            onSubmit={submitNewMedicine}
+            className={styles.register_medicine__medicine_form}
+          >
             <TextField
               value={nameInput}
               onChange={handleNameInput}
@@ -206,6 +257,21 @@ export default function RegisterMedicine() {
             >
               Cadastrar
             </button>
+            <Snackbar
+              open={showNotification}
+              autoHideDuration={5000}
+              onClose={() => setShowNotification(false)}
+            >
+              <Alert
+                onClose={() => setShowNotification(false)}
+                severity={hasError ? 'error' : 'success'}
+                variant='filled'
+              >
+                {hasError
+                  ? 'Erro! Não foi possível cadastrar um novo medicamento'
+                  : 'Sucesso! Medicamento cadastrado'}
+              </Alert>
+            </Snackbar>
           </form>
         </div>
       </section>
