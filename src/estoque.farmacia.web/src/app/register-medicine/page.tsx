@@ -7,7 +7,7 @@ import {
   faSave,
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   TextField,
   MenuItem,
@@ -20,11 +20,41 @@ import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Image from 'next/image';
-import { IMedicine } from '@/utils/interfaces/IMedicine';
-import { v4 as uuidv4 } from 'uuid';
+import { IFornecedor } from '@/utils/interfaces/IFornecedor';
+import { ILote } from '@/utils/interfaces/ILote';
+import { IMedicamento } from '@/utils/interfaces/IMedicamento';
 
 export default function RegisterMedicine() {
   const [nameInput, setNameInput] = useState<string>('');
+  const [batchInput, setBatchInput] = useState<string>('');
+  const [batches, setBatches] = useState<ILote[]>([]);
+  const [manufacturerInput, setManufacturerInput] = useState<string>('');
+  const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
+  const [validityInput, setValidityInput] = useState<Dayjs | null>(dayjs());
+  const [imageInput, setImageInput] = useState<string | null>(null);
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetch('https://localhost:7208/api/Lotes', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setBatches(data));
+
+    fetch('https://localhost:7208/api/Fornecedores', {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setManufactures(data));
+  }, []);
+
   const handleNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     if (newValue) {
@@ -32,20 +62,13 @@ export default function RegisterMedicine() {
     }
   };
 
-  const [batchInput, setBatchInput] = useState<string>('');
   const handleBatchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
     if (newValue) {
       setBatchInput(newValue);
     }
   };
-  const batchMock: string[] = [
-    'b398b3ed-f602-4fb5-8fe8-4c8cd1ce3bfd',
-    '87c2a1c1-5dc1-4f07-925d-8b17a0b0be1d',
-    '8b82bd8c-2b09-4a52-b14f-c36803b8d43c',
-  ];
 
-  const [manufacturerInput, setManufacturerInput] = useState<string>('');
   const handleManufacturerInput = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -54,18 +77,50 @@ export default function RegisterMedicine() {
       setManufacturerInput(newValue);
     }
   };
-  const manufacturerMock: string[] = [
-    '7e7c0109-b6e3-44af-8bd3-105167003c5a',
-    'd8e686a7-3e64-4eeb-adf9-edfa85856d60',
-    'd640c574-e45a-4c99-bed2-3eadc3d57108',
-  ];
 
-  const [validityInput, setValidityInput] = useState<Dayjs | null>(dayjs());
-
-  const [imageInput, setImageInput] = useState<string | null>(null);
   const handleImageInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.files?.[0];
     if (newValue) setImageInput(URL.createObjectURL(newValue));
+  };
+
+  const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newMedicine: IMedicamento = {
+      nomeComercial: nameInput,
+      fornecedorId: Number(manufacturerInput),
+      precoCusto: 0,
+      precoVenda: 0,
+    };
+
+    const newMedicineRes = await fetch(
+      'https://localhost:7208/api/Medicamentos',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newMedicine),
+      }
+    );
+
+    if (!newMedicineRes.ok) {
+      setHasError(true);
+      setShowNotification(true);
+      throw new Error('Failed to POST new medicine');
+    } else {
+      setHasError(false);
+      setShowNotification(true);
+      clearForm();
+    }
+  };
+
+  const clearForm = () => {
+    setNameInput('');
+    setBatchInput('');
+    setManufacturerInput('');
+    setValidityInput(dayjs());
+    setImageInput(null);
   };
 
   const VisuallyHiddenInput = styled('input')({
@@ -79,45 +134,6 @@ export default function RegisterMedicine() {
     whiteSpace: 'nowrap',
     width: 1,
   });
-
-  const [showNotification, setShowNotification] = useState<boolean>(false);
-  const [hasError, setHasError] = useState<boolean>(false);
-
-  const submitNewMedicine = (event: React.ChangeEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (
-      nameInput &&
-      batchInput &&
-      manufacturerInput &&
-      validityInput &&
-      validityInput
-    ) {
-      const newMedicineData: IMedicine = {
-        id: uuidv4(),
-        name: nameInput,
-        batchId: batchInput,
-        manufacturerId: manufacturerInput,
-        validity: validityInput,
-        image: imageInput,
-      };
-      console.log(newMedicineData);
-
-      clearForm();
-    } else {
-      setHasError(true);
-    }
-
-    setShowNotification(true);
-  };
-
-  const clearForm = () => {
-    setNameInput('');
-    setBatchInput('');
-    setManufacturerInput('');
-    setValidityInput(null);
-    setImageInput(null);
-  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -214,7 +230,7 @@ export default function RegisterMedicine() {
             </div>
           </div>
           <form
-            onSubmit={submitNewMedicine}
+            onSubmit={handleSubmit}
             className={styles.register_medicine__medicine_form}
           >
             <TextField
@@ -229,9 +245,9 @@ export default function RegisterMedicine() {
               onChange={handleBatchInput}
               label='Lote'
             >
-              {batchMock.map((item, index) => (
-                <MenuItem value={item} key={index}>
-                  {item}
+              {batches.map((item, index) => (
+                <MenuItem value={item.id} key={index}>
+                  {item.id}
                 </MenuItem>
               ))}
             </TextField>
@@ -241,9 +257,9 @@ export default function RegisterMedicine() {
               onChange={handleManufacturerInput}
               label='Fabricante'
             >
-              {manufacturerMock.map((item, index) => (
-                <MenuItem value={item} key={index}>
-                  {item}
+              {manufactures.map((item, index) => (
+                <MenuItem value={item.id} key={index}>
+                  {item.nomeFantasia}
                 </MenuItem>
               ))}
             </TextField>
@@ -259,17 +275,18 @@ export default function RegisterMedicine() {
             </button>
             <Snackbar
               open={showNotification}
-              autoHideDuration={5000}
+              autoHideDuration={6000}
               onClose={() => setShowNotification(false)}
             >
               <Alert
                 onClose={() => setShowNotification(false)}
                 severity={hasError ? 'error' : 'success'}
                 variant='filled'
+                sx={{ width: '100%' }}
               >
                 {hasError
-                  ? 'Erro! Não foi possível cadastrar um novo medicamento'
-                  : 'Sucesso! Medicamento cadastrado'}
+                  ? 'Algo deu errado! Não foi possivel cadastrar um novo medicamento'
+                  : 'Sucesso! Novo medicamento cadastrado'}
               </Alert>
             </Snackbar>
           </form>
