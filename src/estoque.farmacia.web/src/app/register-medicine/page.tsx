@@ -8,21 +8,13 @@ import {
   faTrashCan,
 } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
-import {
-  TextField,
-  MenuItem,
-  Button,
-  styled,
-  Alert,
-  Snackbar,
-} from '@mui/material';
+import { TextField, MenuItem, Button, Alert, Snackbar } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Image from 'next/image';
 import { IFornecedor } from '@/utils/interfaces/IFornecedor';
 import { ILote } from '@/utils/interfaces/ILote';
-import { IMedicamento } from '@/utils/interfaces/IMedicamento';
 
 export default function RegisterMedicine() {
   const [nameInput, setNameInput] = useState<string>('');
@@ -30,8 +22,9 @@ export default function RegisterMedicine() {
   const [batches, setBatches] = useState<ILote[]>([]);
   const [manufacturerInput, setManufacturerInput] = useState<string>('');
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
-  const [validityInput, setValidityInput] = useState<Dayjs | null>(dayjs());
-  const [imageInput, setImageInput] = useState<string | null>(null);
+  const [validityInput, setValidityInput] = useState<Dayjs | null>(null);
+  const [imageInput, setImageInput] = useState<File | null>(null);
+  const [base64Image, setBase64Image] = useState<string>('');
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
 
@@ -66,6 +59,8 @@ export default function RegisterMedicine() {
     const newValue = event.target.value;
     if (newValue) {
       setBatchInput(newValue);
+      const currBatch = batches.find((item) => item.id === Number(batchInput));
+      console.log(currBatch);
     }
   };
 
@@ -80,27 +75,54 @@ export default function RegisterMedicine() {
 
   const handleImageInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.files?.[0];
-    if (newValue) setImageInput(URL.createObjectURL(newValue));
+
+    if (newValue) {
+      setImageInput(newValue);
+      convertFileToBase64(newValue)
+        .then((base64) => {
+          setBase64Image(base64);
+        })
+        .catch((error) => {
+          console.error('Error converting file to base64:', error);
+        });
+    }
+  };
+
+  const convertFileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        // Get the base64 string without the data URL prefix
+        const base64String = reader.result
+          ? (reader.result as string).split(',')[1]
+          : '';
+        resolve(base64String);
+      };
+      reader.onerror = () => {
+        reject(new Error('Error reading file'));
+      };
+      reader.readAsDataURL(file);
+    });
   };
 
   const handleSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newMedicine: IMedicamento = {
-      nomeComercial: nameInput,
-      fornecedorId: Number(manufacturerInput),
-      precoCusto: 0,
-      precoVenda: 0,
-    };
+    const formData = new FormData();
+    formData.append('NomeComercial', nameInput);
+    formData.append('PrecoCusto', '0'); // Or whatever value you need
+    formData.append('PrecoVenda', '0'); // Or whatever value you need
+    formData.append('FornecedorId', String(manufacturerInput));
+
+    if (imageInput) {
+      formData.append('imagem', base64Image); // Append the file directly
+    }
 
     const newMedicineRes = await fetch(
       'https://localhost:7208/api/Medicamentos',
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newMedicine),
+        body: formData,
       }
     );
 
@@ -123,18 +145,6 @@ export default function RegisterMedicine() {
     setImageInput(null);
   };
 
-  const VisuallyHiddenInput = styled('input')({
-    clip: 'rect(0 0 0 0)',
-    clipPath: 'inset(50%)',
-    height: 1,
-    overflow: 'hidden',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    whiteSpace: 'nowrap',
-    width: 1,
-  });
-
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <section className={styles.register_medicine__container}>
@@ -149,7 +159,7 @@ export default function RegisterMedicine() {
             {imageInput ? (
               <div className={styles.register_medicine__image_picker_container}>
                 <Image
-                  src={imageInput}
+                  src={URL.createObjectURL(imageInput)}
                   height={0}
                   width={0}
                   unoptimized
@@ -174,10 +184,11 @@ export default function RegisterMedicine() {
                   startIcon={<FontAwesomeIcon icon={faFileArrowUp} />}
                 >
                   Foto
-                  <VisuallyHiddenInput
+                  <input
                     type='file'
                     onChange={handleImageInput}
-                    multiple
+                    style={{ display: 'none' }}
+                    accept='image/*'
                   />
                 </Button>
               </div>
@@ -225,7 +236,11 @@ export default function RegisterMedicine() {
                 }
               >
                 <p>Validade: </p>
-                {validityInput && <p>{validityInput?.format('L')}</p>}
+                {validityInput ? (
+                  <p>{validityInput?.format('L')}</p>
+                ) : (
+                  <p className={styles.no_value}>Relacionada ao lote</p>
+                )}
               </div>
             </div>
           </div>

@@ -7,6 +7,6 @@
         public decimal PrecoCusto { get; set; }
         public decimal PrecoVenda { get; set; }
         public int? FornecedorId { get; set; }
-        public byte[] Imagem { get; set; }
+        public byte[]? Imagem { get; set; }
     }
 }

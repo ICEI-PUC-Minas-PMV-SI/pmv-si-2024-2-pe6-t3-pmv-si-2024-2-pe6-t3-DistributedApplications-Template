@@ -4,4 +4,5 @@ export interface IMedicamento {
   precoCusto: number;
   precoVenda: number;
   fornecedorId: number;
+  imagem: string | null;
 }
