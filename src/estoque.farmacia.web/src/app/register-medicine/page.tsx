@@ -92,7 +92,6 @@ export default function RegisterMedicine() {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onloadend = () => {
-        // Get the base64 string without the data URL prefix
         const base64String = reader.result
           ? (reader.result as string).split(',')[1]
           : '';
@@ -110,12 +109,12 @@ export default function RegisterMedicine() {
 
     const formData = new FormData();
     formData.append('NomeComercial', nameInput);
-    formData.append('PrecoCusto', '0'); // Or whatever value you need
-    formData.append('PrecoVenda', '0'); // Or whatever value you need
+    formData.append('PrecoCusto', '0');
+    formData.append('PrecoVenda', '0');
     formData.append('FornecedorId', String(manufacturerInput));
 
     if (imageInput) {
-      formData.append('imagem', base64Image); // Append the file directly
+      formData.append('imagem', base64Image);
     }
 
     const newMedicineRes = await fetch(
