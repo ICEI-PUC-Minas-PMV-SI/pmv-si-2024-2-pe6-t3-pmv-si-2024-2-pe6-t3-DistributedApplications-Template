@@ -6,7 +6,7 @@ export interface ILote {
   entradas: null;
   id: number;
   medicamento: IMedicamento | null;
-  medicamentoId: number;
+  medicamentoId: number | null;
   quantidade: number;
   saidas: null;
 }

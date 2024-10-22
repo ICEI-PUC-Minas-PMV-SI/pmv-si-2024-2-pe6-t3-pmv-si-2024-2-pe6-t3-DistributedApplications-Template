@@ -145,6 +145,17 @@
         font-weight: 600;
         color: $white;
         padding: 1rem 1.5rem;
+        cursor: pointer;
+        transition: .25s ease-in-out;
+
+        &:disabled {
+          opacity: .75;
+          cursor: default;
+        }
+
+        &:hover {
+          opacity: .5;
+        }
       }
     }
   }

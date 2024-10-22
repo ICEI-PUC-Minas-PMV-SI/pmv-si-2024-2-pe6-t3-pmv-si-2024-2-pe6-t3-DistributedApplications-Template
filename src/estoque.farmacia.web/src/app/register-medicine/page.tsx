@@ -15,10 +15,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import Image from 'next/image';
 import { IFornecedor } from '@/utils/interfaces/IFornecedor';
 import { ILote } from '@/utils/interfaces/ILote';
+import { IMedicamento } from '@/utils/interfaces/IMedicamento';
 
 export default function RegisterMedicine() {
   const [nameInput, setNameInput] = useState<string>('');
   const [batchInput, setBatchInput] = useState<string>('');
+  const [activeBatch, setActiveBatch] = useState<ILote | null>(null);
   const [batches, setBatches] = useState<ILote[]>([]);
   const [manufacturerInput, setManufacturerInput] = useState<string>('');
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
@@ -29,6 +31,11 @@ export default function RegisterMedicine() {
   const [hasError, setHasError] = useState<boolean>(false);
 
   useEffect(() => {
+    loadBatches();
+    loadManufactures();
+  }, []);
+
+  const loadBatches = () => {
     fetch('https://localhost:7208/api/Lotes', {
       method: 'GET',
       headers: {
@@ -36,8 +43,13 @@ export default function RegisterMedicine() {
       },
     })
       .then((res) => res.json())
-      .then((data) => setBatches(data));
+      .then((data: ILote[]) =>
+        data.filter((item) => item.medicamentoId === null)
+      )
+      .then((batches) => setBatches(batches));
+  };
 
+  const loadManufactures = () => {
     fetch('https://localhost:7208/api/Fornecedores', {
       method: 'GET',
       headers: {
@@ -46,7 +58,7 @@ export default function RegisterMedicine() {
     })
       .then((res) => res.json())
       .then((data) => setManufactures(data));
-  }, []);
+  };
 
   const handleNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
@@ -59,8 +71,11 @@ export default function RegisterMedicine() {
     const newValue = event.target.value;
     if (newValue) {
       setBatchInput(newValue);
-      const currBatch = batches.find((item) => item.id === Number(batchInput));
-      console.log(currBatch);
+      const currBatch = batches.find((item) => item.id === Number(newValue));
+      if (currBatch) {
+        setActiveBatch(currBatch);
+        setValidityInput(dayjs(currBatch?.dataValidade));
+      }
     }
   };
 
@@ -130,9 +145,39 @@ export default function RegisterMedicine() {
       setShowNotification(true);
       throw new Error('Failed to POST new medicine');
     } else {
-      setHasError(false);
-      setShowNotification(true);
-      clearForm();
+      const newMedicine: IMedicamento = await newMedicineRes.json();
+
+      const newBatchData = {
+        dataFabricacao: activeBatch?.dataFabricacao,
+        dataValidade: activeBatch?.dataValidade,
+        entradas: null,
+        id: activeBatch?.id,
+        medicamento: null,
+        medicamentoId: newMedicine.id,
+        quantidade: activeBatch?.quantidade,
+        saidas: null,
+      };
+
+      const updateBatchRes = await fetch(
+        `https://localhost:7208/api/Lotes/${activeBatch?.id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newBatchData),
+        }
+      );
+      if (!updateBatchRes.ok) {
+        setHasError(true);
+        setShowNotification(true);
+        throw new Error('Failed to update Lote with new medicamentoId');
+      } else {
+        setHasError(false);
+        setShowNotification(true);
+        loadBatches();
+        clearForm();
+      }
     }
   };
 
@@ -140,7 +185,7 @@ export default function RegisterMedicine() {
     setNameInput('');
     setBatchInput('');
     setManufacturerInput('');
-    setValidityInput(dayjs());
+    setValidityInput(null);
     setImageInput(null);
   };
 
@@ -222,11 +267,11 @@ export default function RegisterMedicine() {
                   styles.register_medicine__medicine_preview_info_container
                 }
               >
-                <p>Fabricante: </p>
+                <p>Fornecedor: </p>
                 {manufacturerInput ? (
                   <p>{manufacturerInput}</p>
                 ) : (
-                  <p className={styles.no_value}>Selecione um fabricante</p>
+                  <p className={styles.no_value}>Selecione um fornecedor</p>
                 )}
               </div>
               <div
@@ -261,7 +306,7 @@ export default function RegisterMedicine() {
             >
               {batches.map((item, index) => (
                 <MenuItem value={item.id} key={index}>
-                  {item.id}
+                  Lote {item.id}
                 </MenuItem>
               ))}
             </TextField>
@@ -269,7 +314,7 @@ export default function RegisterMedicine() {
               select
               value={manufacturerInput}
               onChange={handleManufacturerInput}
-              label='Fabricante'
+              label='Fornecedor'
             >
               {manufactures.map((item, index) => (
                 <MenuItem value={item.id} key={index}>
@@ -278,11 +323,17 @@ export default function RegisterMedicine() {
               ))}
             </TextField>
             <DatePicker
+              disabled
               label='Controlled picker'
               value={validityInput}
-              onChange={(newValue: Dayjs | null) => setValidityInput(newValue)}
             />
             <button
+              disabled={
+                !nameInput ||
+                nameInput === '' ||
+                !batchInput ||
+                !manufacturerInput
+              }
               className={styles.register_medicine__medicine_form_submit_button}
             >
               Cadastrar
