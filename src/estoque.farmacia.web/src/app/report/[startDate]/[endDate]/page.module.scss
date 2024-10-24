@@ -1,0 +1,39 @@
+.report__container {
+  .report__header {
+    h2 {}
+
+    .report__header_stats {
+      .report__header_stats_item {
+        h3 {}
+
+        p {}
+      }
+    }
+  }
+
+  .report__list {
+    .report__list_item {
+      img {}
+
+      .report__list_item_info {
+        .report__list_item_info_block {
+          p {
+            &:nth-child(1) {}
+
+            &:nth-child(2) {}
+          }
+        }
+      }
+
+      .report__list_item_stats {
+        .report__list_item_stats_item {
+          h3 {}
+
+          p {}
+        }
+      }
+
+      button {}
+    }
+  }
+}
