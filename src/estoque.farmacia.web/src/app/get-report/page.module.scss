@@ -38,6 +38,15 @@
       font-size: 1rem;
       color: $white;
       padding: .5rem 3rem;
+      transition: .25s ease-in-out;
+
+      &:hover {
+        opacity: .75;
+      }
+
+      &:disabled {
+        opacity: .5;
+      }
     }
   }
 }
