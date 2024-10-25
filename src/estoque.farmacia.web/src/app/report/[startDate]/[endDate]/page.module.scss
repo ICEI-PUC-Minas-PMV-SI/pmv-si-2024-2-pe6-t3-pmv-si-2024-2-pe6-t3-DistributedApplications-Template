@@ -1,39 +1,244 @@
+@import '/src/assets/styles/variables';
+@import '/src/assets/styles/breakpoints';
+
 .report__container {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+
   .report__header {
-    h2 {}
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 1.5rem;
+
+    .report__header_title_container {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 15px;
+
+      h2 {
+        flex-grow: 1;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: $purple;
+        padding-bottom: 1rem;
+      }
+
+      button {
+        border: 2px solid $purple;
+        padding: .5rem 1rem;
+        transition: .25s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: .5;
+        }
+
+        &.save_button {
+          background-color: $purple;
+          border-radius: 10px;
+          color: $white;
+        }
+
+        &.back_button {
+          background-color: transparent;
+          border-radius: 10px;
+          color: $purple;
+        }
+
+        svg {
+          font-size: 1rem;
+          padding-right: .5rem;
+        }
+      }
+    }
 
     .report__header_stats {
-      .report__header_stats_item {
-        h3 {}
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      column-gap: 15px;
 
-        p {}
+      .report__header_search {
+        width: 50%;
+        flex-grow: 1;
+
+        .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl {
+          width: 100%;
+        }
+      }
+
+      .report__header_stats_item {
+        height: 3.5rem;
+        width: 7rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: $background_purple;
+        border: none;
+        border-radius: 10px;
+        padding: .5rem;
+
+        h3 {
+          font-size: .75rem;
+          font-weight: 500;
+          padding-bottom: .5rem;
+        }
+
+        p {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: $purple;
+        }
       }
     }
   }
 
   .report__list {
+    height: calc(100dvh - 10rem);
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding: 1.5rem;
+
     .report__list_item {
-      img {}
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      column-gap: 15px;
+      background-color: $background_purple;
+      border: none;
+      border-radius: 15px;
+      padding: 1.5rem;
+
+      img {
+        height: 100%;
+        width: 10rem;
+        object-fit: contain;
+        border-radius: 10px;
+      }
+
+      .reposrt__list_item_no_image {
+        height: 100%;
+        width: 10rem;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $white;
+        border: none;
+        border-radius: 10px;
+        padding: .5rem;
+
+        svg {
+          font-size: 2rem;
+          color: $dark_grey;
+        }
+
+        p {
+          font-size: 1rem;
+          font-weight: 700;
+          color: $dark_grey;
+          padding-top: .5rem;
+        }
+      }
 
       .report__list_item_info {
-        .report__list_item_info_block {
-          p {
-            &:nth-child(1) {}
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        flex-grow: 1;
 
-            &:nth-child(2) {}
+        .report__list_item_info_block {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          background-color: $dark_grey;
+          border: none;
+          border-radius: 10px;
+          padding: .5rem 1rem;
+
+          p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $white;
           }
         }
       }
 
       .report__list_item_stats {
-        .report__list_item_stats_item {
-          h3 {}
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        column-gap: 10px;
 
-          p {}
+        .report__list_item_stats_item {
+          height: 5rem;
+          width: 7rem;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          background-color: $white;
+          border: none;
+          border-radius: 10px;
+          padding: .5rem;
+
+          h3 {
+            font-size: .75rem;
+            font-weight: 500;
+            padding-bottom: .5rem;
+          }
+
+          p {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $purple;
+          }
         }
       }
 
-      button {}
+      button {
+        height: 5rem;
+        width: 5rem;
+        background-color: $purple;
+        border: none;
+        border-radius: 10px;
+        transition: .25s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: .5;
+        }
+
+        svg {
+          font-size: 1.25rem;
+          color: $white;
+        }
+      }
+    }
+
+    .report__list_no_item {
+      width: 100%;
+      padding: .5rem 0;
+      background-color: $light_grey;
+      border: none;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 700;
+      color: $dark_grey;
     }
   }
 }

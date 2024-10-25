@@ -3,10 +3,10 @@ import { IMedicamento } from './IMedicamento';
 export interface ILote {
   dataFabricacao: string;
   dataValidade: string;
-  entradas: null;
+  entradas: object[];
   id: number;
   medicamento: IMedicamento | null;
   medicamentoId: number | null;
   quantidade: number;
-  saidas: null;
+  saidas: object[];
 }

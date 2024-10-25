@@ -17,17 +17,15 @@ export default function GetReport() {
 
   const handleStartData = (value: Dayjs | null) => {
     if (value) {
-      const formatedNewValue = value.startOf('day');
-      setStartDate(formatedNewValue);
-      setStartDateFormated(formatedNewValue.format('l').replaceAll('/', '-'));
+      setStartDate(value);
+      setStartDateFormated(value.format('l').replaceAll('/', '-'));
     }
   };
 
   const handleEndData = (value: Dayjs | null) => {
     if (value) {
-      const formatedNewValue = value.endOf('day');
-      setEndtDate(formatedNewValue);
-      setEndtDateFormated(formatedNewValue.format('l').replaceAll('/', '-'));
+      setEndtDate(value);
+      setEndtDateFormated(value.format('l').replaceAll('/', '-'));
     }
   };
 
