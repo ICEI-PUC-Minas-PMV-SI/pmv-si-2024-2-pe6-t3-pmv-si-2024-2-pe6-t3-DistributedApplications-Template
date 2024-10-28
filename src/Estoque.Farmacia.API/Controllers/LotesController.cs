@@ -25,6 +25,8 @@ namespace Estoque.Farmacia.API.Controllers
         {
             return await _context.Lotes
                 .Include(l => l.Medicamento)
+                .Include(l => l.Entradas)
+                .Include(l => l.Saidas)
                 .ToListAsync();
         }
 
@@ -34,6 +36,8 @@ namespace Estoque.Farmacia.API.Controllers
         {
             var lote = await _context.Lotes
                 .Include(l => l.Medicamento)
+                .Include(l => l.Entradas)
+                .Include(l => l.Saidas)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (lote == null)

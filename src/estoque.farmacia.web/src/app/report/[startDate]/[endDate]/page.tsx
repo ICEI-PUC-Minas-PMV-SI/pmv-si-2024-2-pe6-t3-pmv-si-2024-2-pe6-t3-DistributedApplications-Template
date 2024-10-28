@@ -19,6 +19,7 @@ import {
   faPrint,
 } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
+import classNames from 'classnames';
 
 interface RouteParams {
   startDate: string;
@@ -177,15 +178,34 @@ export default function Report() {
                     <p>Sem imagem</p>
                   </div>
                 )}
+                <div
+                  className={classNames({
+                    [styles.report__list_item_info]: true,
+                    [styles.titles]: true,
+                  })}
+                >
+                  <div className={styles.report__list_item_info_block}>
+                    <p>Nome:</p>
+                  </div>
+                  <div className={styles.report__list_item_info_block}>
+                    <p>Lote:</p>
+                  </div>
+                  <div className={styles.report__list_item_info_block}>
+                    <p>Validade:</p>
+                  </div>
+                  <div className={styles.report__list_item_info_block}>
+                    <p>Fornecedor:</p>
+                  </div>
+                </div>
                 <div className={styles.report__list_item_info}>
                   <div className={styles.report__list_item_info_block}>
                     <p>{batch.medicamento?.nomeComercial}</p>
                   </div>
                   <div className={styles.report__list_item_info_block}>
-                    <p>Lote {batch.id}</p>
+                    <p>{batch.id}</p>
                   </div>
                   <div className={styles.report__list_item_info_block}>
-                    <p>Validade: {dayjs(batch.dataValidade)?.format('L')}</p>
+                    <p>{dayjs(batch.dataValidade)?.format('L')}</p>
                   </div>
                   <div className={styles.report__list_item_info_block}>
                     <p>

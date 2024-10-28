@@ -155,16 +155,16 @@
       }
 
       .report__list_item_info {
+        width: 15%;
         display: flex;
         flex-direction: column;
         row-gap: 10px;
-        flex-grow: 1;
 
         .report__list_item_info_block {
           display: flex;
           flex-direction: row;
-          justify-content: center;
-          background-color: $dark_grey;
+          justify-content: flex-start;
+          background-color: transparent;
           border: none;
           border-radius: 10px;
           padding: .5rem 1rem;
@@ -172,7 +172,15 @@
           p {
             font-size: 1rem;
             font-weight: 600;
-            color: $white;
+            color: $dark_grey;
+          }
+
+        }
+
+        &.titles {
+          p {
+            font-weight: 700;
+            color: $purple;
           }
         }
       }
