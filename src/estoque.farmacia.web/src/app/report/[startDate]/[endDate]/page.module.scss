@@ -6,6 +6,10 @@
   display: flex;
   flex-direction: column;
 
+  @media (max-width: $phone_breakpoint) {
+    height: auto;
+  }
+
   .report__header {
     height: 10rem;
     display: flex;
@@ -14,12 +18,23 @@
     align-items: flex-start;
     padding: 1.5rem;
 
+    @media (max-width: $phone_breakpoint) {
+      height: auto;
+    }
+
     .report__header_title_container {
       width: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
       column-gap: 15px;
+
+      @media (max-width: $phone_breakpoint) {
+        flex-direction: column;
+        align-items: stretch;
+        row-gap: 10px;
+        padding-bottom: 1rem;
+      }
 
       h2 {
         flex-grow: 1;
@@ -51,6 +66,10 @@
           color: $purple;
         }
 
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+        }
+
         svg {
           font-size: 1rem;
           padding-right: .5rem;
@@ -64,9 +83,19 @@
       flex-direction: row;
       column-gap: 15px;
 
+      @media (max-width: $phone_breakpoint) {
+        flex-wrap: wrap;
+        column-gap: 10px;
+      }
+
       .report__header_search {
         width: 50%;
         flex-grow: 1;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+          padding-bottom: 1rem;
+        }
 
         .MuiInputBase-root.MuiOutlinedInput-root.MuiInputBase-colorPrimary.MuiInputBase-formControl {
           width: 100%;
@@ -85,6 +114,10 @@
         border: none;
         border-radius: 10px;
         padding: .5rem;
+
+        @media (max-width: $phone_breakpoint) {
+          flex: 1 0 30%;
+        }
 
         h3 {
           font-size: .75rem;
@@ -110,6 +143,10 @@
     scrollbar-width: none;
     padding: 1.5rem;
 
+    @media (max-width: $phone_breakpoint) {
+      height: auto;
+    }
+
     .report__list_item {
       display: flex;
       flex-direction: row;
@@ -121,11 +158,24 @@
       border-radius: 15px;
       padding: 1.5rem;
 
+      @media (max-width: $phone_breakpoint) {
+        flex-wrap: wrap;
+        align-items: flex-start;
+
+        a {
+          width: 100%;
+        }
+      }
+
       img {
         height: 100%;
         width: 10rem;
         object-fit: contain;
         border-radius: 10px;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+        }
       }
 
       .reposrt__list_item_no_image {
@@ -140,6 +190,10 @@
         border: none;
         border-radius: 10px;
         padding: .5rem;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+        }
 
         svg {
           font-size: 2rem;
@@ -160,27 +214,27 @@
         flex-direction: column;
         row-gap: 10px;
 
-        .report__list_item_info_block {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-          background-color: transparent;
-          border: none;
-          border-radius: 10px;
-          padding: .5rem 1rem;
+        @media (max-width: $phone_breakpoint) {
+          flex: 1 0 40%;
+          padding: 1rem 0;
+        }
 
-          p {
-            font-size: 1rem;
-            font-weight: 600;
-            color: $dark_grey;
-          }
-
+        p {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $dark_grey;
         }
 
         &.titles {
           p {
             font-weight: 700;
             color: $purple;
+          }
+        }
+
+        &:not(.titles) {
+          p {
+            text-align: end;
           }
         }
       }
@@ -190,6 +244,18 @@
         flex-direction: row;
         justify-content: space-between;
         column-gap: 10px;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+          flex-direction: column;
+          row-gap: 10px;
+          padding-bottom: 1rem;
+        }
+
+        @media (min-width: $phone_breakpoint) and (max-width: $tablet_breakpoint) {
+          flex-direction: column;
+          row-gap: 10px;
+        }
 
         .report__list_item_stats_item {
           height: 5rem;
@@ -203,6 +269,17 @@
           border: none;
           border-radius: 10px;
           padding: .5rem;
+
+          @media (max-width: $phone_breakpoint) {
+            height: auto;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+
+          @media (min-width: $phone_breakpoint) and (max-width: $tablet_breakpoint) {
+            height: auto;
+          }
 
           h3 {
             font-size: .75rem;
@@ -229,6 +306,12 @@
 
         &:hover {
           opacity: .5;
+        }
+
+        @media (max-width: $phone_breakpoint) {
+          height: auto;
+          width: 100%;
+          padding: 1rem 0;
         }
 
         svg {

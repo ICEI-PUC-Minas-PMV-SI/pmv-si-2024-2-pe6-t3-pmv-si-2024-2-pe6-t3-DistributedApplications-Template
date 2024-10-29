@@ -67,7 +67,7 @@ export default function Report() {
       .then((filteredData) => {
         setBatches(filteredData);
         setInitialBatches(filteredData);
-        loadStats(batches);
+        loadStats(filteredData);
       });
   };
 
@@ -83,10 +83,17 @@ export default function Report() {
   };
 
   const loadStats = (list: ILote[]) => {
-    list.map((item) => {
-      if (item.entradas) setEntradas(entradas + item.entradas.length);
-      if (item.saidas) setSaidas(saidas + item.saidas.length);
-    });
+    const countEntradas = list.reduce(
+      (total, item) => total + item.entradas.length,
+      0
+    );
+    const countSaidas = list.reduce(
+      (total, item) => total + item.saidas.length,
+      0
+    );
+
+    setEntradas(countEntradas);
+    setSaidas(countSaidas);
   };
 
   const handleSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,11 +113,12 @@ export default function Report() {
     const newList = initialBatches.filter(
       (item) =>
         item.medicamento &&
-        item.medicamento.nomeComercial.toLowerCase().indexOf(lowerText) > -1
+        (item.medicamento.nomeComercial.toLowerCase().indexOf(lowerText) > -1 ||
+          item.id.toString().indexOf(lowerText) > -1)
     );
 
     setBatches(newList);
-    loadStats(batches);
+    loadStats(newList);
   };
 
   return (
@@ -184,39 +192,22 @@ export default function Report() {
                     [styles.titles]: true,
                   })}
                 >
-                  <div className={styles.report__list_item_info_block}>
-                    <p>Nome:</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>Lote:</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>Validade:</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>Fornecedor:</p>
-                  </div>
+                  <p>Nome:</p>
+                  <p>Lote:</p>
+                  <p>Validade:</p>
+                  <p>Fornecedor:</p>
                 </div>
                 <div className={styles.report__list_item_info}>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>{batch.medicamento?.nomeComercial}</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>{batch.id}</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>{dayjs(batch.dataValidade)?.format('L')}</p>
-                  </div>
-                  <div className={styles.report__list_item_info_block}>
-                    <p>
-                      {batch.medicamento?.fornecedorId
-                        ? manufactures.find(
-                            (item) =>
-                              item.id === batch.medicamento?.fornecedorId
-                          )?.nomeFantasia
-                        : 'Fornecedor não encontrado'}
-                    </p>
-                  </div>
+                  <p>{batch.medicamento?.nomeComercial}</p>
+                  <p>{batch.id}</p>
+                  <p>{dayjs(batch.dataValidade)?.format('L')}</p>
+                  <p>
+                    {batch.medicamento?.fornecedorId
+                      ? manufactures.find(
+                          (item) => item.id === batch.medicamento?.fornecedorId
+                        )?.nomeFantasia
+                      : 'Fornecedor não encontrado'}
+                  </p>
                 </div>
                 <div className={styles.report__list_item_stats}>
                   <div className={styles.report__list_item_stats_item}>
