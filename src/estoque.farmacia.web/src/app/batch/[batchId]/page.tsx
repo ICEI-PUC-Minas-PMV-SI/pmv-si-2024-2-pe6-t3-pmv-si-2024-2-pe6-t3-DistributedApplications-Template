@@ -4,9 +4,20 @@ import { IEntrada } from '@/utils/interfaces/IEntrada';
 import styles from './page.module.scss';
 import { IFornecedor } from '@/utils/interfaces/IFornecedor';
 import { ILote } from '@/utils/interfaces/ILote';
-import { faImage, faSave } from '@fortawesome/free-solid-svg-icons';
+import {
+  faAnglesDown,
+  faAnglesUp,
+  faChevronDown,
+  faImage,
+  faSave,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { TextField } from '@mui/material';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  TextField,
+} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
@@ -19,17 +30,45 @@ interface BatchRouteParams {
   batchId: string;
 }
 
+interface UpdateBatchProps {
+  type: BatchType;
+  data: IEntrada | ISaida;
+  quantidade: number;
+}
+
+enum BatchType {
+  ENTRADA,
+  SAIDA,
+}
+
 export default function Batch() {
   const { batchId } = useParams() as unknown as BatchRouteParams;
   const [batch, setBatch] = useState<ILote | null>(null);
-  const [batchQuantity, setBatchQuantity] = useState<number>(0);
   const [manufacturer, setManufacturer] = useState<IFornecedor | null>(null);
   const [entradas, setEntradas] = useState<number>(0);
   const [saidas, setSaidas] = useState<number>(0);
+  const [saidasError, setSaidasError] = useState<boolean>(false);
+  const [updateBatchObj, setUpdateBatchObj] = useState<UpdateBatchProps | null>(
+    null
+  );
 
   useEffect(() => {
     loadBatch();
   }, []);
+
+  useEffect(() => {
+    if (updateBatchObj && updateBatchObj?.type === 0) {
+      updateBatch({
+        newEntrada: updateBatchObj.data as IEntrada,
+        quantidade: updateBatchObj.quantidade,
+      });
+    } else if (updateBatchObj && updateBatchObj.type === 1) {
+      updateBatch({
+        newSaida: updateBatchObj.data as ISaida,
+        quantidade: updateBatchObj.quantidade,
+      });
+    }
+  }, [updateBatchObj]);
 
   const loadBatch = () => {
     fetch(`https://localhost:7208/api/Lotes/${batchId}`, {
@@ -41,7 +80,6 @@ export default function Batch() {
       .then((res) => res.json())
       .then((batch: ILote) => {
         setBatch(batch);
-        setBatchQuantity(batch.quantidade);
         if (batch.medicamento?.fornecedorId) {
           loadManufacturer(batch.medicamento?.fornecedorId);
         } else {
@@ -68,6 +106,11 @@ export default function Batch() {
 
   const handleSaidas = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(event.target.value);
+    if (batch?.quantidade && newValue > batch?.quantidade) {
+      setSaidasError(true);
+    } else {
+      setSaidasError(false);
+    }
     setSaidas(newValue);
   };
 
@@ -78,10 +121,11 @@ export default function Batch() {
       dataEntrada: dayjs().toDate(),
     };
 
-    if (batch?.quantidade) {
-      setBatchQuantity(batch.quantidade + entradas);
+    let quantidade = batch?.quantidade;
+    if (!quantidade) {
+      quantidade = entradas;
     } else {
-      setBatchQuantity(entradas);
+      quantidade += entradas;
     }
 
     fetch('https://localhost:7208/api/Entradas', {
@@ -93,9 +137,11 @@ export default function Batch() {
     })
       .then((res) => res.json())
       .then((newEntrada: IEntrada) => {
-        console.log(batch);
-
-        updateBatch({ newEntrada: newEntrada });
+        setUpdateBatchObj({
+          type: BatchType.ENTRADA,
+          data: newEntrada,
+          quantidade: quantidade,
+        });
       });
   };
 
@@ -106,6 +152,13 @@ export default function Batch() {
       dataSaida: dayjs().toDate(),
     };
 
+    let quantidade = batch?.quantidade;
+    if (!quantidade) {
+      quantidade = saidas;
+    } else {
+      quantidade -= saidas;
+    }
+
     fetch('https://localhost:7208/api/Saidas', {
       method: 'POST',
       headers: {
@@ -115,29 +168,23 @@ export default function Batch() {
     })
       .then((res) => res.json())
       .then((newSaida: ISaida) => {
-        setBatch((prev) => {
-          if (!prev) return null;
-          return {
-            dataFabricacao: prev.dataFabricacao,
-            dataValidade: prev.dataValidade,
-            entradas: prev.entradas,
-            id: prev.id,
-            medicamento: prev.medicamento,
-            medicamentoId: prev.medicamentoId,
-            quantidade: prev.quantidade - saidas,
-            saidas: prev.saidas,
-          };
+        setUpdateBatchObj({
+          type: BatchType.SAIDA,
+          data: newSaida,
+          quantidade: quantidade,
         });
-        updateBatch({ newSaida: newSaida });
       });
   };
 
   interface updateBatchParams {
     newEntrada?: IEntrada;
     newSaida?: ISaida;
+    quantidade: number;
   }
 
   const updateBatch = async (params: updateBatchParams) => {
+    console.log(params);
+
     if (batch) {
       let newEntradas: IEntrada[] = [];
       if (batch.entradas) newEntradas = batch.entradas;
@@ -154,7 +201,7 @@ export default function Batch() {
         id: batch?.id,
         medicamento: batch.medicamento,
         medicamentoId: batch.medicamentoId,
-        quantidade: batchQuantity,
+        quantidade: params.quantidade,
         saidas: newSaidas,
       };
 
@@ -225,7 +272,7 @@ export default function Batch() {
             </div>
             <div className={styles.batch__preview_quantity}>
               <p>Quantidade em estoque</p>
-              <h4>{batchQuantity}</h4>
+              <h4>{batch?.quantidade}</h4>
             </div>
           </div>
         </div>
@@ -243,6 +290,7 @@ export default function Batch() {
                 variant='outlined'
                 type='number'
                 InputProps={{ inputProps: { min: 0 } }}
+                className={styles.batch__preview_info_block_input}
               />
               <button onClick={addNewEntrada} disabled={!entradas}>
                 Adicionar
@@ -252,16 +300,79 @@ export default function Batch() {
               <TextField
                 value={saidas}
                 onInput={handleSaidas}
+                disabled={batch?.quantidade === 0}
+                error={saidasError}
+                helperText={
+                  saidasError
+                    ? 'A quantidade de retirada não pode exceder a quantidade em estoque'
+                    : ''
+                }
                 label='Saídas'
                 variant='outlined'
                 type='number'
                 InputProps={{ inputProps: { min: 0 } }}
+                className={styles.batch__preview_info_block_input}
               />
-              <button onClick={addNewSaida} disabled={!saidas}>
+              <button
+                onClick={addNewSaida}
+                disabled={!saidas || saidasError || batch?.quantidade === 0}
+              >
                 Remover
               </button>
             </div>
           </div>
+        </div>
+        <div className={styles.batch__data_container}>
+          <Accordion className={styles.batch__data_block} defaultExpanded>
+            <AccordionSummary
+              expandIcon={<FontAwesomeIcon icon={faChevronDown} />}
+              aria-controls='panel1-content'
+              id='panel1-header'
+            >
+              <h4>Entradas</h4>
+            </AccordionSummary>
+            <AccordionDetails className={styles.batch__data_block_list}>
+              {batch?.entradas ? (
+                batch.entradas.map((entrada, index) => (
+                  <div className={styles.batch__data_item} key={index}>
+                    <p className={styles.entrada}>
+                      <FontAwesomeIcon icon={faAnglesDown} />
+                      Quantidade: {entrada.quantidadeRecebida}
+                    </p>
+                    <p>{dayjs(entrada.dataEntrada).format(`L`)}</p>
+                  </div>
+                ))
+              ) : (
+                <p className={styles.no_item_block}>
+                  Nenhuma entrada cadastrada
+                </p>
+              )}
+            </AccordionDetails>
+          </Accordion>
+          <Accordion className={styles.batch__data_block} defaultExpanded>
+            <AccordionSummary
+              expandIcon={<FontAwesomeIcon icon={faChevronDown} />}
+              aria-controls='panel2-content'
+              id='panel2-header'
+            >
+              <h4>Saídas</h4>
+            </AccordionSummary>
+            <AccordionDetails className={styles.batch__data_block_list}>
+              {batch?.saidas ? (
+                batch.saidas.map((saida, index) => (
+                  <div className={styles.batch__data_item} key={index}>
+                    <p className={styles.saida}>
+                      <FontAwesomeIcon icon={faAnglesUp} />
+                      Quantidade: {saida.quantidadeSaida}
+                    </p>
+                    <p>{dayjs(saida.dataSaida).format(`L`)}</p>
+                  </div>
+                ))
+              ) : (
+                <p className={styles.no_item_block}>Nenhuma saída cadastrada</p>
+              )}
+            </AccordionDetails>
+          </Accordion>
         </div>
       </section>
     </LocalizationProvider>
