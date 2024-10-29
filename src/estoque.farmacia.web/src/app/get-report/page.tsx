@@ -38,11 +38,13 @@ export default function GetReport() {
             label='Data inicial'
             value={startDate}
             onChange={handleStartData}
+            className={styles.register_report__dates_item}
           />
           <DatePicker
             label='Data final'
             value={endDate}
             onChange={handleEndData}
+            className={styles.register_report__dates_item}
           />
         </div>
         <div className={styles.register_report__submit_container}>
