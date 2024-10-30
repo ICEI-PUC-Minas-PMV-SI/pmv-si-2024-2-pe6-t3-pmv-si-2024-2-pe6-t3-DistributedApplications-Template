@@ -5,7 +5,8 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 export default function GetReport() {
   const [startDate, setStartDate] = useState<Dayjs | null>(null);
@@ -14,6 +15,19 @@ export default function GetReport() {
   );
   const [endDate, setEndtDate] = useState<Dayjs | null>(null);
   const [endDateFormated, setEndtDateFormated] = useState<string | null>(null);
+
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+      router.push('/login');
+    }
+  }, []);
 
   const handleStartData = (value: Dayjs | null) => {
     if (value) {

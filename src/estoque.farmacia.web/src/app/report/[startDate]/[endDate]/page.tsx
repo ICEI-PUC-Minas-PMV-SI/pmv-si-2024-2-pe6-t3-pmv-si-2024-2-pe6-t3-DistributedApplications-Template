@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss';
 import { ILote } from '@/utils/interfaces/ILote';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import isBetween from 'dayjs/plugin/isBetween';
 import dayjs, { Dayjs } from 'dayjs';
@@ -37,13 +37,21 @@ export default function Report() {
   const [saidas, setSaidas] = useState<number>(0);
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    setStartDateState(dayjs(startDate).startOf('day'));
-    setEndDateState(dayjs(endDate).endOf('day'));
-
-    loadBatches();
-    loadManufactures();
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus) {
+      setIsAuthenticated(true);
+      setStartDateState(dayjs(startDate).startOf('day'));
+      setEndDateState(dayjs(endDate).endOf('day'));
+      loadBatches();
+      loadManufactures();
+    } else {
+      setIsAuthenticated(false);
+      router.push('/login');
+    }
   }, []);
 
   const loadBatches = () => {

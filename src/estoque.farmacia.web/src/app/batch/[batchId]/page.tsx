@@ -22,7 +22,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { ISaida } from '@/utils/interfaces/ISaida';
 
@@ -51,9 +51,18 @@ export default function Batch() {
   const [updateBatchObj, setUpdateBatchObj] = useState<UpdateBatchProps | null>(
     null
   );
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    loadBatch();
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus) {
+      setIsAuthenticated(true);
+      loadBatch();
+    } else {
+      setIsAuthenticated(false);
+      router.push('/login');
+    }
   }, []);
 
   useEffect(() => {
