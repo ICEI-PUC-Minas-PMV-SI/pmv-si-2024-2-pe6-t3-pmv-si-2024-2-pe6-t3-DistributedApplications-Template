@@ -2,11 +2,7 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './page.module.scss';
-import {
-  faFileArrowUp,
-  faSave,
-  faTrashCan,
-} from '@fortawesome/free-solid-svg-icons';
+import { faFileArrowUp, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import React, { useEffect, useState } from 'react';
 import { TextField, MenuItem, Button, Alert, Snackbar } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
@@ -201,9 +197,6 @@ export default function RegisterMedicine() {
       <section className={styles.register_medicine__container}>
         <div className={styles.register_medicine__header}>
           <h2>Cadastrar um novo medicamento</h2>
-          <button>
-            <FontAwesomeIcon icon={faSave} />
-          </button>
         </div>
         <div className={styles.register_medicine__content}>
           <div className={styles.register_medicine__medicine_preview}>
@@ -309,6 +302,8 @@ export default function RegisterMedicine() {
               select
               value={batchInput}
               onChange={handleBatchInput}
+              disabled={batches.length <= 0}
+              helperText={batchInput.length <= 0 && 'Nenhum lote disponível'}
               label='Lote'
             >
               {batches.map((item, index) => (
@@ -331,7 +326,7 @@ export default function RegisterMedicine() {
             </TextField>
             <DatePicker
               disabled
-              label='Controlled picker'
+              label='Data de validade'
               value={validityInput}
             />
             <button

@@ -8,18 +8,28 @@
   justify-content: flex-start;
   background-color: $white;
 
+  @media (max-width: $phone_breakpoint) {
+    height: auto;
+    overflow: auto;
+  }
+
   .register_medicine__header {
     height: 5rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
+    padding: 1.5rem 1.5rem 0;
+
+    @media (max-width: $phone_breakpoint) {
+      height: auto;
+      padding: 1.5rem 1.5rem 0;
+    }
 
     h2 {
       font-size: 1.75rem;
       font-weight: 500;
       color: $purple;
+
+      @media (max-width: $phone_breakpoint) {
+        text-align: center;
+      }
     }
 
     button {
@@ -36,12 +46,18 @@
   }
 
   .register_medicine__content {
-    height: calc(100dvh - 5rem);
+    height: calc(100dvh - 10rem);
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem;
+
+    @media (max-width: $phone_breakpoint) {
+      height: auto;
+      flex-direction: column;
+      padding: 1.5rem;
+    }
 
     .register_medicine__medicine_preview {
       width: 50%;
@@ -52,12 +68,22 @@
       border-radius: 15px;
       background-color: $light_grey;
 
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+        flex-direction: column;
+        padding: 1rem 0;
+      }
+
       .register_medicine__image_picker_container {
         width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+        }
 
         img {
           height: auto;
@@ -80,6 +106,10 @@
         flex-direction: column;
         justify-content: center;
         padding: 1rem;
+
+        @media (max-width: $phone_breakpoint) {
+          width: 100%;
+        }
 
         .register_medicine__medicine_preview_info_container {
           display: flex;
@@ -126,15 +156,23 @@
     }
 
     .register_medicine__medicine_form {
+      height: 100%;
       width: 50%;
       display: flex;
+      box-sizing: border-box;
       flex-direction: column;
       justify-content: space-around;
       align-items: stretch;
+      row-gap: 10px;
       border: none;
       border-radius: 15px;
       background-color: $light_grey;
       padding: 1rem;
+      overflow: auto;
+
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+      }
 
       .register_medicine__medicine_form_submit_button {
         align-self: center;
