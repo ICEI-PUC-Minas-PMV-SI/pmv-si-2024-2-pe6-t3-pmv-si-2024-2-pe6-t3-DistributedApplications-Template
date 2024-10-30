@@ -30,17 +30,14 @@ export default function RegisterMedicine() {
   const [base64Image, setBase64Image] = useState<string>('');
   const [showNotification, setShowNotification] = useState<boolean>(false);
   const [hasError, setHasError] = useState<boolean>(false);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus) {
-      setIsAuthenticated(true);
       loadBatches();
       loadManufactures();
     } else {
-      setIsAuthenticated(false);
       router.push('/login');
     }
   }, []);

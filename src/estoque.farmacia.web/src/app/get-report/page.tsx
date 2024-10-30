@@ -15,16 +15,11 @@ export default function GetReport() {
   );
   const [endDate, setEndtDate] = useState<Dayjs | null>(null);
   const [endDateFormated, setEndtDateFormated] = useState<string | null>(null);
-
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
-    if (authStatus) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
+    if (!authStatus) {
       router.push('/login');
     }
   }, []);

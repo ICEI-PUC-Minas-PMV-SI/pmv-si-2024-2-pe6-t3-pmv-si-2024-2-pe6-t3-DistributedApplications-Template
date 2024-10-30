@@ -51,16 +51,13 @@ export default function Batch() {
   const [updateBatchObj, setUpdateBatchObj] = useState<UpdateBatchProps | null>(
     null
   );
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus) {
-      setIsAuthenticated(true);
       loadBatch();
     } else {
-      setIsAuthenticated(false);
       router.push('/login');
     }
   }, []);

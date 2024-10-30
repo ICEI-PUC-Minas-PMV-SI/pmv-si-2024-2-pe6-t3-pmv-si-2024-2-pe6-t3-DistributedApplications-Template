@@ -13,15 +13,10 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import {
-  faChevronLeft,
-  faEye,
-  faEyeSlash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 
 export default function Register() {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [userName, setUserName] = useState<string>('');
   const [userPassword, setUserPassword] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -31,10 +26,7 @@ export default function Register() {
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
-    if (authStatus) {
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
+    if (!authStatus) {
       router.push('/login');
     }
   }, []);
@@ -74,29 +66,28 @@ export default function Register() {
   const handleFormSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    try {
-      if (
-        userName === null ||
-        userName === '' ||
-        userPassword === null ||
-        userPassword === ''
-      ) {
-        throw new Error('User must contain name and password');
-      } else {
-        const useData = {
-          username: userName,
-          password: userPassword,
-        };
+    const newUser = {
+      nomeUsuario: userName,
+      senha: userPassword,
+    };
 
-        console.log(useData);
+    fetch('https://localhost:7208/api/Usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newUser),
+    })
+      .then(() => {
         handleHasNotError();
         handleShowNotification();
         clearForm();
-      }
-    } catch {
-      handleHasError();
-      handleShowNotification();
-    }
+      })
+      .catch((error) => {
+        console.error(error);
+        handleHasError();
+        handleShowNotification();
+      });
   };
 
   const clearForm = () => {

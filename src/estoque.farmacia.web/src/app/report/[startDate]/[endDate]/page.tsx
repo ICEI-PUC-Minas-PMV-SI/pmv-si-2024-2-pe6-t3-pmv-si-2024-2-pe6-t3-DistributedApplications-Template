@@ -37,19 +37,16 @@ export default function Report() {
   const [saidas, setSaidas] = useState<number>(0);
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
     if (authStatus) {
-      setIsAuthenticated(true);
       setStartDateState(dayjs(startDate).startOf('day'));
       setEndDateState(dayjs(endDate).endOf('day'));
       loadBatches();
       loadManufactures();
     } else {
-      setIsAuthenticated(false);
       router.push('/login');
     }
   }, []);
