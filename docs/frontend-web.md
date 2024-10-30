@@ -26,7 +26,7 @@
 
 ![Criar Conta](https://github.com/user-attachments/assets/c46e753e-dc88-4f12-bf30-4acabd6d9958)
 
-![Encontrar um Produto](https://github.com/user-attachments/assets/d68c7a4b-2b18-4a75-871e-0c1ffc58b25e)
+![Encontrar um Produto](https://github.com/user-attachments/assets/68d9da19-c334-4ae4-b26e-ef27f423309f)
 
 ![Editar Produto](https://github.com/user-attachments/assets/30c1f3bb-6198-4b85-ad9e-01e5ac65bc11)
 
