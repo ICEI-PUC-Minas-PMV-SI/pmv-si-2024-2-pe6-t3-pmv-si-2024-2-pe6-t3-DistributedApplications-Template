@@ -16,10 +16,58 @@
 [Descreva o projeto da interface Web da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
 
 ### Wireframes
-[Inclua os wireframes das páginas principais da interface, mostrando a disposição dos elementos na página.]
+
+![Entrar](https://github.com/user-attachments/assets/191dca1f-53c8-4b89-ad57-25819b6a61dd)
+
+![Criar Conta](https://github.com/user-attachments/assets/c46e753e-dc88-4f12-bf30-4acabd6d9958)
+
+![Encontrar um Produto](https://github.com/user-attachments/assets/d68c7a4b-2b18-4a75-871e-0c1ffc58b25e)
+
+![Editar Produto](https://github.com/user-attachments/assets/30c1f3bb-6198-4b85-ad9e-01e5ac65bc11)
+
+![Cadastrar um Produto](https://github.com/user-attachments/assets/f81ee28c-8a09-4572-b176-6b944144374f)
+
+![Gerar um Relatório](https://github.com/user-attachments/assets/d8e305d4-9713-4129-99b5-ec20f84dbf24)
+
+![Relatório Menu](https://github.com/user-attachments/assets/607429f8-01fe-4c04-9077-d95436404826)
+
+![Editar Entrada e Saida](https://github.com/user-attachments/assets/2ed30a31-fccb-42ab-bb2f-0d0191225b79)
+
 
 ### Design Visual
-[Descreva o estilo visual da interface, incluindo paleta de cores, tipografia, ícones e outros elementos gráficos.]
+
+#### Paleta de Cores
+
+##### Cores Predominantes:
+- **#E2E7FF**: Uma tonalidade suave de azul que transmite serenidade e modernidade.
+- **#FFFFFF**: Branco, usado para criar um fundo limpo e leve, proporcionando um contraste agradável com o azul claro.
+- **#583FFF**: Uma tonalidade de azul com roxo, utilizado para botões, conferindo um destaque vibrante e atraente.
+
+#### Tipografia
+
+##### Fonte Principal:
+- **Comfortaa**: Utilizada para títulos e elementos de destaque, oferecendo um estilo arredondado e amigável.
+
+##### Fonte Secundária:
+- **Roboto**: Usada para o texto do corpo, garantindo legibilidade e um toque contemporâneo.
+
+##### Estilo:
+- **Tamanhos:**
+  - Títulos em tamanhos maiores e com peso mais forte para destaque.
+  - Texto do corpo em tamanhos médios, facilitando a leitura.
+  
+- **Espaçamento**: Margens generosas entre parágrafos e elementos para manter a clareza.
+
+#### Ícones
+
+##### Estilo:
+- Ícones com um design minimalista que se alinham ao restante da interface.
+- Preferência por ícones lineares ou preenchidos com cores sutis, como branco ou azul claro, que harmonizam com a paleta de cores.
+
+##### Tamanho:
+- Ícones proporcionais ao texto, garantindo que sejam visíveis e intuitivos sem sobrecarregar a interface.
+
+
 
 ### Layout Responsivo
 [Discuta como a interface será adaptada para diferentes tamanhos de tela e dispositivos.]
