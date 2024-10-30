@@ -11,7 +11,6 @@ import {
   InputLabel,
   Snackbar,
 } from '@mui/material';
-import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
@@ -97,18 +96,9 @@ export default function Register() {
 
   return (
     <section className={styles.register__container}>
-      <div className={styles.register__logo_container}>
-        <Image
-          src='/imgs/logo.png'
-          height={0}
-          width={0}
-          unoptimized
-          alt='Logo da Farmácia saúde'
-        />
-      </div>
       <div className={styles.register__form_container}>
         <form onSubmit={handleFormSubmit}>
-          <h2>Criar Conta</h2>
+          <h2>Criar usuário</h2>
           <FormControl className={styles.register__input} variant='filled'>
             <InputLabel htmlFor='filled-adornment-password'>
               Nome de usuário

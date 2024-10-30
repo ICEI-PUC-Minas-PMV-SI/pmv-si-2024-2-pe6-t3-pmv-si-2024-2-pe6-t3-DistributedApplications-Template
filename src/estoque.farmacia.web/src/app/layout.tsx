@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import PageHandler from '@/components/PageHandler/PageHandler';
 
 export const metadata: Metadata = {
   title: 'Controle de Estoque de Farmácria',
@@ -14,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='pt-br'>
-      <body>{children}</body>
+      <body>
+        <PageHandler>{children}</PageHandler>
+      </body>
     </html>
   );
 }

@@ -1,9 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import ProductCard from "../../components/ProductCard/ProductCard";
-import SearchAndFilterBar from "../../components/SearchAndFilter/SearchAndFilter";
-import Pagination from "../../components/Pagination/Pagination";
+import ProductCard from '../../components/ProductCard/ProductCard';
+import SearchAndFilterBar from '../../components/SearchAndFilter/SearchAndFilter';
+import Pagination from '../../components/Pagination/Pagination';
 import './page.css';
 
 interface Product {
@@ -15,13 +15,13 @@ interface Product {
   image: string | null;
 }
 
-export default function ProdutosPage() {
+export default function Medicines() {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(10);
-  const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const router = useRouter();
@@ -40,7 +40,7 @@ export default function ProdutosPage() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch("https://localhost:7208/api/Medicamentos");
+      const response = await fetch('https://localhost:7208/api/Medicamentos');
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
       }
@@ -58,7 +58,7 @@ export default function ProdutosPage() {
       setProducts(formattedProducts);
       setFilteredProducts(formattedProducts);
     } catch (error) {
-      console.error("Erro ao buscar produtos:", error);
+      console.error('Erro ao buscar produtos:', error);
     } finally {
       setLoading(false);
     }
@@ -67,16 +67,23 @@ export default function ProdutosPage() {
   const handleDelete = async (id: number) => {
     setLoading(true);
     try {
-      const response = await fetch(`https://localhost:7208/api/Medicamentos/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://localhost:7208/api/Medicamentos/${id}`,
+        {
+          method: 'DELETE',
+        }
+      );
       if (!response.ok) {
         throw new Error(`Erro ao deletar produto! Status: ${response.status}`);
       }
-      setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
-      setFilteredProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      );
+      setFilteredProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      );
     } catch (error) {
-      console.error("Erro ao deletar produto:", error);
+      console.error('Erro ao deletar produto:', error);
     } finally {
       setLoading(false);
     }
@@ -88,8 +95,8 @@ export default function ProdutosPage() {
 
   useEffect(() => {
     const sortedProducts = [...products].sort((a, b) => {
-      if (filter === "asc") return a.name.localeCompare(b.name);
-      if (filter === "desc") return b.name.localeCompare(a.name);
+      if (filter === 'asc') return a.name.localeCompare(b.name);
+      if (filter === 'desc') return b.name.localeCompare(a.name);
       return 0;
     });
 
@@ -114,12 +121,12 @@ export default function ProdutosPage() {
   }
 
   return (
-    <div className="page-container">
-      <h1 className="product-title">Produtos</h1>
+    <div className='page-container'>
+      <h1 className='product-title'>Medicamentos</h1>
       <SearchAndFilterBar onSearch={setSearch} onFilter={setFilter} />
 
       {loading ? (
-        <div className="loading">Carregando...</div> 
+        <div className='loading'>Carregando...</div>
       ) : filteredProducts.length > 0 ? (
         <div>
           {currentProducts.map((product) => (
@@ -140,7 +147,7 @@ export default function ProdutosPage() {
           )}
         </div>
       ) : (
-        <div className="no-products">
+        <div className='no-products'>
           <p>Produto não encontrado.</p>
         </div>
       )}

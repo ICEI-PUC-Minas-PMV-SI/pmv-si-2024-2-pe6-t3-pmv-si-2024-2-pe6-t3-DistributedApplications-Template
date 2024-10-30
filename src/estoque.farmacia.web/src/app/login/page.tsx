@@ -72,7 +72,7 @@ export default function Login() {
       handleShowNotification(false);
 
       setTimeout(() => {
-        router.push('/products');
+        router.push('/medicines');
       }, 1000);
     } catch (error) {
       console.error('Erro de autenticação:', error);

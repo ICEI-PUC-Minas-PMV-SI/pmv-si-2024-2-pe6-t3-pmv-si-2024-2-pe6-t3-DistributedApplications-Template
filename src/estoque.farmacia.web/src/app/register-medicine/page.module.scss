@@ -2,7 +2,7 @@
 @import '/src/assets/styles/breakpoints';
 
 .register_medicine__container {
-  height: 100dvh;
+  height: calc(100dvh - 5rem);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
