@@ -55,8 +55,7 @@ A API de Estoque de Farmácia segue a arquitetura monilitica, promovendo a integ
 | -------------- | ---------------------------------- | ------------ | -------------- | ----------------- |
 | Id             | Identificador único do medicamento | int          | Sim            |                   |
 | NomeComercial  | Nome comercial do medicamento      | string       |                |                   |
-| PrecoCusto     | Preço de custo do medicamento      | decimal      |                |                   |
-| PrecoVenda     | Preço de venda do medicamento      | decimal      |                |                   |
+| Fabricante     | Nome do fabricante                 | string       |                |                   |
 | FornecedorId   | ID do Fornecedor do medicamento    | int          |                | Sim               |
 
 **Lote:**
