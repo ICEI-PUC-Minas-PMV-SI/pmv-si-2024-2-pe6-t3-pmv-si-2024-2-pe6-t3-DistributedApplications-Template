@@ -21,7 +21,18 @@
     justify-content: center;
     align-items: center;
     column-gap: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
+
+    @media (max-width: $phone_breakpoint) {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    .register_report__dates_item {
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+      }
+    }
   }
 
   .register_report__submit_container {
@@ -29,6 +40,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1.5rem;
+
+    @media (max-width: $phone_breakpoint) {
+      a {
+        width: 100%;
+      }
+    }
 
     button {
       align-self: center;
@@ -38,6 +56,20 @@
       font-size: 1rem;
       color: $white;
       padding: .5rem 3rem;
+      transition: .25s ease-in-out;
+
+      &:hover {
+        opacity: .75;
+      }
+
+      &:disabled {
+        opacity: .5;
+      }
+
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+        padding: 1rem 0;
+      }
     }
   }
 }
