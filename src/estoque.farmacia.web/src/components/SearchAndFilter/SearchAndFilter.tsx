@@ -1,25 +1,28 @@
-"use client";
+'use client';
 import { Dispatch, SetStateAction, useState } from 'react';
-import styles from './SearchAndFilterBar.module.css';
+import styles from './SearchAndFilterBar.module.scss';
 
 interface SearchAndFilterBarProps {
   onSearch: (search: string) => void;
   onFilter: Dispatch<SetStateAction<string>>;
 }
 
-export default function SearchAndFilterBar({ onSearch, onFilter }: SearchAndFilterBarProps) {
-  const [searchTerm, setSearchTerm] = useState("");
+export default function SearchAndFilterBar({
+  onSearch,
+  onFilter,
+}: SearchAndFilterBarProps) {
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <div className={styles.searchFilterBar}>
-      <input 
-        type="text" 
-        placeholder="Digite aqui" 
+      <input
+        type='text'
+        placeholder='Digite aqui'
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)} 
-        className={styles.searchInput} 
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className={styles.searchInput}
       />
-      <button 
+      <button
         onClick={() => onSearch(searchTerm)}
         className={styles.searchButton}
       >

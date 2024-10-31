@@ -2,7 +2,7 @@
 @import '/src/assets/styles/breakpoints';
 
 .report__container {
-  height: 100dvh;
+  height: calc(100dvh - 5rem);
   display: flex;
   flex-direction: column;
 

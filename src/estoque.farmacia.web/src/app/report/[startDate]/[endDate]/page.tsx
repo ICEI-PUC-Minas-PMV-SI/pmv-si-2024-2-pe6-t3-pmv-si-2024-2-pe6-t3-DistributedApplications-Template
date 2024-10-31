@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss';
 import { ILote } from '@/utils/interfaces/ILote';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import isBetween from 'dayjs/plugin/isBetween';
 import dayjs, { Dayjs } from 'dayjs';
@@ -37,13 +37,18 @@ export default function Report() {
   const [saidas, setSaidas] = useState<number>(0);
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
   const [searchInput, setSearchInput] = useState<string>('');
+  const router = useRouter();
 
   useEffect(() => {
-    setStartDateState(dayjs(startDate).startOf('day'));
-    setEndDateState(dayjs(endDate).endOf('day'));
-
-    loadBatches();
-    loadManufactures();
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus) {
+      setStartDateState(dayjs(startDate).startOf('day'));
+      setEndDateState(dayjs(endDate).endOf('day'));
+      loadBatches();
+      loadManufactures();
+    } else {
+      router.push('/login');
+    }
   }, []);
 
   const loadBatches = () => {
@@ -127,10 +132,16 @@ export default function Report() {
         <div className={styles.report__header}>
           <div className={styles.report__header_title_container}>
             <h2>Relatório</h2>
-            <button className={styles.save_button}>
-              <FontAwesomeIcon icon={faPrint} />
-              Imprimir
-            </button>
+            <Link
+              href={`/print-report/${startDate}/${endDate}`}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <button className={styles.save_button}>
+                <FontAwesomeIcon icon={faPrint} />
+                Imprimir
+              </button>
+            </Link>
             <Link href='/get-report'>
               <button className={styles.back_button}>
                 <FontAwesomeIcon icon={faArrowUpRightFromSquare} />

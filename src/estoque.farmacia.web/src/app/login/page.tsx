@@ -12,10 +12,7 @@ import {
 } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import {
-  faEye,
-  faEyeSlash,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
@@ -50,29 +47,32 @@ export default function Login() {
 
   const handleFormSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-  
+
     try {
-      const response = await fetch('https://localhost:7208/api/Usuarios/Autenticar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          nomeUsuario: userName,
-          senha: userPassword,
-        }),
-      });
-  
+      const response = await fetch(
+        'https://localhost:7208/api/Usuarios/Autenticar',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nomeUsuario: userName,
+            senha: userPassword,
+          }),
+        }
+      );
+
       if (!response.ok) {
         handleShowNotification(true);
         return;
       }
-  
-      localStorage.setItem('isAuthenticated', 'true');  // Armazena autenticação no localStorage
+
+      localStorage.setItem('isAuthenticated', 'true'); // Armazena autenticação no localStorage
       handleShowNotification(false);
-      
+
       setTimeout(() => {
-        router.push('/products');
+        router.push('/medicines');
       }, 1000);
     } catch (error) {
       console.error('Erro de autenticação:', error);
@@ -132,7 +132,6 @@ export default function Login() {
           <button className={styles.register__submit_button} type='submit'>
             Entrar
           </button>
-          <p><small>Não tem uma conta? <a href="register">Criar Conta</a></small></p>
           <Snackbar
             open={showNotification}
             autoHideDuration={5000}
