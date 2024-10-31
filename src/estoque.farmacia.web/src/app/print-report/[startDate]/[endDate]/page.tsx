@@ -48,12 +48,15 @@ export default function PrintReport() {
   }, [batchesLoaded, manufacturesLoaded]);
 
   const loadBatches = () => {
-    fetch('https://localhost:7208/api/Lotes', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data: ILote[]) =>
         data.filter((item) =>
@@ -72,12 +75,15 @@ export default function PrintReport() {
   };
 
   const loadManufactures = () => {
-    fetch('https://localhost:7208/api/Fornecedores', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data: IFornecedor[]) => {
         setManufactures(data);

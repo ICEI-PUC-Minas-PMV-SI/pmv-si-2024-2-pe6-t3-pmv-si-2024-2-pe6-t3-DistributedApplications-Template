@@ -70,13 +70,16 @@ export default function Register() {
       senha: userPassword,
     };
 
-    fetch('https://localhost:7208/api/Usuarios', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUser),
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Usuarios`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      }
+    )
       .then(() => {
         handleHasNotError();
         handleShowNotification();

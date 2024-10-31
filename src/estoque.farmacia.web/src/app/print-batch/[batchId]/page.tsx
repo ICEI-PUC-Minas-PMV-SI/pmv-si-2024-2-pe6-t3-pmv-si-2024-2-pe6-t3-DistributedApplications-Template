@@ -40,12 +40,15 @@ export default function PrintBatch() {
   }, [batchLoaded, manufacturerLoaded]);
 
   const loadBatch = () => {
-    fetch(`https://localhost:7208/api/Lotes/${batchId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${batchId}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((batch: ILote) => {
         setBatch(batch);
@@ -60,12 +63,15 @@ export default function PrintBatch() {
   };
 
   const loadManufacturer = (id: number) => {
-    fetch(`https://localhost:7208/api/Fornecedores/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((manufacturer: IFornecedor) => {
         setManufacturer(manufacturer);

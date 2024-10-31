@@ -40,7 +40,9 @@ export default function Medicines() {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await fetch('https://localhost:7208/api/Medicamentos');
+      const response = await fetch(
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Medicamentos`
+      );
       if (!response.ok) {
         throw new Error(`Erro HTTP! Status: ${response.status}`);
       }
@@ -68,7 +70,7 @@ export default function Medicines() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://localhost:7208/api/Medicamentos/${id}`,
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Medicamentos/${id}`,
         {
           method: 'DELETE',
         }

@@ -39,12 +39,15 @@ export default function RegisterMedicine() {
   }, []);
 
   const loadBatches = () => {
-    fetch('https://localhost:7208/api/Lotes', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data: ILote[]) =>
         data.filter((item) => item.medicamentoId === null)
@@ -53,12 +56,15 @@ export default function RegisterMedicine() {
   };
 
   const loadManufactures = () => {
-    fetch('https://localhost:7208/api/Fornecedores', {
-      method: 'GET',
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores`,
+      {
+        method: 'GET',
+        headers: {
+          'content-type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => setManufactures(data));
   };
@@ -136,7 +142,7 @@ export default function RegisterMedicine() {
     }
 
     const newMedicineRes = await fetch(
-      'https://localhost:7208/api/Medicamentos',
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Medicamentos`,
       {
         method: 'POST',
         body: formData,
@@ -162,7 +168,7 @@ export default function RegisterMedicine() {
       };
 
       const updateBatchRes = await fetch(
-        `https://localhost:7208/api/Lotes/${activeBatch?.id}`,
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${activeBatch?.id}`,
         {
           method: 'PUT',
           headers: {
