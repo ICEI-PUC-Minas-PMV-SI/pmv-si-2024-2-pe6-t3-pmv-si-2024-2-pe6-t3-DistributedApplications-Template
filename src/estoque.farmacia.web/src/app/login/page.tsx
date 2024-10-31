@@ -50,7 +50,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        'https://localhost:7208/api/Usuarios/Autenticar',
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Usuarios/Autenticar`,
         {
           method: 'POST',
           headers: {

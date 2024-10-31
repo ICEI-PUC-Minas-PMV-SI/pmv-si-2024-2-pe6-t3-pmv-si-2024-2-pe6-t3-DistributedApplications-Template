@@ -78,12 +78,15 @@ export default function Batch() {
   }, [updateBatchObj]);
 
   const loadBatch = () => {
-    fetch(`https://localhost:7208/api/Lotes/${batchId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${batchId}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((batch: ILote) => {
         setBatch(batch);
@@ -96,12 +99,15 @@ export default function Batch() {
   };
 
   const loadManufacturer = (id: number) => {
-    fetch(`https://localhost:7208/api/Fornecedores/${id}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then((res) => res.json())
       .then((manufacturer: IFornecedor) => setManufacturer(manufacturer));
   };
@@ -135,13 +141,16 @@ export default function Batch() {
       quantidade += entradas;
     }
 
-    fetch('https://localhost:7208/api/Entradas', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newEntrada),
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Entradas`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newEntrada),
+      }
+    )
       .then((res) => res.json())
       .then((newEntrada: IEntrada) => {
         setUpdateBatchObj({
@@ -166,13 +175,16 @@ export default function Batch() {
       quantidade -= saidas;
     }
 
-    fetch('https://localhost:7208/api/Saidas', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newSaida),
-    })
+    fetch(
+      `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Saidas`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newSaida),
+      }
+    )
       .then((res) => res.json())
       .then((newSaida: ISaida) => {
         setUpdateBatchObj({
@@ -213,7 +225,7 @@ export default function Batch() {
       };
 
       const updateBatchRes = await fetch(
-        `https://localhost:7208/api/Lotes/${batchId}`,
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${batchId}`,
         {
           method: 'PUT',
           headers: {
