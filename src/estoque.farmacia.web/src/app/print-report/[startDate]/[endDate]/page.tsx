@@ -10,8 +10,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import router from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
 interface RouteParams {
@@ -28,6 +27,7 @@ export default function PrintReport() {
   const [manufactures, setManufactures] = useState<IFornecedor[]>([]);
   const [batchesLoaded, setBatchesLoaded] = useState<boolean>(false);
   const [manufacturesLoaded, setManufacturesLoaded] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');

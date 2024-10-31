@@ -3,8 +3,7 @@
 import styles from './page.module.scss';
 import { IFornecedor } from '@/utils/interfaces/IFornecedor';
 import { ILote } from '@/utils/interfaces/ILote';
-import { useParams } from 'next/navigation';
-import router from 'next/router';
+import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,6 +22,7 @@ export default function PrintBatch() {
   const [manufacturer, setManufacturer] = useState<IFornecedor | null>(null);
   const [batchLoaded, setBatchLoaded] = useState<boolean>(false);
   const [manufacturerLoaded, setManufacturerLoaded] = useState<boolean>(false);
+  const router = useRouter();
 
   useEffect(() => {
     const authStatus = localStorage.getItem('isAuthenticated');
