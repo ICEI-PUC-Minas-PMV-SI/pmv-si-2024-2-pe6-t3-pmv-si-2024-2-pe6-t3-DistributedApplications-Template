@@ -1,0 +1,119 @@
+@import '/src/assets/styles/variables';
+@import '/src/assets/styles/breakpoints';
+
+.print_report__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: $dark_grey;
+
+    @media (max-width: $phone_breakpoint) {
+      font-size: 1.5rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    color: $dark_grey;
+
+    @media (max-width: $phone_breakpoint) {
+      font-size: 1rem;
+    }
+  }
+
+  .print_report__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem 0;
+
+    .print_report__list_item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 1rem 0;
+
+      &:not(:last-child) {
+        border-bottom: 3px solid $dark_grey;
+      }
+
+      img {
+        height: 5rem;
+        width: 5rem;
+        object-fit: contain;
+        margin-right: .5rem;
+      }
+
+      .print_report__list_item_no_image {
+        height: 5rem;
+        width: 5rem;
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $light_grey;
+        border-radius: 10px;
+        padding: .5rem;
+        margin-right: .5rem;
+
+        svg {
+          font-size: 1.25rem;
+          padding-bottom: .5rem;
+        }
+
+        p {
+          font-size: .75rem;
+          text-align: center;
+        }
+      }
+
+      .print_report__list_item_info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-grow: 1;
+        color: rgba($color: $dark_grey, $alpha: .75);
+
+        .print_report__list_item_info_block {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          padding: .5rem 0;
+
+          &:not(:last-child) {
+            border-bottom: 1px solid $dark_grey;
+          }
+
+          @media (max-width: $phone_breakpoint) {
+            flex-direction: column;
+          }
+
+          p {
+            &:first-child {
+              font-size: 1.15rem;
+              font-weight: 700;
+              color: $dark_grey;
+              padding-right: .5rem;
+
+              @media (max-width: $phone_breakpoint) {
+                padding-bottom: .5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

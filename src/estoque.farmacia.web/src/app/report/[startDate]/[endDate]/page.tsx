@@ -132,10 +132,16 @@ export default function Report() {
         <div className={styles.report__header}>
           <div className={styles.report__header_title_container}>
             <h2>Relatório</h2>
-            <button className={styles.save_button}>
-              <FontAwesomeIcon icon={faPrint} />
-              Imprimir
-            </button>
+            <Link
+              href={`/print-report/${startDate}/${endDate}`}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <button className={styles.save_button}>
+                <FontAwesomeIcon icon={faPrint} />
+                Imprimir
+              </button>
+            </Link>
             <Link href='/get-report'>
               <button className={styles.back_button}>
                 <FontAwesomeIcon icon={faArrowUpRightFromSquare} />

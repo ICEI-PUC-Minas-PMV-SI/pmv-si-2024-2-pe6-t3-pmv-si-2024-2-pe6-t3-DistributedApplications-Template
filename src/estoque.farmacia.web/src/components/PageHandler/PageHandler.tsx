@@ -9,10 +9,13 @@ export default function PageHandler({
   children: React.ReactNode;
 }>) {
   const path = usePathname();
+  const splitedPath = path.split('/');
 
   return (
     <>
-      {path !== '/login' && <Header />}
+      {splitedPath[1] !== 'login' &&
+        splitedPath[1] !== 'print-report' &&
+        splitedPath[1] !== 'print-batch' && <Header />}
       {children}
     </>
   );
