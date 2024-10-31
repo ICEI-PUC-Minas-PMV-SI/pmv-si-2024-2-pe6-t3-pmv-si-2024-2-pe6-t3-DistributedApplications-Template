@@ -13,7 +13,7 @@ namespace Estoque.Farmacia.API.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=MICP5300116115;Database=EstoqueFarmacia;Trusted_Connection=True;TrustServerCertificate=True;");
+                optionsBuilder.UseSqlServer("Server=34.226.109.249;Database=EstoqueFarmacia;User Id=sa;Password=Aleatorio@123;TrustServerCertificate=True;");
             }
         }
 
@@ -26,6 +26,8 @@ namespace Estoque.Farmacia.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Medicamento>().Property(m => m.PrecoCusto).HasPrecision(18, 2);
+            modelBuilder.Entity<Medicamento>().Property(m => m.PrecoVenda).HasPrecision(18, 2);
         }
     }
 }

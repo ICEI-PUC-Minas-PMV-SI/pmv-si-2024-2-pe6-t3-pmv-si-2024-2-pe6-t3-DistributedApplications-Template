@@ -116,9 +116,11 @@ namespace Estoque.Farmacia.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecoCusto")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PrecoVenda")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

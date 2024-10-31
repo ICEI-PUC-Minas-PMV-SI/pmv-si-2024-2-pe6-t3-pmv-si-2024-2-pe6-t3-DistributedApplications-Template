@@ -17,10 +17,10 @@ namespace Estoque.Farmacia.API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeFantasia = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CNPJ = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NomeFantasia = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CNPJ = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,10 +47,11 @@ namespace Estoque.Farmacia.API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomeComercial = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PrecoCusto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    PrecoVenda = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FornecedorId = table.Column<int>(type: "int", nullable: false)
+                    NomeComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrecoCusto = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    PrecoVenda = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false),
+                    FornecedorId = table.Column<int>(type: "int", nullable: true),
+                    Imagem = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -59,8 +60,7 @@ namespace Estoque.Farmacia.API.Migrations
                         name: "FK_Medicamentos_Fornecedores_FornecedorId",
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedores",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -72,7 +72,7 @@ namespace Estoque.Farmacia.API.Migrations
                     Quantidade = table.Column<int>(type: "int", nullable: false),
                     DataFabricacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataValidade = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MedicamentoId = table.Column<int>(type: "int", nullable: true),
+                    MedicamentoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,8 +81,7 @@ namespace Estoque.Farmacia.API.Migrations
                         name: "FK_Lotes_Medicamentos_MedicamentoId",
                         column: x => x.MedicamentoId,
                         principalTable: "Medicamentos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

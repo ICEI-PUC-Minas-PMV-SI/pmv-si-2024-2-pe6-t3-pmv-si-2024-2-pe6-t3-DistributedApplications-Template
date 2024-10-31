@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estoque.Farmacia.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240926185521_MedicamentoIdNulavel")]
-    partial class MedicamentoIdNulavel
+    [Migration("20241031183245_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,19 +58,15 @@ namespace Estoque.Farmacia.API.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("CNPJ")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NomeFantasia")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -113,17 +109,21 @@ namespace Estoque.Farmacia.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("FornecedorId")
+                    b.Property<int?>("FornecedorId")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("Imagem")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("NomeComercial")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecoCusto")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PrecoVenda")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
@@ -181,19 +181,17 @@ namespace Estoque.Farmacia.API.Migrations
 
             modelBuilder.Entity("Estoque.Farmacia.API.Models.Entrada", b =>
                 {
-                    b.HasOne("Estoque.Farmacia.API.Models.Lote", "Lote")
+                    b.HasOne("Estoque.Farmacia.API.Models.Lote", null)
                         .WithMany("Entradas")
                         .HasForeignKey("LoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lote");
                 });
 
             modelBuilder.Entity("Estoque.Farmacia.API.Models.Lote", b =>
                 {
                     b.HasOne("Estoque.Farmacia.API.Models.Medicamento", "Medicamento")
-                        .WithMany("Lotes")
+                        .WithMany()
                         .HasForeignKey("MedicamentoId");
 
                     b.Navigation("Medicamento");
@@ -201,24 +199,18 @@ namespace Estoque.Farmacia.API.Migrations
 
             modelBuilder.Entity("Estoque.Farmacia.API.Models.Medicamento", b =>
                 {
-                    b.HasOne("Estoque.Farmacia.API.Models.Fornecedor", "Fornecedor")
+                    b.HasOne("Estoque.Farmacia.API.Models.Fornecedor", null)
                         .WithMany("Medicamentos")
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Fornecedor");
+                        .HasForeignKey("FornecedorId");
                 });
 
             modelBuilder.Entity("Estoque.Farmacia.API.Models.Saida", b =>
                 {
-                    b.HasOne("Estoque.Farmacia.API.Models.Lote", "Lote")
+                    b.HasOne("Estoque.Farmacia.API.Models.Lote", null)
                         .WithMany("Saidas")
                         .HasForeignKey("LoteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Lote");
                 });
 
             modelBuilder.Entity("Estoque.Farmacia.API.Models.Fornecedor", b =>
@@ -231,11 +223,6 @@ namespace Estoque.Farmacia.API.Migrations
                     b.Navigation("Entradas");
 
                     b.Navigation("Saidas");
-                });
-
-            modelBuilder.Entity("Estoque.Farmacia.API.Models.Medicamento", b =>
-                {
-                    b.Navigation("Lotes");
                 });
 #pragma warning restore 612, 618
         }
