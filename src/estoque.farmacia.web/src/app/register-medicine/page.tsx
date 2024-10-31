@@ -303,7 +303,7 @@ export default function RegisterMedicine() {
               value={batchInput}
               onChange={handleBatchInput}
               disabled={batches.length <= 0}
-              helperText={batchInput.length <= 0 && 'Nenhum lote disponível'}
+              helperText={batches.length <= 0 && 'Nenhum lote disponível'}
               label='Lote'
             >
               {batches.map((item, index) => (
