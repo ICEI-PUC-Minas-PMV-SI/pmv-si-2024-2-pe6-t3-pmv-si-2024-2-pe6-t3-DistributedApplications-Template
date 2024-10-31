@@ -25,6 +25,7 @@ import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { ISaida } from '@/utils/interfaces/ISaida';
+import Link from 'next/link';
 
 interface BatchRouteParams {
   batchId: string;
@@ -238,10 +239,16 @@ export default function Batch() {
       <section className={styles.batch__container}>
         <div className={styles.batch__header}>
           <h2>Lote {batchId}</h2>
-          <button>
-            <FontAwesomeIcon icon={faSave} />
-            Imprimir
-          </button>
+          <Link
+            href={`/print-batch/${batchId}`}
+            rel='noopener noreferrer'
+            target='_blank'
+          >
+            <button>
+              <FontAwesomeIcon icon={faSave} />
+              Imprimir
+            </button>
+          </Link>
         </div>
         <div className={styles.batch__preview_container}>
           <h3>Medicamento</h3>
@@ -256,7 +263,7 @@ export default function Batch() {
                   alt={'Imagem da medicamento '}
                 />
               ) : (
-                <div>
+                <div className={styles.batch__preview_no_image}>
                   <FontAwesomeIcon icon={faImage} />
                   <p>Sem imagem</p>
                 </div>
