@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Administrator\Desktop\Public</_PublishTargetUrl>
+    <History>True|2024-11-01T21:41:07.8027276Z||;True|2024-11-01T21:40:43.1710880+00:00||;True|2024-11-01T19:50:21.2286198+00:00||;True|2024-11-01T15:51:19.3727860+00:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=34.226.109.249%3bDatabase=EstoqueFarmacia%3bUser Id=sa%3bPassword=Aleatorio%40123%3bTrustServerCertificate=True%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="Estoque.Farmacia.API.Data.AppDbContext">
+      <Value>Server=34.226.109.249%3bDatabase=EstoqueFarmacia%3bUser Id=sa%3bPassword=Aleatorio%40123%3bTrustServerCertificate=True%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>
