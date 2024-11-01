@@ -3,7 +3,21 @@
 [Inclua uma breve descrição do projeto e seus objetivos.]
 
 ## Tecnologias Utilizadas
-[Lista das tecnologias principais que serão utilizadas no projeto.]
+<!-- [Lista das tecnologias principais que serão utilizadas no projeto.] -->
+
+| Tecnologia    | Descrição                                                                  | Versão     |
+|---------------|----------------------------------------------------------------------------|------------|
+| Node.js e npm | Ambiente e gerenciador de pacotes e dependências do projeto.               | 18.3.1     |
+| React         | Biblioteca JavaScript para construção de interfaces de usuário.            | 18.3.1     |
+| Next.js       | Framework React para renderização do lado do servidor e sites estáticos.   | 14.2.16    |
+| Material-UI   | Biblioteca de componentes React para interfaces de usuário.                | 6.1.3      |
+| Emotion       | Biblioteca para estilização CSS-in-JS.                                     | 11.13.3    |
+| Sass          | Pré-processador CSS que adiciona funcionalidades como variáveis e mixins.  | 1.79.4     |
+| FontAwesome   | Biblioteca de ícones vetoriais e logotipos.                                | 6.6.0      |
+| UUID          | Biblioteca para geração de identificadores únicos universais (UUIDs).      | 10.0.0     |
+| Prettier      | Formatador de código.                                                      | 3.3.3      |
+| ESLint        | Ferramenta de linting para identificar e corrigir problemas em JavaScript. | 8.57.1     |
+| Typescript    | Superset de JavaScript que adiciona tipagem estática.                      | 5          |
 
 ## Arquitetura
 
@@ -60,7 +74,7 @@
 - **Tamanhos:**
   - Títulos em tamanhos maiores e com peso mais forte para destaque.
   - Texto do corpo em tamanhos médios, facilitando a leitura.
-  
+
 - **Espaçamento**: Margens generosas entre parágrafos e elementos para manter a clareza.
 
 #### Ícones
