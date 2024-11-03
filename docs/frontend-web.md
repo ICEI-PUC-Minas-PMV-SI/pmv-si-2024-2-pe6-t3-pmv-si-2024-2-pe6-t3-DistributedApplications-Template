@@ -1,4 +1,4 @@
-# Front-end Web
+![image](https://github.com/user-attachments/assets/0643418d-32ea-4542-a3d5-bc0fc243d903)# Front-end Web
 
 O front-end do sistema de controle de estoque de farmácias foi desenvolvido com React e Next.js para oferecer uma interface intuitiva e responsiva. Usando Material-UI e Emotion, o design é moderno e consistente, proporcionando uma experiência de uso prática para o gerenciamento de medicamentos e controle de estoque.
 
@@ -247,6 +247,59 @@ Para implantar a aplicação de controle de estoque em um ambiente de produção
 Essas etapas asseguram que a aplicação esteja corretamente implantada e pronta para uso em um ambiente de produção.
 
 ## Testes
+
+### Cadastro de medicamento
+
+A pagina de cadastro de medicmaento /register-medicine deve fazar requisições para buscar os lotes (/api/Lotes) e fornecedores (/api/Fornecedores) disponíveis para cadastros, após preencher os campos obrigatórios (Nome, Fornmecedor) e opcionais (Lote, Validade e Imagem) uma requisição deve ser feita para cadastrar um novo meciamento (/aoi/Medicamentos) e atualizar o lote selecionado com o id do medicamento cadastrado (/api/Lotes).
+
+![image](https://github.com/user-attachments/assets/4a4956c1-0f79-44ec-ab3a-1a053d445ee6)
+
+![image](https://github.com/user-attachments/assets/2191ec90-516b-4184-9435-a18976239ff5)
+
+![image](https://github.com/user-attachments/assets/06c91108-c531-4f2c-be4f-49e4971f3a3b)
+
+### Gerar relatório
+
+A página de gerar relários (/get-report) deve buscar todos os lotes cadastrados entre uma data inicial e uma data final listando-os em ordem de cadastro (/report/<data-inicial>/<data-final>) possibilitando filtrar-los por nome do medicamento ou número de id do lote.
+
+![image](https://github.com/user-attachments/assets/ecaed1d7-5b94-41e6-8497-124f81ee739f)
+
+![image](https://github.com/user-attachments/assets/04ad65ec-5de0-401f-a60d-7a90758278fa)
+
+![image](https://github.com/user-attachments/assets/fdeec385-d396-41f7-972f-d1add471b72c)
+
+### Editar entradas e saídas de um lote
+
+A página de edição de lote (/batch/<id-do-lote>) deve permitir o cadastro de entradas e saidas que atualizaram a quantidade total de medicamentos do lote.
+
+![image](https://github.com/user-attachments/assets/60182a58-bd02-449a-9d11-1aeff604c5b8)
+
+![image](https://github.com/user-attachments/assets/c93e72ac-882a-4f77-83bc-2dfac32d5c68)
+
+### Imprimir relatório
+
+A página de impressão de relatórios (/print-report/<data-inicial>/<data-final>) deve buscar os dados do relário e abrir uma janela de impressão.
+
+![image](https://github.com/user-attachments/assets/041c18cf-0a85-414b-80ca-002076b691da)
+
+![image](https://github.com/user-attachments/assets/4ebe64d9-2669-4e38-8b69-956b214fd7b9)
+
+### Imprimir lote
+
+A página de impressão de lote (/print-batch/<id-do-lote>) deve buscar os dados do lote e abrir uma janela de impressão.
+
+![image](https://github.com/user-attachments/assets/a28bea29-8ca0-4c9a-bc93-0cab5e81fe7d)
+
+![image](https://github.com/user-attachments/assets/95721a24-8e5a-449b-afeb-faaeeec9b4e5)
+
+### Cadastro de usuário
+
+A página de cadastro de usuário (/register) deve receber de input o nome do usuário e sua senha e fazer o sue cadastro (/aoi/Usuarios).
+
+![image](https://github.com/user-attachments/assets/dd660813-751b-4233-b9c5-8d35304849a8)
+
+![image](https://github.com/user-attachments/assets/feb986f3-7da9-4890-957e-de376e9432d9)
+
 
 [Descreva a estratégia de teste, incluindo os tipos de teste a serem realizados (unitários, integração, carga, etc.) e as ferramentas a serem utilizadas.]
 
