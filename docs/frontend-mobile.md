@@ -28,7 +28,7 @@ A arquitetura da aplicação mobile segue o padrão de cliente-servidor, onde o 
 O design da interface é moderno e funcional, com uma paleta de cores em tons azulados e roxos, proporcionando um visual limpo e profissional. As páginas, como login, registro, listagem e edição de medicamentos, seguem um layout consistente com caixas de texto arredondadas e botões responsivos. Cada tela inclui um menu superior para navegação rápida e intuitiva, permitindo que o usuário acesse funções essenciais, como pesquisa e geração de relatórios, de forma eficiente e organizada.
 
 ### Wireframes
-![Captura de tela 2024-11-02 234521](https://github.com/user-attachments/assets/095fe259-a075-44fe-8527-9ae33b1a3f88)
+![WIREFRAME FARMACIA](https://github.com/user-attachments/assets/095fe259-a075-44fe-8527-9ae33b1a3f88)
 
 ### Design Visual
 #### Paleta de Cores
