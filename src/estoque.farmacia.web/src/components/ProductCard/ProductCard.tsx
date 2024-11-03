@@ -4,9 +4,9 @@ import './ProductCard.css';
 interface Product {
   id: number;
   name: string;
-  price: number | null;
+  lote: string | null;
+  validade: string | null;
   supplierName: string;
-  supplierContact: string;
   image: string | null; // Base64
 }
 
@@ -46,9 +46,9 @@ export default function ProductCard({ product, onDelete, onEdit }: ProductCardPr
       <div className="product-info-actions">
         <div className="product-details">
           <h3 className="product-info">Nome do Produto: {product.name}</h3>
-          <p className="product-info">Preço: R$ {product.price !== null ? product.price.toFixed(2) : "Indisponível"}</p>
+          <p className="product-info">Lote: {product.lote || "Indisponível"}</p>
+          <p className="product-info">Validade: {product.validade || "Indisponível"}</p>
           <p className="product-info">Fornecedor: {product.supplierName}</p>
-          <p className="product-info">Contato: {product.supplierContact}</p>
         </div>
         <div className="product-actions">
           <button onClick={() => onEdit(product.id)} className="edit-button">Editar</button>
