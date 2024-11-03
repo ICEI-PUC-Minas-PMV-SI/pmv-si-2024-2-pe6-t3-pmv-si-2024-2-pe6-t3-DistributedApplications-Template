@@ -248,6 +248,32 @@ Essas etapas asseguram que a aplicação esteja corretamente implantada e pronta
 
 ## Testes
 
+### Login
+
+ Quando o usuário inserir o nome e senha, esses dados devem ser enviados para a API /api/Usuarios/Autenticar usando o método POST para maior segurança. Em caso de autenticação bem-sucedida, redirecione o usuário para a página de listagem de medicamentos.
+![Login](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Login.png?raw=true)
+
+### Medicamentos
+
+Após um login bem-sucedido, o usuário é redirecionado para a página de **listagem de medicamentos** (`/medicines`). Esta página é acessível exclusivamente para usuários autenticados, redirecionando qualquer tentativa de acesso não autenticado para a página de login. Esse mecanismo garante que apenas usuários devidamente logados possam visualizar as informações disponíveis.
+Na listagem, o usuário dispõe de **filtros de pesquisa** que facilitam a localização de medicamentos específicos pelo nome. Além disso, é possível ordenar a lista em **ordem crescente ou decrescente** com base no nome dos medicamentos, permitindo uma visualização mais organizada conforme a preferência do usuário. Esses recursos tornam a busca por medicamentos mais eficiente e personalizada.
+![Listagem de Medicamentos](docs/img/Listagem%20Medicamentos%20e%20Desc.png)
+
+![Filtro Ascendente](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Filtro%20Asc.png?raw=true)
+
+![Filtro Descendente](docs/img/Listagem%20Medicamentos%20e%20Desc.png)
+ 
+### Edição de Medicamentos 
+
+A página de edição (`/edit`) permite que o usuário edite informações essenciais do medicamento, incluindo o **nome**, a **imagem**, o **lote**, o **valor** e o **fornecedor**. Essa funcionalidade oferece controle completo sobre os detalhes de cada item, facilitando a atualização e a manutenção precisa dos dados no sistema.
+![Edição de Medicamentos](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Edi%C3%A7%C3%A3o.png?raw=true)
+
+### Deletar Medicamentos
+
+Ao clicar no botão de deletar um medicamento, um modal de confirmação é exibido para garantir que o usuário deseja realmente realizar essa ação. O modal pergunta se o usuário tem certeza de que deseja deletar o medicamento selecionado, oferecendo as opções de confirmar ou cancelar.
+Caso o usuário confirme a exclusão, o medicamento é removido permanentemente da listagem. Esse processo ajuda a evitar exclusões acidentais,
+![Deletar Medicamento](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Deletar.png?raw=true)
+
 ### Cadastro de medicamento
 
 A pagina de cadastro de medicamento /register-medicine deve fazer requisições para buscar os lotes (/api/Lotes) e fornecedores (/api/Fornecedores) disponíveis para cadastros, após preencher os campos obrigatórios (Nome, Fornecedor) e opcionais (Lote, Validade e Imagem) uma requisição deve ser feita para cadastrar um novo medicamento (/aoi/Medicamentos) e atualizar o lote selecionado com o id do medicamento cadastrado (/api/Lotes).
