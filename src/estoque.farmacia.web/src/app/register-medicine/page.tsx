@@ -156,35 +156,41 @@ export default function RegisterMedicine() {
     } else {
       const newMedicine: IMedicamento = await newMedicineRes.json();
 
-      const newBatchData = {
-        dataFabricacao: activeBatch?.dataFabricacao,
-        dataValidade: activeBatch?.dataValidade,
-        entradas: null,
-        id: activeBatch?.id,
-        medicamento: null,
-        medicamentoId: newMedicine.id,
-        quantidade: activeBatch?.quantidade,
-        saidas: null,
-      };
+      if (batchInput) {
+        const newBatchData = {
+          dataFabricacao: activeBatch?.dataFabricacao,
+          dataValidade: activeBatch?.dataValidade,
+          entradas: null,
+          id: activeBatch?.id,
+          medicamento: null,
+          medicamentoId: newMedicine.id,
+          quantidade: activeBatch?.quantidade,
+          saidas: null,
+        };
 
-      const updateBatchRes = await fetch(
-        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${activeBatch?.id}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newBatchData),
+        const updateBatchRes = await fetch(
+          `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${activeBatch?.id}`,
+          {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newBatchData),
+          }
+        );
+        if (!updateBatchRes.ok) {
+          setHasError(true);
+          setShowNotification(true);
+          throw new Error('Failed to update Lote with new medicamentoId');
+        } else {
+          setHasError(false);
+          setShowNotification(true);
+          loadBatches();
+          clearForm();
         }
-      );
-      if (!updateBatchRes.ok) {
-        setHasError(true);
-        setShowNotification(true);
-        throw new Error('Failed to update Lote with new medicamentoId');
       } else {
         setHasError(false);
         setShowNotification(true);
-        loadBatches();
         clearForm();
       }
     }
@@ -336,12 +342,7 @@ export default function RegisterMedicine() {
               value={validityInput}
             />
             <button
-              disabled={
-                !nameInput ||
-                nameInput === '' ||
-                !batchInput ||
-                !manufacturerInput
-              }
+              disabled={!nameInput || nameInput === '' || !manufacturerInput}
               className={styles.register_medicine__medicine_form_submit_button}
             >
               Cadastrar
