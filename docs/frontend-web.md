@@ -257,11 +257,11 @@ Essas etapas asseguram que a aplicação esteja corretamente implantada e pronta
 
 Após um login bem-sucedido, o usuário é redirecionado para a página de **listagem de medicamentos** (`/medicines`). Esta página é acessível exclusivamente para usuários autenticados, redirecionando qualquer tentativa de acesso não autenticado para a página de login. Esse mecanismo garante que apenas usuários devidamente logados possam visualizar as informações disponíveis.
 Na listagem, o usuário dispõe de **filtros de pesquisa** que facilitam a localização de medicamentos específicos pelo nome. Além disso, é possível ordenar a lista em **ordem crescente ou decrescente** com base no nome dos medicamentos, permitindo uma visualização mais organizada conforme a preferência do usuário. Esses recursos tornam a busca por medicamentos mais eficiente e personalizada.
-![Listagem de Medicamentos](docs/img/Listagem%20Medicamentos%20e%20Desc.png)
+![Listagem de Medicamentos](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Listagem%20Medicamentos.png?raw=true)
 
 ![Filtro Ascendente](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Filtro%20Asc.png?raw=true)
 
-![Filtro Descendente](docs/img/Listagem%20Medicamentos%20e%20Desc.png)
+![Filtro Descendente](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Listagem%20Medicamentos.png?raw=true)
  
 ### Edição de Medicamentos 
 
