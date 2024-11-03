@@ -259,6 +259,8 @@ Após um login bem-sucedido, o usuário é redirecionado para a página de **lis
 Na listagem, o usuário dispõe de **filtros de pesquisa** que facilitam a localização de medicamentos específicos pelo nome. Além disso, é possível ordenar a lista em **ordem crescente ou decrescente** com base no nome dos medicamentos, permitindo uma visualização mais organizada conforme a preferência do usuário. Esses recursos tornam a busca por medicamentos mais eficiente e personalizada.
 ![Listagem de Medicamentos](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Listagem%20Medicamentos.png?raw=true)
 
+![Filtro de Pesquisa](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Filtro.png?raw=true)
+
 ![Filtro Ascendente](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Filtro%20Asc.png?raw=true)
 
 ![Filtro Descendente](https://github.com/ICEI-PUC-Minas-PMV-SI/pmv-si-2024-2-pe6-t3-g12-controle-de-estoque-de-farmacia/blob/main/docs/img/Listagem%20Medicamentos.png?raw=true)
