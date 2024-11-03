@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import ProductCard from '../../components/ProductCard/ProductCard';
@@ -9,9 +10,9 @@ import './page.css';
 interface Product {
   id: number;
   name: string;
-  price: number | null;
+  lote: string | null;
+  validade: string | null;
   supplierName: string;
-  supplierContact: string;
   image: string | null;
 }
 
@@ -24,6 +25,7 @@ export default function Medicines() {
   const [filter, setFilter] = useState('');
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isEdited, setIsEdited] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -37,6 +39,13 @@ export default function Medicines() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isEdited) {
+      fetchProducts(); 
+      setIsEdited(false);
+    }
+  }, [isEdited]);
+
   const fetchProducts = async () => {
     setLoading(true);
     try {
@@ -48,14 +57,25 @@ export default function Medicines() {
       }
       const data = await response.json();
 
-      const formattedProducts = data.map((item: any) => ({
-        id: item.medicamento.id,
-        name: item.medicamento.nomeComercial,
-        price: item.medicamento.precoVenda,
-        supplierName: item.fornecedor.nomeFantasia,
-        supplierContact: item.fornecedor.telefone,
-        image: item.medicamento.imagem ?? '',
-      }));
+      const formattedProducts = await Promise.all(
+        data.map(async (item: any) => {
+          
+          const loteResponse = await fetch(
+            `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes?medicamentoId=${item.medicamento.id}`
+          );
+          const loteData = await loteResponse.json();
+          const lote = loteData.find((l: any) => l.medicamentoId === item.medicamento.id);
+
+          return {
+            id: item.medicamento.id,
+            name: item.medicamento.nomeComercial,
+            lote: lote ? `Lote ${lote.id}` : 'Não disponível',
+            validade: lote ? new Date(lote.dataValidade).toLocaleDateString() : 'Não disponível',
+            supplierName: item.fornecedor.nomeFantasia,
+            image: item.medicamento.imagem ?? '',
+          };
+        })
+      );
 
       setProducts(formattedProducts);
       setFilteredProducts(formattedProducts);
@@ -93,6 +113,7 @@ export default function Medicines() {
 
   const handleEdit = (id: number) => {
     router.push(`/edit/${id}`);
+    setIsEdited(true); 
   };
 
   useEffect(() => {
