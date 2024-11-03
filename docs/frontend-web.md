@@ -106,6 +106,8 @@ O Serviço formata e devolve os dados para o Controlador.
 O Controlador retorna uma resposta HTTP ao Cliente (front-end), que atualiza a interface do usuário em tempo real, refletindo as mudanças feitas.
 Esse fluxo assegura uma comunicação eficaz entre o front-end e a API, garantindo que as interações do usuário sejam rapidamente refletidas na interface.
 
+![Captura de tela 2024-11-02 233859](https://github.com/user-attachments/assets/5b93d4d8-ea33-4e35-b6f9-bda2ea2395fb)
+
 ## Requisitos Funcionais
 
 | Id     | Descrição do Requisito                                                        | Prioridade |
