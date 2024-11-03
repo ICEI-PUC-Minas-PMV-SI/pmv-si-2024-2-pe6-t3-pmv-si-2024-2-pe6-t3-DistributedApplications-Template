@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/0643418d-32ea-4542-a3d5-bc0fc243d903)# Front-end Web
+# Front-end Web
 
 O front-end do sistema de controle de estoque de farmácias foi desenvolvido com React e Next.js para oferecer uma interface intuitiva e responsiva. Usando Material-UI e Emotion, o design é moderno e consistente, proporcionando uma experiência de uso prática para o gerenciamento de medicamentos e controle de estoque.
 
