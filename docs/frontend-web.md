@@ -250,7 +250,7 @@ Essas etapas asseguram que a aplicação esteja corretamente implantada e pronta
 
 ### Cadastro de medicamento
 
-A pagina de cadastro de medicmaento /register-medicine deve fazar requisições para buscar os lotes (/api/Lotes) e fornecedores (/api/Fornecedores) disponíveis para cadastros, após preencher os campos obrigatórios (Nome, Fornmecedor) e opcionais (Lote, Validade e Imagem) uma requisição deve ser feita para cadastrar um novo meciamento (/aoi/Medicamentos) e atualizar o lote selecionado com o id do medicamento cadastrado (/api/Lotes).
+A pagina de cadastro de medicamento /register-medicine deve fazer requisições para buscar os lotes (/api/Lotes) e fornecedores (/api/Fornecedores) disponíveis para cadastros, após preencher os campos obrigatórios (Nome, Fornecedor) e opcionais (Lote, Validade e Imagem) uma requisição deve ser feita para cadastrar um novo medicamento (/aoi/Medicamentos) e atualizar o lote selecionado com o id do medicamento cadastrado (/api/Lotes).
 
 ![image](https://github.com/user-attachments/assets/4a4956c1-0f79-44ec-ab3a-1a053d445ee6)
 
@@ -260,7 +260,7 @@ A pagina de cadastro de medicmaento /register-medicine deve fazar requisições 
 
 ### Gerar relatório
 
-A página de gerar relários (/get-report) deve buscar todos os lotes cadastrados entre uma data inicial e uma data final listando-os em ordem de cadastro (/report/<data-inicial>/<data-final>) possibilitando filtrar-los por nome do medicamento ou número de id do lote.
+A página de gerar relatórios (/get-report) deve buscar todos os lotes cadastrados entre uma data inicial e uma data final, listando-os em ordem de cadastro (/report/<data-inicial>/<data-final>) possibilitando filtrá-los por nome do medicamento ou número de id do lote.
 
 ![image](https://github.com/user-attachments/assets/ecaed1d7-5b94-41e6-8497-124f81ee739f)
 
@@ -270,7 +270,7 @@ A página de gerar relários (/get-report) deve buscar todos os lotes cadastrado
 
 ### Editar entradas e saídas de um lote
 
-A página de edição de lote (/batch/<id-do-lote>) deve permitir o cadastro de entradas e saidas que atualizaram a quantidade total de medicamentos do lote.
+A página de edição de lote (/batch/<id-do-lote>) deve permitir o cadastro de entradas e saídas que atualizaram a quantidade total de medicamentos do lote.
 
 ![image](https://github.com/user-attachments/assets/60182a58-bd02-449a-9d11-1aeff604c5b8)
 
@@ -278,7 +278,7 @@ A página de edição de lote (/batch/<id-do-lote>) deve permitir o cadastro de 
 
 ### Imprimir relatório
 
-A página de impressão de relatórios (/print-report/<data-inicial>/<data-final>) deve buscar os dados do relário e abrir uma janela de impressão.
+A página de impressão de relatórios (/print-report/<data-inicial>/<data-final>) deve buscar os dados do relatório e abrir uma janela de impressão.
 
 ![image](https://github.com/user-attachments/assets/041c18cf-0a85-414b-80ca-002076b691da)
 
@@ -294,7 +294,7 @@ A página de impressão de lote (/print-batch/<id-do-lote>) deve buscar os dados
 
 ### Cadastro de usuário
 
-A página de cadastro de usuário (/register) deve receber de input o nome do usuário e sua senha e fazer o sue cadastro (/aoi/Usuarios).
+A página de cadastro de usuário (/register) deve receber de input o nome do usuário e sua senha e fazer o sue cadastro (/api/Usuarios).
 
 ![image](https://github.com/user-attachments/assets/dd660813-751b-4233-b9c5-8d35304849a8)
 
