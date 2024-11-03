@@ -1,17 +1,40 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from './EditProduct.module.scss';
+import { faFileArrowUp, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState } from 'react';
+import { TextField, MenuItem, Button, Alert, Snackbar } from '@mui/material';
+import dayjs, { Dayjs } from 'dayjs';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import './EditProduct.css';
 
 interface Product {
   id: number;
   name: string;
-  lot: string;
+  manufactureDate: Dayjs | null;
+  expirationDate: Dayjs | null;
   purchase: number;
   selling: number;
   manufacturer: string;
   image: string;
   fornecedorId: number;
+  loteId?: number;
+}
+
+interface Lote {
+  id: number;
+  quantidade: number;
+  dataFabricacao: string;
+  dataValidade: string;
+  medicamentoId: number | null;
+}
+
+interface Fornecedor {
+  id: number;
+  nomeFantasia: string;
 }
 
 interface EditProductProps {
@@ -22,15 +45,20 @@ const EditProduct: React.FC<EditProductProps> = ({ productId }) => {
   const [product, setProduct] = useState<Product>({
     id: productId,
     name: '',
-    lot: '123456',
+    manufactureDate: null,
+    expirationDate: null,
     purchase: 0,
     selling: 0,
     manufacturer: '',
     image: '',
     fornecedorId: 0,
+    loteId: undefined,
   });
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [lotes, setLotes] = useState<Lote[]>([]);
+  const [manufactures, setManufactures] = useState<Fornecedor[]>([]);
+  const [originalLoteId, setOriginalLoteId] = useState<number | null>(null);
+  const [showNotification, setShowNotification] = useState<boolean>(false);
+  const [hasError, setHasError] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -40,33 +68,83 @@ const EditProduct: React.FC<EditProductProps> = ({ productId }) => {
       return;
     }
     fetchProductData();
+    loadAvailableLotes();
+    loadManufactures();
   }, []);
 
   const fetchProductData = async () => {
-    setLoading(true);
     try {
-      const response = await fetch(
+      const productResponse = await fetch(
         `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Medicamentos/${productId}`
       );
-      if (response.ok) {
-        const data = await response.json();
-        setProduct({
-          id: data.medicamento.id,
-          name: data.medicamento.nomeComercial,
-          lot: '123456',
-          purchase: data.medicamento.precoCusto,
-          selling: data.medicamento.precoVenda,
-          fornecedorId: data.fornecedor.id,
-          manufacturer: data.fornecedor.nomeFantasia,
-          image: `data:image/png;base64,${data.medicamento.imagem}`,
-        });
-      } else {
-        console.error('Erro ao buscar os dados do medicamento');
+      if (!productResponse.ok) throw new Error('Erro ao buscar dados do medicamento');
+      const productData = await productResponse.json();
+
+      const { id, nomeComercial, precoCusto, precoVenda, fornecedorId, imagem } = productData.medicamento;
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        id,
+        name: nomeComercial,
+        purchase: precoCusto,
+        selling: precoVenda,
+        fornecedorId,
+        image: `data:image/png;base64,${imagem}`,
+      }));
+
+      const loteResponse = await fetch(
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes?medicamentoId=${id}`
+      );
+      if (!loteResponse.ok) throw new Error('Erro ao buscar dados do lote');
+      const loteData: Lote[] = await loteResponse.json();
+      const lote = loteData.find((l) => l.medicamentoId === id);
+      if (lote) {
+        setProduct((prevProduct) => ({
+          ...prevProduct,
+          loteId: lote.id,
+          manufactureDate: dayjs(lote.dataFabricacao),
+          expirationDate: dayjs(lote.dataValidade),
+        }));
+        setOriginalLoteId(lote.id);
       }
+
+      const supplierResponse = await fetch(
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores/${fornecedorId}`
+      );
+      if (!supplierResponse.ok) throw new Error('Erro ao buscar dados do fornecedor');
+      const supplierData: Fornecedor = await supplierResponse.json();
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        manufacturer: supplierData.nomeFantasia,
+      }));
     } catch (error) {
-      console.error('Erro de rede ou no servidor:', error);
-    } finally {
-      setLoading(false);
+      console.error(error);
+      setHasError(true);
+    }
+  };
+
+  const loadAvailableLotes = async () => {
+    try {
+      const response = await fetch(
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes`
+      );
+      if (!response.ok) throw new Error('Erro ao carregar lotes');
+      const data: Lote[] = await response.json();
+      setLotes(data.filter((lote) => lote.medicamentoId === null || lote.medicamentoId === productId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const loadManufactures = async () => {
+    try {
+      const response = await fetch(
+        `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Fornecedores`
+      );
+      if (!response.ok) throw new Error('Erro ao carregar fornecedores');
+      const data: Fornecedor[] = await response.json();
+      setManufactures(data);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -74,9 +152,33 @@ const EditProduct: React.FC<EditProductProps> = ({ productId }) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({
       ...prevProduct,
-      [name]:
-        name === 'purchase' || name === 'selling' ? parseFloat(value) : value,
+      [name]: name === 'purchase' || name === 'selling' ? parseFloat(value) : value,
     }));
+  };
+
+  const handleLoteChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const selectedLoteId = event.target.value as number;
+    const selectedLote = lotes.find((lote) => lote.id === selectedLoteId);
+    if (selectedLote) {
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        loteId: selectedLote.id,
+        manufactureDate: dayjs(selectedLote.dataFabricacao),
+        expirationDate: dayjs(selectedLote.dataValidade),
+      }));
+    }
+  };
+
+  const handleFornecedorChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    const selectedFornecedorId = event.target.value as number;
+    const selectedFornecedor = manufactures.find((f) => f.id === selectedFornecedorId);
+    if (selectedFornecedor) {
+      setProduct((prevProduct) => ({
+        ...prevProduct,
+        fornecedorId: selectedFornecedor.id,
+        manufacturer: selectedFornecedor.nomeFantasia,
+      }));
+    }
   };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,24 +192,53 @@ const EditProduct: React.FC<EditProductProps> = ({ productId }) => {
     }
   };
 
-  const handleImageRemove = () => {
-    setProduct({ ...product, image: '' });
-  };
-
-  const handleSave = async () => {
-    const confirmed = window.confirm(
-      'Tem certeza que deseja salvar as alterações?'
-    );
+  const handleSave = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const confirmed = window.confirm('Tem certeza que deseja salvar as alterações?');
     if (!confirmed) return;
 
     try {
+      if (originalLoteId && originalLoteId !== product.loteId) {
+        const originalLote = lotes.find((lote) => lote.id === originalLoteId);
+        await fetch(
+          `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${originalLoteId}`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: originalLoteId,
+              quantidade: originalLote?.quantidade || 0,
+              dataFabricacao: originalLote?.dataFabricacao || '',
+              dataValidade: originalLote?.dataValidade || '',
+              medicamentoId: null,
+            }),
+          }
+        );
+      }
+
+      if (product.loteId) {
+        const selectedLote = lotes.find((lote) => lote.id === product.loteId);
+        await fetch(
+          `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Lotes/${product.loteId}`,
+          {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: product.loteId,
+              quantidade: selectedLote?.quantidade || 0,
+              dataFabricacao: selectedLote?.dataFabricacao || '',
+              dataValidade: selectedLote?.dataValidade || '',
+              medicamentoId: product.id,
+            }),
+          }
+        );
+      }
+
       const response = await fetch(
         `https://${process.env.NEXT_PUBLIC_API_ENDPOINT}:${process.env.NEXT_PUBLIC_PORT}/api/Medicamentos/${productId}`,
         {
           method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             id: product.id,
             nomeComercial: product.name,
@@ -120,149 +251,76 @@ const EditProduct: React.FC<EditProductProps> = ({ productId }) => {
       );
 
       if (response.ok) {
-        setStatusMessage('Produto atualizado com sucesso!');
-        router.push('/products');
+        setHasError(false);
+        setShowNotification(true);
+        router.push('/medicines');
       } else {
-        setStatusMessage('Erro ao atualizar o produto.');
-        console.error('Erro na atualização:', response.statusText);
+        setHasError(true);
+        setShowNotification(true);
       }
     } catch (error) {
-      setStatusMessage('Erro de rede ou no servidor.');
       console.error('Erro de rede ou no servidor:', error);
+      setHasError(true);
+      setShowNotification(true);
     }
   };
 
-  const formatCurrency = (value: number) => {
-    return value.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    });
-  };
-
-  if (loading) return <div>Carregando...</div>;
-
   return (
-    <div className='edit-product-container'>
-      <button onClick={() => router.push('/products')} className='back-button'>
-        Voltar
-      </button>
-      <h1 className='edit-product-title'>Editar Produto</h1>
-      {statusMessage && <p className='status-message'>{statusMessage}</p>}
-      <div className='content-wrapper'>
-        <div className='image-section'>
-          {product.image ? (
-            <div className='image-wrapper'>
-              <img
-                src={product.image}
-                alt={product.name}
-                className='product-image'
-              />
-              <div className='image-buttons'>
-                <label className='image-edit-button'>
-                  Trocar Imagem
-                  <input
-                    type='file'
-                    onChange={handleImageUpload}
-                    style={{ display: 'none' }}
-                  />
-                </label>
-                <button
-                  onClick={handleImageRemove}
-                  className='image-remove-button'
-                >
-                  Excluir
-                </button>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <section className={styles.register_medicine__container}>
+        <div className={styles.register_medicine__header}>
+          <h2>Editar Produto</h2>
+        </div>
+        <div className={styles.register_medicine__content}>
+          <div className={styles.register_medicine__medicine_preview}>
+            {product.image ? (
+              <div className={styles.register_medicine__image_picker_container}>
+                <Image src={product.image} height={0} width={0} unoptimized alt={'Imagem do medicamento'} />
+                <Button onClick={() => setProduct({ ...product, image: '' })} variant='contained' color='error' endIcon={<FontAwesomeIcon icon={faTrashCan} />}>
+                  Remover
+                </Button>
               </div>
-            </div>
-          ) : (
-            <label className='image-upload-placeholder'>
-              <span>Upload de Imagem</span>
-              <input
-                type='file'
-                onChange={handleImageUpload}
-                style={{ display: 'none' }}
-              />
-            </label>
-          )}
-        </div>
-        <div className='product-info'>
-          <div className='product-info-display'>
-            <p>
-              <strong>Nome do Produto:</strong> {product.name}
-            </p>
-            <p>
-              <strong>Lote:</strong> {product.lot}
-            </p>
-            <p>
-              <strong>Preço Custo:</strong> {formatCurrency(product.purchase)}
-            </p>
-            <p>
-              <strong>Preço Venda:</strong> {formatCurrency(product.selling)}
-            </p>
-            <p>
-              <strong>Fabricante:</strong> {product.manufacturer}
-            </p>
+            ) : (
+              <div className={styles.register_medicine__image_picker_container}>
+                <Button component='label' variant='contained' startIcon={<FontAwesomeIcon icon={faFileArrowUp} />}>
+                  Foto
+                  <input type='file' onChange={handleImageUpload} style={{ display: 'none' }} accept='image/*' />
+                </Button>
+              </div>
+            )}
           </div>
+          <form onSubmit={handleSave} className={styles.register_medicine__medicine_form}>
+            <TextField value={product.name} onChange={handleInputChange} label='Nome do produto' variant='outlined' name='name' />
+            <TextField value={product.purchase} onChange={handleInputChange} label='Preço de Custo' variant='outlined' name='purchase' type='number' />
+            <TextField value={product.selling} onChange={handleInputChange} label='Preço de Venda' variant='outlined' name='selling' type='number' />
+            <TextField select value={product.loteId || ''} onChange={handleLoteChange} label='Lote'>
+              {lotes.map((lote) => (
+                <MenuItem key={lote.id} value={lote.id}>
+                  Lote {lote.id}
+                </MenuItem>
+              ))}
+            </TextField>
+            <DatePicker disabled label="Data de Fabricação" value={product.manufactureDate} />
+            <DatePicker disabled label="Data de Validade" value={product.expirationDate} />
+            <TextField select value={product.fornecedorId} onChange={handleFornecedorChange} label='Fornecedor'>
+              {manufactures.map((item) => (
+                <MenuItem value={item.id} key={item.id}>
+                  {item.nomeFantasia}
+                </MenuItem>
+              ))}
+            </TextField>
+            <button type='submit' className={styles.register_medicine__medicine_form_submit_button}>
+              Salvar
+            </button>
+          </form>
+          <Snackbar open={showNotification} autoHideDuration={6000} onClose={() => setShowNotification(false)}>
+            <Alert onClose={() => setShowNotification(false)} severity={hasError ? 'error' : 'success'} variant='filled' sx={{ width: '100%' }}>
+              {hasError ? 'Algo deu errado! Não foi possível salvar as alterações' : 'Sucesso! Produto atualizado'}
+            </Alert>
+          </Snackbar>
         </div>
-      </div>
-      <div className='form-section'>
-        <div className='form-group'>
-          <label className='label'>Nome do Produto</label>
-          <input
-            type='text'
-            name='name'
-            value={product.name}
-            onChange={handleInputChange}
-            className='input'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='label'>Lote</label>
-          <input
-            type='text'
-            name='lot'
-            value={product.lot}
-            onChange={handleInputChange}
-            className='input'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='label'>Fabricante</label>
-          <input
-            type='text'
-            name='manufacturer'
-            value={product.manufacturer}
-            onChange={handleInputChange}
-            className='input'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='label'>Preço de Custo</label>
-          <input
-            type='number'
-            name='purchase'
-            value={product.purchase}
-            onChange={handleInputChange}
-            className='input'
-            step='0.01'
-          />
-        </div>
-        <div className='form-group'>
-          <label className='label'>Preço de Venda</label>
-          <input
-            type='number'
-            name='selling'
-            value={product.selling}
-            onChange={handleInputChange}
-            className='input'
-            step='0.01'
-          />
-        </div>
-        <button onClick={handleSave} className='save-button'>
-          Salvar
-        </button>
-      </div>
-    </div>
+      </section>
+    </LocalizationProvider>
   );
 };
 
