@@ -31,7 +31,7 @@ O design da interface é moderno e funcional, com uma paleta de cores em tons az
 
 ### Wireframes
 
-![WIREFRAME FARMACIA](https://github.com/user-attachments/assets/22a041e4-edd6-49ea-9780-33b0ed3f2a4d)
+![WIREFRAME FARMACIA](https://github.com/user-attachments/assets/4fd3eaeb-9351-4da7-963a-258755bc5903)
 
 
 ### Protótipo
