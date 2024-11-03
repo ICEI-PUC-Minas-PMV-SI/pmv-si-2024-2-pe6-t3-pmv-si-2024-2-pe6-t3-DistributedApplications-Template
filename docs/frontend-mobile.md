@@ -16,7 +16,7 @@
 [Descreva o projeto da interface móvel da aplicação, incluindo o design visual, layout das páginas, interações do usuário e outros aspectos relevantes.]
 
 ### Wireframes
-[Inclua os wireframes das páginas principais da interface, mostrando a disposição dos elementos na página.]
+![Captura de tela 2024-11-02 234521](https://github.com/user-attachments/assets/095fe259-a075-44fe-8527-9ae33b1a3f88)
 
 ### Design Visual
 [Descreva o estilo visual da interface, incluindo paleta de cores, tipografia, ícones e outros elementos gráficos.]
