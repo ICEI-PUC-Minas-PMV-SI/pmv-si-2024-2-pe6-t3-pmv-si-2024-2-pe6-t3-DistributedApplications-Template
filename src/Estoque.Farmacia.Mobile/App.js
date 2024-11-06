@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import FornecedorScreen from './src/screens/FornecedorScreen';
+import MedicamentoScreen from './src/screens/MedicamentoScreen';
+import UsuarioScreen from './src/screens/UsuarioScreen';
+import EntradaScreen from './src/screens/EntradaScreen';
+import SaidaScreen from './src/screens/SaidaScreen';
+import LoteScreen from './src/screens/LoteScreen';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Fornecedor" component={FornecedorScreen} />
+        <Stack.Screen name="Medicamento" component={MedicamentoScreen} />
+        <Stack.Screen name="Usuario" component={UsuarioScreen} />
+        <Stack.Screen name="Entrada" component={EntradaScreen} />
+        <Stack.Screen name="Saida" component={SaidaScreen} />
+        <Stack.Screen name="Lote" component={LoteScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
