@@ -4,7 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import FornecedorScreen from './src/screens/FornecedorScreen';
 import UsuarioScreen from './src/screens/UsuarioScreen';
-import LoteScreen from './src/screens/LoteScreen';
+import LoteScreen from './src/screens/Lote/LoteScreen';
+import NewLoteScreen from './src/screens/Lote/NewLoteScreen';
+import UpdateLoteScreen from './src/screens/Lote/UpdateLoteScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +18,8 @@ export default function App() {
         <Stack.Screen name="Fornecedor" component={FornecedorScreen} />
         <Stack.Screen name="Usuario" component={UsuarioScreen} />
         <Stack.Screen name="Lote" component={LoteScreen} />
+        <Stack.Screen name="NewLoteScreen" component={NewLoteScreen} />
+        <Stack.Screen name="UpdateLoteScreen" component={UpdateLoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
