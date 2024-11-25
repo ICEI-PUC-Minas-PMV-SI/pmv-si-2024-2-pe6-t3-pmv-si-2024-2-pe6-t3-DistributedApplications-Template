@@ -18,8 +18,8 @@ export default function App() {
         <Stack.Screen name="Fornecedor" component={FornecedorScreen} />
         <Stack.Screen name="Usuario" component={UsuarioScreen} />
         <Stack.Screen name="Lote" component={LoteScreen} />
-        <Stack.Screen name="NewLoteScreen" component={NewLoteScreen} />
-        <Stack.Screen name="UpdateLoteScreen" component={UpdateLoteScreen} />
+        <Stack.Screen name="Cadastrar Lote" component={NewLoteScreen} />
+        <Stack.Screen name="Editar Lote" component={UpdateLoteScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

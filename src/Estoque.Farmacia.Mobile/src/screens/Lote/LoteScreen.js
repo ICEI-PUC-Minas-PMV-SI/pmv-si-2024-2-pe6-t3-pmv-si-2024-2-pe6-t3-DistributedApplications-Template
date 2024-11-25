@@ -63,7 +63,7 @@ const LoteScreen = ({ navigation }) => {
           mode="contained" 
           contentStyle={{flexDirection: 'row-reverse'}}
           style={styles.titleButton}
-          onPress={() => navigation.navigate('NewLoteScreen')}
+          onPress={() => navigation.navigate('Cadastrar Lote')}
         >
           <Text style={styles.titleButtonText}>Cadastrar</Text>
           <Icon
@@ -118,7 +118,9 @@ const LoteScreen = ({ navigation }) => {
             <View style={styles.loteActionsContainer}>
               <TouchableOpacity 
                 style={styles.loteActionButton}
-                onPress={() => console.log('Pressed')}
+                onPress={() => navigation.navigate('Editar Lote', {
+                  loteId: item.id
+                })}
               >
                 <Icon
                   source="pencil"
