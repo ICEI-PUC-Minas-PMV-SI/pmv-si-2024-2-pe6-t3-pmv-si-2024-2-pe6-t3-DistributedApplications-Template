@@ -19,7 +19,7 @@ const LoteScreen = ({ navigation }) => {
   }, []);
 
   const fetchLotes = () => {
-    axios.get('http://localhost:5000/api/Lotes')
+    axios.get('http://100.28.74.101:8080/api/Lotes')
       .then(response => {
         setLotes(response.data);
         setInitialLotes(response.data);
@@ -44,7 +44,7 @@ const LoteScreen = ({ navigation }) => {
       return;
     }
 
-    axios.delete(`http://localhost:5000/api/Lotes/${id}`)
+    axios.delete(`http://100.28.74.101:8080/api/Lotes/${id}`)
       .then(() => {
         Alert.alert('Lote deletado com sucesso!');
         fetchLotes();

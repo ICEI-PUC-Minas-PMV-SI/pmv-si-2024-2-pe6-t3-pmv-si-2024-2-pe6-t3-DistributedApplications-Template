@@ -25,7 +25,7 @@ const NewLoteScreen = () => {
   }, []);
 
   const fetchMedicamentos = () => {
-    axios.get('http://localhost:5000/api/Medicamentos')
+    axios.get('http://100.28.74.101:8080/api/Medicamentos')
       .then(response => {
         response.data.forEach((item) => {
           medicamentos.push({
@@ -40,7 +40,7 @@ const NewLoteScreen = () => {
 
   const criarLote = () => {
     const medicamentoId = medicamento ? medicamento.id : null;
-    axios.post('http://localhost:5000/api/Lotes', { quantidade, dataFabricacao, dataValidade, medicamentoId })
+    axios.post('http://100.28.74.101:8080/api/Lotes', { quantidade, dataFabricacao, dataValidade, medicamentoId })
       .then(() => {
         eventEmmiter.emit('updateLoteList');
         Alert.alert('Lote criado com sucesso!');

@@ -25,7 +25,7 @@ const UpdateLoteScreen = ({ route }) => {
   }, []);
 
   const fetchLotePorId = () => {
-    axios.get(`http://localhost:5000/api/Lotes/${loteId}`)
+    axios.get(`http://100.28.74.101:8080/api/Lotes/${loteId}`)
       .then(response => {
         const lote = response.data;
         setLote(lote);
@@ -41,7 +41,7 @@ const UpdateLoteScreen = ({ route }) => {
   };
 
   const atualizarLote = () => {
-    axios.put(`http://localhost:5000/api/Lotes/${loteId}`, { id: parseInt(loteId), quantidade, dataFabricacao, dataValidade, medicamentoId })
+    axios.put(`http://100.28.74.101:8080/api/Lotes/${loteId}`, { id: parseInt(loteId), quantidade, dataFabricacao, dataValidade, medicamentoId })
       .then(() => {
         eventEmmiter.emit('updateLoteList');
         Alert.alert('Lote atualizado com sucesso!');
