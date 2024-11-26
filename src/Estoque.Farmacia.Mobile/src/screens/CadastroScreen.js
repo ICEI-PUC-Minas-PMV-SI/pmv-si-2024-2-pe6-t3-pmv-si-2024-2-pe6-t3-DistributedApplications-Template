@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
 
-const UsuarioScreen = ({ navigation }) => {
-  const [usuarioLogin, setUsuarioLogin] = useState('');
-  const [senhaLogin, setSenhaLogin] = useState('');
+const CadastroScreen = ({ navigation }) => {
+  const [nomeUsuario, setNomeUsuario] = useState('');
+  const [senha, setSenha] = useState('');
 
-  const autenticarUsuario = () => {
-    // Lógica de autenticação aqui
-    // Após autenticar com sucesso, redirecionar para a página Home
-    navigation.navigate('Home');
+  const criarUsuario = () => {
+    // Lógica de criação de usuário aqui
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Entrar</Text>
+      <Text style={styles.title}>Criar Conta</Text>
 
       <TextInput
         mode="outlined"
-        label="Nome do usuário"
-        value={usuarioLogin}
-        onChangeText={setUsuarioLogin}
+        label="Nome"
+        value={nomeUsuario}
+        onChangeText={setNomeUsuario}
         outlineColor='#583FFF'
         outlineStyle={{
           borderWidth: 3,
@@ -31,8 +29,8 @@ const UsuarioScreen = ({ navigation }) => {
       <TextInput
         mode="outlined"
         label="Senha"
-        value={senhaLogin}
-        onChangeText={setSenhaLogin}
+        value={senha}
+        onChangeText={setSenha}
         secureTextEntry
         outlineColor='#583FFF'
         outlineStyle={{
@@ -45,15 +43,11 @@ const UsuarioScreen = ({ navigation }) => {
       <Button
         mode="contained"
         style={styles.button}
-        onPress={autenticarUsuario}
+        onPress={criarUsuario}
         contentStyle={{ padding: 8 }}
       >
-        ENTRAR
+        CRIAR
       </Button>
-
-      <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
-        <Text style={styles.createAccount}>Criar Conta</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -88,11 +82,6 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     alignSelf: 'center'
   },
-  createAccount: {
-    color: '#6A5ACD',
-    marginTop: 16,
-    alignSelf: 'center'
-  },
 });
 
-export default UsuarioScreen;
+export default CadastroScreen;

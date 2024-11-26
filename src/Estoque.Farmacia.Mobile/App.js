@@ -7,13 +7,16 @@ import UsuarioScreen from './src/screens/UsuarioScreen';
 import LoteScreen from './src/screens/Lote/LoteScreen';
 import NewLoteScreen from './src/screens/Lote/NewLoteScreen';
 import UpdateLoteScreen from './src/screens/Lote/UpdateLoteScreen';
+import CadastroScreen from './src/screens/CadastroScreen';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Usuario">
+        <Stack.Screen name="Login" component={UsuarioScreen} />
+        <Stack.Screen name="Cadastro" component={CadastroScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Fornecedor" component={FornecedorScreen} />
         <Stack.Screen name="Usuario" component={UsuarioScreen} />
