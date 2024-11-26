@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import axios from 'axios';
 
 const UsuarioScreen = ({ navigation }) => {
   const [usuarioLogin, setUsuarioLogin] = useState('');
   const [senhaLogin, setSenhaLogin] = useState('');
 
   const autenticarUsuario = () => {
-    // Lógica de autenticação aqui
-    // Após autenticar com sucesso, redirecionar para a página Home
-    navigation.navigate('Home');
+    axios.post('http://100.28.74.101:8080/api/Usuarios/Autenticar', {
+      nomeUsuario: usuarioLogin,
+      senha: senhaLogin
+    })
+    .then(response => {
+      Alert.alert('Autenticação bem-sucedida!', 'Token recebido.');
+      navigation.navigate('Home');
+    })
+    .catch(error => {
+      console.error(error);
+      Alert.alert('Erro na autenticação', 'Verifique suas credenciais.');
+    });
   };
 
   return (
@@ -74,8 +84,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: '#583FFF',
     marginBottom: 16,
-    alignSelf: 'flex-start',  // Alinha o texto à esquerda
-    marginLeft: '10%'  // Ajusta o alinhamento com os labels
+    alignSelf: 'flex-start',
+    marginLeft: '10%'
   },
   input: {
     width: '80%',

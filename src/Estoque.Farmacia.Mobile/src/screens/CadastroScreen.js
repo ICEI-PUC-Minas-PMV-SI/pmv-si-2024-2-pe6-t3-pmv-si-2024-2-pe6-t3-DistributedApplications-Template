@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import axios from 'axios';
 
 const CadastroScreen = ({ navigation }) => {
   const [nomeUsuario, setNomeUsuario] = useState('');
   const [senha, setSenha] = useState('');
 
   const criarUsuario = () => {
-    // Lógica de criação de usuário aqui
+    axios.post('http://100.28.74.101:8080/api/Usuarios', {
+      nomeUsuario: nomeUsuario,
+      senha: senha
+    })
+    .then(response => {
+      Alert.alert('Usuário criado com sucesso!');
+      navigation.navigate('Login');
+    })
+    .catch(error => {
+      console.error(error);
+      Alert.alert('Erro ao criar usuário', 'Tente novamente.');
+    });
   };
 
   return (
@@ -68,8 +80,8 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     color: '#583FFF',
     marginBottom: 16,
-    alignSelf: 'flex-start',  // Alinha o texto à esquerda
-    marginLeft: '10%'  // Ajusta o alinhamento com os labels
+    alignSelf: 'flex-start',
+    marginLeft: '10%'
   },
   input: {
     width: '80%',
