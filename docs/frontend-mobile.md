@@ -86,6 +86,30 @@ O design da interface é moderno e funcional, com uma paleta de cores em tons az
 ![WIREFRAME FARMACIA](https://github.com/user-attachments/assets/095fe259-a075-44fe-8527-9ae33b1a3f88)
 
 ### Design Visual
+
+![print 3](https://github.com/user-attachments/assets/dba3c802-4437-4854-9c56-da5b6b68ff59)
+
+![print2](https://github.com/user-attachments/assets/c59a312e-a24c-4675-8cf1-eb4a2d226ad0)
+
+![Estoque de farmácia prints 1](https://github.com/user-attachments/assets/61d2cc32-2f2b-4714-99dc-0c034f9be1b4)
+
+![1](https://github.com/user-attachments/assets/0184aec6-cf6a-4620-9b16-78a49a5fd9b4)
+
+![2](https://github.com/user-attachments/assets/22709074-0ce4-4e22-b1b6-b03342c6352e)
+
+![3](https://github.com/user-attachments/assets/962a5d27-b846-4cb2-8ed5-d680ce532bb6)
+
+![4](https://github.com/user-attachments/assets/57bce01b-cc5c-4eac-9e1c-e7cc3b1ade32)
+
+![5](https://github.com/user-attachments/assets/02dd1d7a-cfd5-49f0-98b0-9867fd3255ee)
+
+![6](https://github.com/user-attachments/assets/4fdffa3f-ece9-4737-937d-eb9b59809032)
+
+![7](https://github.com/user-attachments/assets/23dd0dca-9609-42d5-addb-e479bc86c611)
+
+![8](https://github.com/user-attachments/assets/570b1119-4b11-4c4b-9c38-0cfa6aebee87)
+
+
 #### Paleta de Cores
 
 ##### Cores Predominantes:
