@@ -22,7 +22,62 @@ O front-end do sistema de controle de estoque de farmácias foi desenvolvido com
 A arquitetura da aplicação mobile segue o padrão de cliente-servidor, onde o front-end em React e Next.js interage com o back-end, que gerencia a lógica de negócios e persistência de dados. O front-end consome a API para realizar operações de CRUD (criação, leitura, atualização e exclusão) de medicamentos e outros recursos. Componentes adicionais, como autenticação e geração de relatórios, garantem segurança e flexibilidade no controle de estoque.
 
 ## Modelagem da Aplicação
-[Descreva a modelagem da aplicação, incluindo a estrutura de dados, diagramas de classes ou entidades, e outras representações visuais relevantes.]
+![image](https://github.com/user-attachments/assets/929cf36d-5109-41a2-930a-613b2603d6cd)
+
+**Fornecedor:**
+
+| Atributo     | Descrição                          | Tipo de Dado | Chave Primária |
+| ------------ | ---------------------------------- | ------------ | -------------- |
+| Id           | Identificador único do fornecedor  | int          | Sim            |
+| NomeFantasia | Nome fantasia do fornecedor        | string       |                |
+| CNPJ         | CNPJ do fornecedor                 | string       |                |
+| Telefone     | Telefone de contato do fornecedor  | string       |                |
+| Email        | Endereço de e-mail do fornecedor   | string       |                |
+
+**Medicamento:**
+
+| Atributo       | Descrição                          | Tipo de Dado | Chave Primária | Chave Estrangeira |
+| -------------- | ---------------------------------- | ------------ | -------------- | ----------------- |
+| Id             | Identificador único do medicamento | int          | Sim            |                   |
+| NomeComercial  | Nome comercial do medicamento      | string       |                |                   |
+| Fabricante     | Nome do fabricante                 | string       |                |                   |
+| FornecedorId   | ID do Fornecedor do medicamento    | int          |                | Sim               |
+
+**Lote:**
+
+| Atributo       | Descrição                          | Tipo de Dado | Chave Primária | Chave Estrangeira |
+|----------------|------------------------------------|--------------|----------------|-------------------|
+| Id             | Identificador único do lote        | int          | Sim            |                   |
+| Quantidade     | Quantidade de medicamentos no lote | int          |                |                   |
+| DataFabricacao | Data de fabricação do lote         | DateTime     |                |                   |
+| DataValidade   | Data de validade do lote           | DateTime     |                |                   |
+| MedicamentoId  | ID do Medicamento do lote          | int          |                | Sim               |
+
+**Entrada:**
+
+| Atributo           | Descrição                          | Tipo de Dado | Chave Primária | Chave Estrangeira |
+| ------------------ | ---------------------------------- | ------------ | -------------- | ----------------- |
+| Id                 | Identificador único da entrada     | int          | Sim            |                   |
+| DataEntrada        | Data e hora da entrada do lote     | DateTime     |                |                   |
+| QuantidadeRecebida | Quantidade de medicamento recebido | int          |                |                   |
+| LoteId             | ID do Lote da entrada              | int          |                | Sim               |
+
+**Saída:**
+
+| Atributo         | Descrição                          | Tipo de Dado | Chave Primária | Chave Estrangeira |
+| ---------------- | ---------------------------------- | ------------ | -------------- | ----------------- |
+| Id               | Identificador único da saída       | int          | Sim            |                   |
+| DataSaida        | Data e hora da saída do lote       | DateTime     |                |                   |
+| QuantidadeSaida  | Quantidade de medicamento vendido  | int          |                |                   |
+| LoteId           | ID do Lote da saída                | int          |                | Sim               |
+
+**Usuario:**
+
+| Atributo    | Descrição                     | Tipo de Dado | Chave Primária |
+| ----------- | ----------------------------- | ------------ | -------------- |
+| Id          | Identificador único usuário   | int          | Sim            |
+| NomeUsuario | Nome de usuário para login    | string       |                |
+| Senha       | Hash da senha do usuário      | string       |                |
 
 ## Projeto da Interface
 O design da interface é moderno e funcional, com uma paleta de cores em tons azulados e roxos, proporcionando um visual limpo e profissional. As páginas, como login, registro, listagem e edição de medicamentos, seguem um layout consistente com caixas de texto arredondadas e botões responsivos. Cada tela inclui um menu superior para navegação rápida e intuitiva, permitindo que o usuário acesse funções essenciais, como pesquisa e geração de relatórios, de forma eficiente e organizada.
