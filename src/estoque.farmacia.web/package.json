@@ -1,0 +1,42 @@
+{
+  "name": "estoque.farmacia.web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "prettier --check --ignore-path .gitignore .",
+    "lint:fix": "prettier --write --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@abak/react-image-picker": "^1.1.4",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/material": "^6.1.3",
+    "@mui/x-date-pickers": "^7.20.0",
+    "classnames": "^2.5.1",
+    "dayjs": "^1.11.13",
+    "eslint-config-prettier": "^9.1.0",
+    "moment": "^2.30.1",
+    "next": "^14.2.16",
+    "prettier": "^3.3.3",
+    "react": "^18",
+    "react-css-modules": "^4.7.11",
+    "react-dom": "^18",
+    "sass": "^1.79.4",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/uuid": "^10.0.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.14",
+    "typescript": "^5"
+  }
+}

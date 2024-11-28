@@ -1,0 +1,156 @@
+.page-container {
+  padding: 1.5rem;
+}
+
+.produtos-page {
+  padding: 20px;
+  background-color: #E6E9FD;
+  font-family: Arial, sans-serif;
+  margin: 20px auto;
+  max-width: 85%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.logo {
+  height: 50px;
+}
+
+.product-title {
+  font-size: 36px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #4E4FEB;
+  text-align: center;
+}
+
+/* Botão de logout */
+.logout-button {
+  background-color: #7b5bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Barra de busca e filtros */
+.search-filter-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding: auto;
+}
+
+.search-input {
+  margin-left: 30px;
+  padding: 10px;
+  border: 2px solid #4e4feb;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.search-button,
+.filter-button,
+.sort-button {
+  background-color: #4e4feb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Lista de produtos */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilos para o cartão de produto */
+.product-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.product-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.product-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info {
+  font-size: 16px;
+  color: #4e4feb;
+  font-weight: bold;
+}
+
+.product-info p {
+  font-weight: normal;
+  color: #333;
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #7b5bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+}
+
+.no-products,
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  color: #4CAF50;
+  background-color: #F8F9FA;
+  border-radius: 8px;
+  padding: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}

@@ -1,0 +1,229 @@
+@import '/src/assets/styles/variables';
+@import '/src/assets/styles/breakpoints';
+
+.print_batch__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $dark_grey;
+    text-align: center;
+    padding-bottom: 1rem;
+
+    @media (max-width: $phone_breakpoint) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .print_batch__batch {
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    padding: 1rem;
+
+    @media (max-width: $phone_breakpoint) {
+      height: auto;
+      width: 100vw;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: stretch;
+      border-radius: 0;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: .5rem;
+
+      @media (max-width: $phone_breakpoint) {
+        margin-right: 0;
+        margin-bottom: .5rem;
+      }
+    }
+
+    .print_batch__batch_no_image {
+      height: 100%;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      border-radius: 10px;
+      object-fit: cover;
+      padding: .5rem;
+      margin-right: .5rem;
+
+      svg {
+        font-size: 1.25rem;
+        padding-bottom: .5rem;
+      }
+    }
+
+    .print_batch__batch_info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-right: .5rem;
+
+      .print_batch__batch_info_block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $dark_grey;
+        }
+
+        p {
+          font-size: 1rem;
+          font-weight: 600;
+          color: $dark_grey;
+
+          &:first-child {
+            font-weight: 700;
+            color: $purple;
+            padding-right: .5rem;
+          }
+        }
+      }
+    }
+
+    .print_batch__batch_info_quantity {
+      height: 100%;
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: $white;
+      border-radius: 10px;
+      padding: .5rem;
+
+      p {
+        font-size: 1rem;
+        font-weight: 600;
+        color: $dark_grey;
+
+        &:last-child {
+          font-size: 1.5rem;
+          font-weight: 700;
+          padding-top: .5rem;
+        }
+      }
+    }
+  }
+
+  .print_batch__entradas_saidas_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 1rem;
+
+    @media (max-width: $phone_breakpoint) {
+      flex-direction: column;
+    }
+
+    .print_batch__entradas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $dark_grey;
+        padding-bottom: .5rem;
+      }
+
+      .print_batch__entradas_item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid $dark_grey;
+        }
+
+        .print_batch__entradas_item_quantity {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding-right: 1rem;
+
+          p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $dark_grey;
+
+            &:last-child {
+              font-size: 1.25rem;
+              font-weight: 700;
+              padding-left: .5rem;
+            }
+          }
+        }
+      }
+    }
+
+    .print_batch__saidas {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+
+      h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $dark_grey;
+        padding-bottom: .5rem;
+      }
+
+      .print_batch__saidas_item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+
+        &:not(:last-child) {
+          border-bottom: 2px solid $dark_grey;
+        }
+
+        .print_batch__saidas_item_quantity {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          padding-right: 1rem;
+
+          p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: $dark_grey;
+
+            &:last-child {
+              font-size: 1.25rem;
+              font-weight: 700;
+              padding-left: .5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}

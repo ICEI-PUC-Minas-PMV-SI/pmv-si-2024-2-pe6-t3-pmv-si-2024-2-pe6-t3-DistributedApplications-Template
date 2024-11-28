@@ -1,4 +1,4 @@
-# TÍTULO DO PROJETO
+# Controle de Estoque de Farmácia
 
 `CURSO: Sistemas de Informação`
 
@@ -6,33 +6,48 @@
 
 `SEMESTRE: 6º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Sistema desenvolvido para fazer o control de estoque de uma farmácia, possibilitando o gerenciamento, acompanhamento e manipulação dos itens que são cadastrados no banco de dados.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
-* Nome completo do aluno 5
-* Nome completo do aluno 6
+* Camila Fernanda da Silva
+* Francisco dos Santos Lage de Matos
+* Gabriela Scarabelli Bahia
+* Henrique de Paula Lima
+* Nathalia Souto Ferreira Pino
+* Wallace Inácio Gomes de Sousa
 
 ## Orientador
 
-* Nome completo do professor 1
+* Kleber Souza
 
 # Planejamento
 
-| Etapa         | Atividades |
-|  :----:   | ----------- |
-| ETAPA 1         |[Documentação de Contexto](docs/contexto.md) <br> |
-| ETAPA 2         |[Planejar, desenvolver e gerenciar APIs e Web Services](docs/backend-apis.md) <br> |
-| ETAPA 3         |[Planejar, desenvolver e gerenciar uma aplicação Web](docs/frontend-web.md) |
-| ETAPA 4        |[Planejar, desenvolver e gerenciar uma aplicação Móvel](docs/frontend-mobile.md) <br>  |
-| ETAPA 5         | [Apresentação](presentation/README.md) |
+| Etapa | Atividades |
+| ----- | ---------- |
+| ETAPA 1 |[Documentação de Contexto](docs/contexto.md) <br> |
+| ETAPA 2 |[Planejar, desenvolver e gerenciar APIs e Web Services](docs/backend-apis.md) <br> |
+| ETAPA 3 | [Planejar, desenvolver e gerenciar uma aplicação Web](docs/frontend-web.md) |
+| ETAPA 4 | [Planejar, desenvolver e gerenciar uma aplicação Móvel](docs/frontend-mobile.md) <br> |
+| ETAPA 5 | [Apresentação](presentation/README.md) |
+
 ## Instruções de utilização
 
-Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
+<!-- Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação. -->
+Instalação:
+1. Visual Studio 2022
+2. .NET 8 SDK
+3. SQL Server
+4. SQL Server Management Studio
+
+Utilização:
+
+1. Abrir a solução no Visual Studio 2022 do arquivo `\src\Estoque.Farmacia.API\Estoque.Farmacia.API.sln`.
+2. Configurar no arquivo `appsettings.json` o nome do servidor local do SQL Server.
+3. Executar as migrações para o banco de dados:
+    - `Add-Migration InitialCreate`
+    - `Update-Database`
+4. Por padrão o Swagger será inicializado na execução da solução para utilizar a API, também é possível o acesso em `https://localhost:7005/swagger`.
 
 # Código
 

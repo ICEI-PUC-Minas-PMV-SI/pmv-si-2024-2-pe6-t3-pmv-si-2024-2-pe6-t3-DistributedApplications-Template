@@ -1,0 +1,74 @@
+@import '/src/assets/styles/variables';
+@import '/src/assets/styles/breakpoints';
+
+.register_report__container {
+  height: calc(100dvh - 5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $purple;
+    padding: 1.5rem;
+  }
+
+  .register_report__dates_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+    padding: 1.5rem;
+
+    @media (max-width: $phone_breakpoint) {
+      flex-direction: column;
+      row-gap: 10px;
+    }
+
+    .register_report__dates_item {
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+      }
+    }
+  }
+
+  .register_report__submit_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+
+    @media (max-width: $phone_breakpoint) {
+      a {
+        width: 100%;
+      }
+    }
+
+    button {
+      align-self: center;
+      border: none;
+      border-radius: 7px;
+      background-color: $purple;
+      font-size: 1rem;
+      color: $white;
+      padding: .5rem 3rem;
+      transition: .25s ease-in-out;
+
+      &:hover {
+        opacity: .75;
+      }
+
+      &:disabled {
+        opacity: .5;
+      }
+
+      @media (max-width: $phone_breakpoint) {
+        width: 100%;
+        padding: 1rem 0;
+      }
+    }
+  }
+}

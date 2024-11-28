@@ -1,0 +1,44 @@
+@import '/src/assets/styles/_breakpoints.scss';
+
+.searchFilterBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  @media (max-width: $phone_breakpoint) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .searchInput {
+    flex: 1;
+    padding: 8px 16px;
+    border: 2px solid #6a5acd;
+    /* Cor roxa para a borda */
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+  }
+
+  .searchButton {
+    background-color: #6a5acd;
+    /* Cor roxa conforme a imagem */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .filterButton {
+    background-color: #6a5acd;
+    /* Cor roxa para o botão */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+}
