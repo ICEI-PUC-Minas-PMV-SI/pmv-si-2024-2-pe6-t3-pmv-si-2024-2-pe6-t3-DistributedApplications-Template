@@ -19,7 +19,7 @@ const UpdateFornecedorScreen = ({ route, navigation }) => {
   }, [fornecedorId]);
 
   const fetchFornecedorPorId = () => {
-    const apiUrl = 'https://localhost:7208/api/Fornecedores';
+    const apiUrl = 'http://100.28.74.101:8080/api/Fornecedores';
     axios.get(`${apiUrl}/${fornecedorId}`)
       .then(response => {
         const fornecedorData = response.data;
@@ -36,7 +36,7 @@ const UpdateFornecedorScreen = ({ route, navigation }) => {
   };
 
   const atualizarFornecedor = () => {
-    const apiUrl = 'https://localhost:7208/api/Fornecedores';
+    const apiUrl = 'http://100.28.74.101:8080/api/Fornecedores';
     axios.put(`${apiUrl}/${fornecedorId}`, {  
       id: fornecedorId,
       nomeFantasia,
