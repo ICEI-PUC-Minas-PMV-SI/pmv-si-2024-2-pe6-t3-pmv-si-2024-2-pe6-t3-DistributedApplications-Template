@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace Estoque.Farmacia.API.Data
+
 {
     public class AppDbContext : DbContext
     {
@@ -13,7 +14,7 @@ namespace Estoque.Farmacia.API.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=34.226.109.249;Database=EstoqueFarmacia;User Id=sa;Password=Aleatorio@123;TrustServerCertificate=True;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-FQ4DD4J;Database=EstoqueFarmacia;Trusted_Connection=True;TrustServerCertificate=True;");
             }
         }
 
@@ -26,8 +27,12 @@ namespace Estoque.Farmacia.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Medicamento>().Property(m => m.PrecoCusto).HasPrecision(18, 2);
-            modelBuilder.Entity<Medicamento>().Property(m => m.PrecoVenda).HasPrecision(18, 2);
+            // Relacionamento entre Medicamento e Fornecedor
+            modelBuilder.Entity<Medicamento>()
+                .HasOne(m => m.Fornecedor)  // Um Medicamento tem um Fornecedor
+                .WithMany(f => f.Medicamentos)  // Um Fornecedor pode ter muitos Medicamentos
+                .HasForeignKey(m => m.FornecedorId)  // Chave estrangeira para Fornecedor
+                .OnDelete(DeleteBehavior.SetNull);  // Quando o Fornecedor for deletado, o Medicamento terá a chave estrangeira setada para null (não é deletado)
         }
     }
 }
